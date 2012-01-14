@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="d_plantilla" template="/pages/estructura/plantilla.jsp"  >	
+		<put-attribute name="title" value="Elias SPA"  /> 			
+		<!-- <put-attribute name="checkUser" value="/pages/tiles/checkUser.jsp"/> -->
+		<put-attribute name="header" value="/pages/estructura/cabecera.jsp"  /> 			 			
+		<put-attribute name="body_left" value="/pages/estructura/menu_v.jsp"  />
+		<put-attribute name="body" value=""  /> 			
+		<put-attribute name="footer" value="/pages/estructura/pie.jsp"  /> 			
+	</definition>
+  
+	<definition name="d_inicio"  extends="d_plantilla">
+		<!-- <put-attribute name="checkUser" value="" /> -->
+		<!-- <put-attribute name="title" value="Acceso al Sistema"  /> --> 			
+		<put-attribute name="body" value="/pages/welcome.jsp"  /> 			
+	</definition>
+		
+</tiles-definitions>

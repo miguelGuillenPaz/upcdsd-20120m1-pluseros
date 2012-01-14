@@ -1,0 +1,414 @@
+/* CSS Document */
+@charset "utf-8";
+htm,body{	
+	margin:0px; 
+	padding:0px; 
+	width:100%; 
+	height:100%; 
+	font-family:'Trebuchet MS', sans-serif ; 
+	background: #FFFFFF ;
+	font-size:12px; 
+	color:#272727;/*#404040;/*#666666;*/
+	background-image: url( ../images/estructura/barra_fondo.png);
+}
+form{ 
+	margin:0px; 
+	padding:0px;
+}
+a{text-decoration:none; color:#272727/*#0986DC*/;}
+a:hover{color:#31A0EC;/*#7DA8FF;*/}
+img{ 
+	border:0px; 
+	padding:0px; 
+	margin:0px;
+}
+input[type="text"], input[type="password"]{ 
+	border:1px solid #C2D3E0; 
+	color: #666666; 
+	font-size:11px;
+}
+input[type="text"]:focus,input[type="password"]:focus{ 
+	border:1px solid #BDE2FF; 
+	background-color:#E7F5FF;
+	color: #333333;
+}
+select { 
+	border:1px solid #C2D3E0; 
+	color: #666666; 
+	font-size:11px;
+}
+#dv_head{
+	width:905px; 
+	height:auto; 
+	margin:0px auto;
+	margin-top: 10px;
+}
+#dv_main{ 
+	width:927px; 
+	height:auto; 
+	margin:0px auto;
+}
+#dv_body{ 
+	width:725px; 
+	height:auto; 
+	margin:0px auto;
+}
+.dv_head_menus{
+	width:100%;
+}
+.dv_head{ 
+	width:100%;
+	border:1px solid #CCCCCC;
+}
+#banner{
+	height: 140px;
+	background: url( ../images/cabecera.jpg ) no-repeat center top;
+}
+.dv_menu1{
+	width:100%; 
+	height:30px; 
+	background:url(../images/top_bar.jpg) no-repeat;
+}
+#menu1,#menu1 li{ 
+	padding:5px; 
+	margin:0px; 
+	text-align:center;
+	list-style:none;
+	float:left; 
+	min-width:102px;
+}
+#menu1 li a{ 
+	display:block; 
+	height:15px; 
+	font-weight:bold;
+	color:#FFF; 
+	text-decoration:none; 
+}
+#menu1 li a:hover{ font-size:13px;}
+
+#menu1 li ul li{
+	z-index: 99999; 
+	background:  #FFFFFF;/*#ECF0F9;*/
+	border-left: 1px solid #1D65AD;/*#337BBF;*/
+	border-bottom: 1px solid #1D65AD;
+	border-right: 1px solid #1D65AD;
+}
+#menu1 li ul li a{ 
+	color: #1D65AD;/*#445E75;*/
+}
+
+ul.menu
+{
+   list-style:none;
+}
+ul.menu li
+{
+   position:relative; /* Las coordenadas de los ul inferiores serán relativas al <li> que los contiene */
+   width:70px;
+}
+ul.menu ul
+{
+   position:absolute; /* Esta posición es relativa al <li> que contiene a este <ul> */
+   left:72px; /* Para que no monte sobre el <li> */
+   top:0px;
+   display:none;
+   list-style:none;
+}
+ul.menu li:hover > ul
+{
+   display:block;
+}
+
+ul.menu> li > ul /* Solo para los ul debajo de los li de primer nivel. */
+{
+   position:absolute;
+   left:-41px;
+   top:23px;
+   display:none;
+   list-style:none;
+}
+ul.menu > li /* Sólo para li de primer nivel */
+{
+   display:inline;
+}
+
+.dv_infobar{
+	width:100%; 
+	height:21px; 
+	background:url(../images/info_bar.jpg) no-repeat;
+}
+#text_info,#text_info li{ 
+	padding-left: 5px; 
+	margin:0px; 
+	text-align:left;
+	list-style:none;
+	float:left;
+}
+.dv_foot{ 
+	width:905px; 
+	height:30px; 
+	margin:0px auto; 
+	border:1px solid #CCCCCC;
+	/*background: url(../images/foot_bar.gif) no-repeat;*/
+}
+#text_foot,#text_foot li{ 
+	padding:3px 5px 5px 10px; 
+	margin:0px; 
+	color:#848484;
+	text-align:center;
+	list-style:none;
+	float:left;
+}
+.body_login{ 
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 500px;
+	margin-top: -200px;
+	width: 870px;
+	margin-left: -435px;
+}
+.div_login{
+	position:absolute;
+	left:55%;
+	top:50%;
+	height:300px;
+	margin-top:-150px;
+	width:420px;
+	margin-left:-216px;
+	background:url(../images/formlogin_background.jpg) no-repeat center;
+}
+/*
+#btn_login{
+	width: 113px;
+	height: 26px;
+	background: transparent url(../images/btn_login.gif) 0 2px no-repeat;
+	border: none;		
+	cursor: pointer;
+	font-size:11px; 
+	color:#FFF;
+}*/
+
+.msg_error{
+	color: #FF2E00;
+}
+
+.tbl_Manto_cabecera_pie{
+	text-align: center;
+	font-weight: bold;
+	background:url(../images/fond_lat_izq.izq.png) bottom repeat-x;
+	vertical-align: middle;
+	height: 25px;
+}
+
+.tbl_Manto_cuerpo{
+	color: #FFFFFF;
+	background-color: #1D65AD;
+	text-align: left;
+}
+
+.tbl_Manto_cuerpo:hover {
+	background-color: #4F8ECD;
+}
+
+.tbl_Manto_cuerpo td{
+	border-top: 1px solid #FFFFFF;
+}
+
+.tbl_Manto_Registro{
+	background-color: #B7B7B7;
+}
+.tbl_Manto_Registro tr{
+	background-color: #FFFFFF;
+	text-align: left;
+}
+.label{
+	background-color: #E5E5E5;
+	text-align: right;
+}
+.titulo{
+	font-weight: bold;
+	font-size: 14px;
+	color: #1D65AD;
+}
+.div_group_top{
+	height:18px;
+	background:url(../images/estructura/div_group_top.gif) top no-repeat;
+}
+.div_group_content{
+	min-height:150px;
+	padding: 0px 15px 15px 15px;
+	background:url(../images/estructura/div_group_content.gif) top repeat-y;
+}
+.titulo_group{
+	font-size: 13px;
+	color: #72C1E6;
+	font-weight: bold;
+}
+.div_group_bottom{
+	height:18px;
+	background:url(../images/estructura/div_group_bottom.gif) top no-repeat;
+}
+.tb_list td{
+	vertical-align:center;
+	height:160px;
+	width:25%;
+	/*width:164px;*/
+	background:url(../images/estructura/fond_td.gif) top no-repeat;
+}
+.tb_list td:hover{
+	background:url(../images/estructura/fond_td_hover.gif) top no-repeat;
+}
+#tb_disponibilidad{
+	background-color: #CCCCCC;
+}
+#tb_disponibilidad td{
+	background-color: white;
+	cursor: pointer;
+}
+#tb_disponibilidad td a{
+	color: #3B5998;
+}
+#tb_disponibilidad td a:hover{
+	text-decoration: underline;
+}
+#tb_disponibilidad thead td{
+	background-color: #CCCCCC;
+	border-bottom: 1px double black;
+}
+.tb_titulo td{
+	background-color: #CCCCCC;
+	border-bottom: 1px double black;
+}
+/* Css del menu vertical */
+.arrowsidemenu{
+	width: 180px; /*width of menu*/
+	border-style: solid solid none solid;
+	border-color: #CCCCCC;
+	border-size: 1px;
+	border-width: 1px;
+}
+	
+.arrowsidemenu div a{ /*header bar links*/
+	/*font: bold 12px Verdana, Arial, Helvetica, sans-serif;*/
+	display: block;
+	background: transparent url( ../images/estructura/arrowgreen.gif) 100% 0;
+  	height: 24px; /*Set to height of bg image-padding within link (ie: 32px - 4px - 4px)*/
+	padding: 4px 0 4px 10px;
+	line-height: 24px; /*Set line-height of bg image-padding within link (ie: 32px - 4px - 4px)*/
+	text-decoration: none;
+}
+	
+.arrowsidemenu div a:link, .arrowsidemenu div a:visited{
+	color: #CCCCC;
+}
+
+.arrowsidemenu div a:hover{
+	background-position: 100% -32px;
+	color: white;
+}
+
+.arrowsidemenu div.unselected a{ /*header that's currently not selected*/
+	/*color: #6F3700;*/
+}
+
+	
+.arrowsidemenu div.selected a{ /*header that's currently selected*/
+	color: white;
+	background-position: 100% -64px !important;
+}
+
+.arrowsidemenu ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.arrowsidemenu ul li{
+	border-bottom: 1px solid #CCCCCC;
+}
+
+
+.arrowsidemenu ul li a{ /*sub menu links*/
+	display: block;
+	/*font: normal 12px Verdana, Arial, Helvetica, sans-serif;*/
+	text-decoration: none;
+	color: black;
+	padding: 5px 0;
+	padding-left: 10px;
+	border-left: 10px double #CCCCCC;
+}
+
+.arrowsidemenu ul li a:hover{
+	background: #F1F1F1;
+}
+
+/* @group breadcrumb */
+#content { padding: 0 55px; }
+
+#breadcrumb, #breadcrumb2 { float: left; display: block; }
+#breadcrumb ul, #breadcrumb2 ul { list-style: none; }
+
+.crumbs { display: block; }
+.crumbs li {  display: inline; }
+.crumbs li.first { padding-left: 0px; }
+.crumbs li a, .crumbs li a:link, .crumbs li a:visited { color: #666; display: block; float: left; font-size: 12px; margin-left: -13px; padding: 7px 17px 11px 25px; position: relative; text-decoration: none; }
+
+.crumbs li a { background-image: url('../images/estructura/bg-crumbs.png');  background-repeat: no-repeat; background-position: 100% 0; position: relative; }
+.crumbs li a:hover { color: #333; background-position: 100% -48px; cursor: pointer; }
+.crumbs li a:active { color: #333; background-position: 100% -96px; }
+.crumbs li.first a span { height: 29px; width: 3px; border-left: 1px solid #d9d9d9; position: absolute; top: 0px; left: 0px; }
+
+
+.crumbs2 { display: block; margin-left: -13px; padding: 0; }
+.crumbs2 li { display: inline; }
+.crumbs2 li a, .crumbs2 li a:link, .crumbs2 li a:visited { color: #666; display: block; float: left; font-size: 12px; padding: 7px 16px 7px 19px; position: relative; text-decoration: none; border: 1px solid #d9d9d9; border-right-width: 0px; }
+
+.crumbs2 li a  { 
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.45, rgb(241,241,241)),color-stop(0.73, rgb(245,245,245)));
+
+	background-image: -moz-linear-gradient( center bottom, rgb(241,241,241) 45%, rgb(245,245,245) 73%);
+	/* For Internet Explorer 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f1f1f1, endColorstr=#f5f5f5);
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#f1f1f1, endColorstr=#f5f5f5)";
+}
+
+.crumbs2 li.first a { border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; }
+.crumbs2 li.last a { border-right-width: 1px; border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; }
+
+.crumbs2 li a:hover { 
+	border-top-color: #c4c4c4;
+	border-bottom-color: #c4c4c4;
+	
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.45, rgb(241,241,241)),color-stop(0.73, rgb(248,248,248)));
+	background-image: -moz-linear-gradient( center bottom, rgb(241,241,241) 45%, rgb(248,248,248) 73%);
+	/* For Internet Explorer 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f8f8f8, endColorstr=#f1f1f1);
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#f8f8f8, endColorstr=#f1f1f1)";
+	
+	color: #333;
+	
+	-moz-box-shadow: 0px 2px 2px #e8e8e8;
+	-webkit-box-shadow: 0px 2px 2px #e8e8e8;
+	box-shadow: 0px 2px 2px #e8e8e8;
+}
+
+.crumbs2 li a:active {
+	border-top-color: #c4c4c4;
+	border-bottom-color: #c4c4c4;
+	
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.45, rgb(224,224,224)),color-stop(0.73, rgb(235,235,235)));
+	background-image: -moz-linear-gradient( center bottom, rgb(224,224,224) 45%, rgb(235,235,235) 73%);
+	/* For Internet Explorer 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ebebeb, endColorstr=#e0e0e0);
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ebebeb, endColorstr=#e0e0e0)";
+	
+	color: #333; 
+	
+	box-shadow: -1px 1px 1px 0px #dadada inset;
+	-webkit-box-shadow: -1px 1px 1px 0px #dadada inset;
+	-moz-box-shadow: -1px 1px 1px 0px #dadada inset;
+}
