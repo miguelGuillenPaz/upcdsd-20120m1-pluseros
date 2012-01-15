@@ -3,6 +3,8 @@ package pe.edu.upc.srs.reservas.action;
 import java.util.ArrayList;
 
 import pe.edu.upc.srs.reservas.bean.EmpleadoDTO;
+import pe.edu.upc.srs.reservas.servicios.IReservaService;
+import pe.edu.upc.srs.reservas.servicios.ImplReservaService;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -15,6 +17,11 @@ public class DisponibilidadAction extends ActionSupport{
 	//private EmpleadoDTO objEmpleadoDTO;
 
 	public String seleccionaServicio(){
+		
+		ImplReservaService objImplReservaService = new ImplReservaService();
+		
+		objImplReservaService.obtenerServicios();
+		
 		System.out.println("el codigo seleccionado es: "+id_servicio);
 		lstEmpleadoDTO = new ArrayList<EmpleadoDTO>();
 		/* Se implementa la logica de consulta al web service */
