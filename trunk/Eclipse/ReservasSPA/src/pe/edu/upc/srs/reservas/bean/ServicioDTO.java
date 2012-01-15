@@ -1,4 +1,4 @@
-package pe.edu.upc.srs.reservas.beans;
+package pe.edu.upc.srs.reservas.bean;
 
 import java.io.Serializable;
 

@@ -8,7 +8,7 @@
 			
 			<div class="div_group_top"></div>
 			<div class="div_group_content">
-				<span class="titulo_group">Selecci&oacute;n de Servicios</span><br>
+				<span class="titulo_group">Selecci&oacute;n de Profesional</span><br>
 				<s:set var="index" value="1"></s:set>
 				<s:hidden name="id_servicio" id="id_servicio"></s:hidden>
 				<table class="tb_list" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 10px;">

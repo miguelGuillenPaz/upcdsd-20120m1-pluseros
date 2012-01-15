@@ -2,7 +2,7 @@ package pe.edu.upc.srs.reservas.action;
 
 import java.util.ArrayList;
 
-import pe.edu.upc.srs.reservas.beans.EmpleadoDTO;
+import pe.edu.upc.srs.reservas.bean.EmpleadoDTO;
 
 import com.opensymphony.xwork2.ActionSupport;
 

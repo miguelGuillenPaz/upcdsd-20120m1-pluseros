@@ -15,8 +15,8 @@ form{
 	margin:0px; 
 	padding:0px;
 }
-a{text-decoration:none; color:#272727/*#0986DC*/;}
-a:hover{color:#31A0EC;/*#7DA8FF;*/}
+a{text-decoration:none; color:#0986DC/*#0986DC*/;}
+a:hover{color:#31A0EC;text-decoration: underline;/*#7DA8FF;*/}
 img{ 
 	border:0px; 
 	padding:0px; 
@@ -176,7 +176,7 @@ ul.menu > li /* Sólo para li de primer nivel */
 	margin-top:-150px;
 	width:420px;
 	margin-left:-216px;
-	background:url(../images/formlogin_background.jpg) no-repeat center;
+	background:url(../images/estructura/formlogin_background.jpg) no-repeat center;
 }
 /*
 #btn_login{
@@ -292,6 +292,7 @@ ul.menu > li /* Sólo para li de primer nivel */
 .arrowsidemenu div a{ /*header bar links*/
 	/*font: bold 12px Verdana, Arial, Helvetica, sans-serif;*/
 	display: block;
+	color:#272727;
 	background: transparent url( ../images/estructura/arrowgreen.gif) 100% 0;
   	height: 24px; /*Set to height of bg image-padding within link (ie: 32px - 4px - 4px)*/
 	padding: 4px 0 4px 10px;
