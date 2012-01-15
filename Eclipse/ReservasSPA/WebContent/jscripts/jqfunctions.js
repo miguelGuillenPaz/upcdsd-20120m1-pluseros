@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$("#usuario").focus();
 	$('#datepicker').datepicker({
 		inline: true,
 		minDate: new Date()

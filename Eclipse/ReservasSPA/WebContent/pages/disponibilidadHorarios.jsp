@@ -7,10 +7,9 @@
 			<td>
 				<div id="breadcrumb">
 					<ul class="crumbs">
-						<li class="first"><a href="#" style="z-index:9;"><span></span>Disponibilidad Horarios</a></li>
-						<li><a href="#" style="z-index:8;">Option 01</a></li>
-						<li><a href="#" style="z-index:7;">Option 02</a></li>
-						<li><a href="#" style="z-index:6;">Option 03</a></li>
+						<li class="first"><a href="#" style="z-index:9;"><span></span>Selecci&oacute;n de Horarios</a></li>
+						<li><a href="#" style="z-index:8;">Selecci&oacute;n de Profesional</a></li>
+						<li><a href="#" style="z-index:7;">Disponibilidad de Horarios</a></li>
 					</ul>
 				</div>
 			</td>

@@ -16,7 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <link rel="shortcut icon" href="<%= request.getContextPath() %>/images/favicon.ico" type="image/x-icon" />
 <title>
-	<tiles:insertAttribute name="title" />
+	Elisa's SPA - <tiles:insertAttribute name="title" />
 </title>
 </head>
 <body>
