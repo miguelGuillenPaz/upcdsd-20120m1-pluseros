@@ -3,7 +3,10 @@
  */
 package pe.edu.upc.srs.reserva.beans;
 
-public class Cliente {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Cliente implements Serializable {
 
 	/* Atributos */
 	private int id;

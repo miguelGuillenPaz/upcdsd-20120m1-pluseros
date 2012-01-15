@@ -3,7 +3,10 @@
  */
 package pe.edu.upc.srs.reserva.beans;
 
-public class Personal {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Personal implements Serializable {
 
 	/* Atributos */
 	private int id;

@@ -3,7 +3,10 @@
  */
 package pe.edu.upc.srs.reserva.beans;
 
-public class Distrito {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Distrito implements Serializable{
 
 	/* Atributos */
 	private String id;

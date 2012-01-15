@@ -3,7 +3,10 @@
  */
 package pe.edu.upc.srs.reserva.beans;
 
-public class Departamento {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Departamento implements Serializable {
 
 	/* Atributos */
 	private String id;

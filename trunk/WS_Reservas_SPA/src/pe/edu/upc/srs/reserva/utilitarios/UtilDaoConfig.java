@@ -10,7 +10,7 @@ import java.util.Properties;
 public class UtilDaoConfig {
 
     private static final 
-    String recurso = "aprendamos/java/ibatis/dao.xml";
+    String recurso = "pe/edu/upc/srs/reserva/ibatis/dao.xml";
   
     private static final DaoManager daoManager;
 
