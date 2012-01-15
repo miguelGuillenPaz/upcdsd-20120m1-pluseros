@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+    <!-- definimos el tipo de acceso a la base de datos -->
+    <transactionManager type="JDBC">
+        <dataSource type="JNDI">
+            <property name="DataSource" 
+                      value="java:comp/env/jdbc/bdreserva"  />
+        </dataSource>
+    </transactionManager>
+    <!--  registramos los sqlmaps
+    Un sqlmap es un archivo xml que define las operaciones
+    que puedo hacer sobre una entidad (tabla) -->
+    <sqlMap resource="pe/edu/upc/srs/reserva/ibatis/Servicio.xml"/>
+</sqlMapConfig>
