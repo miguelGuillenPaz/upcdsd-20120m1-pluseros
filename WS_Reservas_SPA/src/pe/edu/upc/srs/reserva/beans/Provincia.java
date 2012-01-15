@@ -3,7 +3,10 @@
  */
 package pe.edu.upc.srs.reserva.beans;
 
-public class Provincia {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Provincia implements Serializable{
 
 	/* Atributos */
 	private String id;

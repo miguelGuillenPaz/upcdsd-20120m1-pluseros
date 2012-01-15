@@ -15,17 +15,20 @@ public class ImplReservaService implements IServicioReserva{
     IDespachadorReserva despachadorReserva = (IDespachadorReserva) fabrica.getDao(IDespachadorReserva.class);
 
     @Override
-    public ArrayList<Servicio> obtenerServicios() {
-        return despachadorReserva.obtenerServicios();
+    public Servicio[] obtenerServicios() {
+        ArrayList<Servicio> servicios = new ArrayList<Servicio>();
+        servicios = despachadorReserva.obtenerServicios();
+
+        return (Servicio[]) servicios.toArray(new Servicio[servicios.size()]);
     }
 
     @Override
-    public ArrayList<Personal> obtenerEmpleados() {
+    public Personal[] obtenerEmpleados() {
         return null;
     }
 
     @Override
-    public ArrayList<Servicio> obtenerEmpleadosPorServicio(Servicio servicio) {
+    public Servicio[] obtenerEmpleadosPorServicio(Servicio servicio) {
         // TODO Auto-generated method stub
         return null;
     }

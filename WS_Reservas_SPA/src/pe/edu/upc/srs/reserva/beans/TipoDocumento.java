@@ -4,7 +4,10 @@
 
 package pe.edu.upc.srs.reserva.beans;
 
-public class TipoDocumento {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class TipoDocumento implements Serializable{
 
 	/* Atributos */
 	private int id;
