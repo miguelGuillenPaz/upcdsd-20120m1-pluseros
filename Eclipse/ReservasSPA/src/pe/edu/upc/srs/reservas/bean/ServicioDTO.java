@@ -1,19 +1,25 @@
+/**
+ * @author Victor Roncalla
+ */
 package pe.edu.upc.srs.reservas.bean;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class ServicioDTO implements Serializable{
-	private static final long serialVersionUID = 6752856113741236688L;
-	
-	private int id_servicio;
-	private String descripcion;
-	private double duracion_horas;
-	private String imagen;
-	public int getId_servicio() {
-		return id_servicio;
+
+	/* Atributos */
+	private int id;
+    private String descripcion;
+    private double duracion;
+    private String rutaImagen;
+
+    /* Métodos de acceso */
+    public int getId() {
+		return id;
 	}
-	public void setId_servicio(int idServicio) {
-		id_servicio = idServicio;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -21,17 +27,16 @@ public class ServicioDTO implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public double getDuracion_horas() {
-		return duracion_horas;
+	public double getDuracion() {
+		return duracion;
 	}
-	public void setDuracion_horas(double duracionHoras) {
-		duracion_horas = duracionHoras;
+	public void setDuracion(double duracion) {
+		this.duracion = duracion;
 	}
-	public String getImagen() {
-		return imagen;
+	public String getRutaImagen() {
+		return rutaImagen;
 	}
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
 	}
-	
 }
