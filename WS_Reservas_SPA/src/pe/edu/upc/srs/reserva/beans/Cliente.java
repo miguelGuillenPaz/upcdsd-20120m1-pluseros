@@ -8,8 +8,8 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Cliente implements Serializable {
 
-	/* Atributos */
-	private int id;
+    /* Atributos */
+    private int id;
     private String codigo;
     private String apellidoPaterno;
     private String apellidoMaterno;

@@ -1,8 +1,12 @@
+/**
+ * @author Victor Roncalla
+ */
 package pe.edu.upc.srs.reserva.despachadores;
 
 import java.util.ArrayList;
 
 import pe.edu.upc.srs.reserva.beans.Personal;
+import pe.edu.upc.srs.reserva.beans.Reserva;
 import pe.edu.upc.srs.reserva.beans.Servicio;
 
 import com.ibatis.dao.client.DaoManager;
@@ -29,7 +33,19 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
     }
 
     @Override
-    public ArrayList<Servicio> obtenerEmpleadosPorServicio(Servicio servicio) {
+    public ArrayList<Personal> obtenerEmpleadosPorServicio(Servicio servicio) {
     	return null;
     }
+
+	@Override
+	public int registrarReserva(Reserva reserva) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int anularReserva(Reserva reserva) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
