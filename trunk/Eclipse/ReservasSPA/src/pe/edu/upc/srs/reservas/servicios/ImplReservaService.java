@@ -16,6 +16,7 @@ public class ImplReservaService implements IReservaService{
 	@Override
 	public ArrayList<ServicioDTO> obtenerServicios() {
 		// TODO Auto-generated method stub
+		ArrayList<ServicioDTO> lstServicioDTO = null;
 		try {
 			Call objCall = UtilSPA.getCallService(UtilSPA.WS_SISTEMA_RESERVAS_SPA);
 			System.out.println("llego aca 1");
@@ -26,7 +27,7 @@ public class ImplReservaService implements IReservaService{
 			objCall.setReturnClass(ServicioDTO.class);
 			System.out.println("llego aca 4");
 			
-			ArrayList<ServicioDTO> lstServicioDTO = (ArrayList<ServicioDTO>) objCall.invoke(new Object[]{});
+			lstServicioDTO = (ArrayList<ServicioDTO>) objCall.invoke(new Object[]{});
 			
 			//ArrayList<ServicioDTO> lstServicioDTO =((IReservaService) objCall).obtenerServicios();
 			System.out.println("llego aca 5");
@@ -41,7 +42,7 @@ public class ImplReservaService implements IReservaService{
 			e.printStackTrace();
 		}
 		
-		return null;
+		return lstServicioDTO;
 	}
 
 }
