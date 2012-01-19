@@ -15,4 +15,8 @@ public class NavigationAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	public String welcome(){
+		return SUCCESS;
+	}
+	
 }

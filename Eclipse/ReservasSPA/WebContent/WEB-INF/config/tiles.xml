@@ -17,7 +17,12 @@
 	  
 	<definition name="d_disponibilidad"  extends="d_plantilla">
 		<put-attribute name="title" value="Disponibilidad de Horarios"  /> 			
-		<put-attribute name="body" value="/pages/disponibilidadHorarios.jsp"  /> 			
+		<put-attribute name="body" value="/pages/div_servicios.jsp"  /> 			
+	</definition>
+	
+	<definition name="d_welcome"  extends="d_plantilla">
+		<put-attribute name="title" value="Bienvenido al Sistema"  /> 			
+		<put-attribute name="body" value="/pages/welcome.jsp"  /> 			
 	</definition>
 		
 	<definition name="d_login"  extends="d_plantilla">

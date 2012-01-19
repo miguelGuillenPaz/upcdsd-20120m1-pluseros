@@ -15,11 +15,11 @@
 		</action>
 		
 		<action name="login" method="login" class="pe.edu.upc.srs.seguridad.action.LoginAction">
-			<result name="success" type="tiles" >d_disponibilidad</result>
+			<result name="success" type="tiles" >d_welcome</result>
 			<result name="error" type="tiles" >d_login</result>
 		</action>
 			
-		<action name="disponibilidad" method="disponibilidad" class="pe.edu.upc.srs.navigation.action.NavigationAction">
+		<action name="disponibilidad" method="disponibilidad" class="pe.edu.upc.srs.reservas.action.DisponibilidadAction">
 			<result name="success" type="tiles" >d_disponibilidad</result>
 		</action>
    	

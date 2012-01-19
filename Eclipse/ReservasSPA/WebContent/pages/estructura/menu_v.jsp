@@ -1,3 +1,5 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 <script type="text/javascript">
 ddaccordion.init(css_menu_options);
 </script>
@@ -5,7 +7,7 @@ ddaccordion.init(css_menu_options);
 	<div class="menuheaders">
 		<a href="#" title="">Reservas</a></div>
 		<ul class="menucontents">
-			<li><a href="#">Disponibilidad de Horarios</a></li>
+			<li><s:a action="disponibilidad.action" >Disponibilidad de Horarios</s:a></li>
 			<li><a href="#">Option 01</a></li>
 			<li><a href="#">Option 02</a></li>
 			<li><a href="#">Option 03</a></li>

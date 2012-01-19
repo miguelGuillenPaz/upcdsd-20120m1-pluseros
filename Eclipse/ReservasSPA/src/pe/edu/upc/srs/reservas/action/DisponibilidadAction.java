@@ -3,6 +3,7 @@ package pe.edu.upc.srs.reservas.action;
 import java.util.ArrayList;
 
 import pe.edu.upc.srs.reservas.bean.EmpleadoDTO;
+import pe.edu.upc.srs.reservas.bean.ServicioDTO;
 import pe.edu.upc.srs.reservas.servicios.IReservaService;
 import pe.edu.upc.srs.reservas.servicios.ImplReservaService;
 
@@ -14,13 +15,21 @@ public class DisponibilidadAction extends ActionSupport{
 	private int id_servicio;
 	private int id_empleado;
 	private ArrayList<EmpleadoDTO> lstEmpleadoDTO;
+	private ArrayList<ServicioDTO> lstServicioDTO;
 	//private EmpleadoDTO objEmpleadoDTO;
 
-	public String seleccionaServicio(){
+	public String disponibilidad(){
 		
 		ImplReservaService objImplReservaService = new ImplReservaService();
 		
-		objImplReservaService.obtenerServicios();
+		lstServicioDTO = objImplReservaService.obtenerServicios();
+		
+		return SUCCESS;
+	}
+	
+	public String seleccionaServicio(){
+		
+		
 		
 		System.out.println("el codigo seleccionado es: "+id_servicio);
 		lstEmpleadoDTO = new ArrayList<EmpleadoDTO>();
@@ -65,6 +74,14 @@ public class DisponibilidadAction extends ActionSupport{
 	}
 	public int getId_empleado() {
 		return id_empleado;
+	}
+
+	public void setLstServicioDTO(ArrayList<ServicioDTO> lstServicioDTO) {
+		this.lstServicioDTO = lstServicioDTO;
+	}
+
+	public ArrayList<ServicioDTO> getLstServicioDTO() {
+		return lstServicioDTO;
 	}
 	
 }

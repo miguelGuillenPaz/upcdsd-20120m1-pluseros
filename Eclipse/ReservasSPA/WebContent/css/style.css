@@ -188,7 +188,11 @@ ul.menu > li /* Sólo para li de primer nivel */
 	font-size:11px; 
 	color:#FFF;
 }*/
-
+#div_welcome{
+	height:333px;
+	background:url(../images/icons/icon_question.jpg) no-repeat center;
+	vertical-align: middle;
+}
 .msg_error{
 	color: #FF2E00;
 }
