@@ -19,33 +19,23 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
     }
 
     @SuppressWarnings("unchecked")
-    @Override
-    public ArrayList<Servicio> obtenerServicios() {
-        ArrayList<Servicio> servicios = new ArrayList<Servicio>();
-        servicios = (ArrayList<Servicio>) queryForList("obtenerServicios", null);
-
-        return servicios;
-    }
-
-    @Override
-    public ArrayList<Personal> obtenerEmpleados() {
-    	return null;
-    }
-
-    @Override
+	@Override
     public ArrayList<Personal> obtenerEmpleadosPorServicio(Servicio servicio) {
-    	return null;
+        ArrayList<Personal> empleados = new ArrayList<Personal>();
+        empleados = (ArrayList<Personal>) queryForList("obtenerEmpleadosPorServicio", servicio.getId());
+
+        return empleados;
     }
 
-	@Override
-	public int registrarReserva(Reserva reserva) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int registrarReserva(Reserva reserva) {
+    // TODO Auto-generated method stub
+        return 0;
+    }
 
-	@Override
-	public int anularReserva(Reserva reserva) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int anularReserva(Reserva reserva) {
+    // TODO Auto-generated method stub
+        return 0;
+    }
 }

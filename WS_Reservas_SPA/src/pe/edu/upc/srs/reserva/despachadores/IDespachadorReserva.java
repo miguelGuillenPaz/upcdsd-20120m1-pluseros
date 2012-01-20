@@ -10,8 +10,6 @@ import pe.edu.upc.srs.reserva.beans.Reserva;
 import pe.edu.upc.srs.reserva.beans.Servicio;
 
 public interface IDespachadorReserva {
-    public ArrayList<Servicio> obtenerServicios();
-    public ArrayList<Personal> obtenerEmpleados();
     public ArrayList<Personal> obtenerEmpleadosPorServicio(Servicio servicio);
     public int registrarReserva(Reserva reserva);
     public int anularReserva(Reserva reserva);
