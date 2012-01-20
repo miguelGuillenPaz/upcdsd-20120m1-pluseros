@@ -25,11 +25,11 @@ public class ImplReservaService implements IServicioReserva{
 
     @Override
     public int registrarReserva(Reserva reserva) {
-        return 0;
+        return despachadorReserva.registrarReserva(reserva);
     }
 
     @Override
     public int anularReserva(Reserva reserva) {
-        return 0;
+    	return despachadorReserva.anularReserva(reserva);
     }
 }
