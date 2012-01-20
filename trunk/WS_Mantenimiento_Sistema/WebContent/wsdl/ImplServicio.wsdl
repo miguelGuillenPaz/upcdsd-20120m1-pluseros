@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:intf="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:tns1="http://beans.mantenimiento.srs.upc.edu.pe" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans.mantenimiento.srs.upc.edu.pe" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://servicios.mantenimiento.srs.upc.edu.pe"/>
+   <complexType name="ServicioDTO">
+    <sequence>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="duracion" type="xsd:double"/>
+     <element name="id" type="xsd:int"/>
+     <element name="rutaImagen" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="EmpleadoDTO">
+    <sequence>
+     <element name="ape_mat_empleado" nillable="true" type="xsd:string"/>
+     <element name="ape_pat_empleado" nillable="true" type="xsd:string"/>
+     <element name="cargo" nillable="true" type="xsd:string"/>
+     <element name="clave" nillable="true" type="xsd:string"/>
+     <element name="cod_empleado" nillable="true" type="xsd:string"/>
+     <element name="direccion" nillable="true" type="xsd:string"/>
+     <element name="distrito" nillable="true" type="xsd:string"/>
+     <element name="foto" nillable="true" type="xsd:string"/>
+     <element name="id_empleado" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="nro_documento_identidad" nillable="true" type="xsd:string"/>
+     <element name="tipo_documento_identidad" type="xsd:int"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.mantenimiento.srs.upc.edu.pe"/>
+   <element name="servicio" type="tns1:ServicioDTO"/>
+   <element name="EliminarServicioReturn" type="xsd:int"/>
+   <complexType name="ArrayOf_tns1_ServicioDTO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:ServicioDTO"/>
+    </sequence>
+   </complexType>
+   <element name="obtenerServiciosReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:ServicioDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="servicio1" type="tns1:ServicioDTO"/>
+   <element name="RegistrarServicioReturn" type="xsd:int"/>
+   <element name="servicio2" type="tns1:ServicioDTO"/>
+   <element name="ModificarServicioReturn" type="xsd:int"/>
+   <element name="empleado" type="tns1:EmpleadoDTO"/>
+   <element name="ObtenerServicioPorEmpleadoReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:ServicioDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="EliminarServicioResponse">
+
+      <wsdl:part element="impl:EliminarServicioReturn" name="EliminarServicioReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="EliminarServicioRequest">
+
+      <wsdl:part element="impl:servicio" name="servicio">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerServiciosRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="RegistrarServicioResponse">
+
+      <wsdl:part element="impl:RegistrarServicioReturn" name="RegistrarServicioReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="RegistrarServicioRequest">
+
+      <wsdl:part element="impl:servicio1" name="servicio">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ModificarServicioResponse">
+
+      <wsdl:part element="impl:ModificarServicioReturn" name="ModificarServicioReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ObtenerServicioPorEmpleadoRequest">
+
+      <wsdl:part element="impl:empleado" name="empleado">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ObtenerServicioPorEmpleadoResponse">
+
+      <wsdl:part element="impl:ObtenerServicioPorEmpleadoReturn" name="ObtenerServicioPorEmpleadoReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ModificarServicioRequest">
+
+      <wsdl:part element="impl:servicio2" name="servicio">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerServiciosResponse">
+
+      <wsdl:part element="impl:obtenerServiciosReturn" name="obtenerServiciosReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ImplServicio">
+
+      <wsdl:operation name="EliminarServicio" parameterOrder="servicio">
+
+         <wsdl:input message="impl:EliminarServicioRequest" name="EliminarServicioRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:EliminarServicioResponse" name="EliminarServicioResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerServicios">
+
+         <wsdl:input message="impl:obtenerServiciosRequest" name="obtenerServiciosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerServiciosResponse" name="obtenerServiciosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="RegistrarServicio" parameterOrder="servicio">
+
+         <wsdl:input message="impl:RegistrarServicioRequest" name="RegistrarServicioRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:RegistrarServicioResponse" name="RegistrarServicioResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ModificarServicio" parameterOrder="servicio">
+
+         <wsdl:input message="impl:ModificarServicioRequest" name="ModificarServicioRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ModificarServicioResponse" name="ModificarServicioResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ObtenerServicioPorEmpleado" parameterOrder="empleado">
+
+         <wsdl:input message="impl:ObtenerServicioPorEmpleadoRequest" name="ObtenerServicioPorEmpleadoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ObtenerServicioPorEmpleadoResponse" name="ObtenerServicioPorEmpleadoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ImplServicioSoapBinding" type="impl:ImplServicio">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="EliminarServicio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="EliminarServicioRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="EliminarServicioResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerServicios">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerServiciosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerServiciosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="RegistrarServicio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="RegistrarServicioRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="RegistrarServicioResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ModificarServicio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ModificarServicioRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ModificarServicioResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ObtenerServicioPorEmpleado">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ObtenerServicioPorEmpleadoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ObtenerServicioPorEmpleadoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ImplServicioService">
+
+      <wsdl:port binding="impl:ImplServicioSoapBinding" name="ImplServicio">
+
+         <wsdlsoap:address location="http://localhost:8081/WS_Mantenimiento_Sistema/services/ImplServicio"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
