@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ImplServicioService WSDL service -->
+
+  <service name="ImplServicio" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://servicios.mantenimiento.srs.upc.edu.pe"/>
+      <parameter name="wsdlServiceElement" value="ImplServicioService"/>
+      <parameter name="schemaQualified" value="http://beans.mantenimiento.srs.upc.edu.pe,http://servicios.mantenimiento.srs.upc.edu.pe"/>
+      <parameter name="wsdlServicePort" value="ImplServicio"/>
+      <parameter name="className" value="pe.edu.upc.srs.mantenimiento.servicios.ImplServicio"/>
+      <parameter name="wsdlPortType" value="ImplServicio"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:retNS="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="eliminarServicio" qname="EliminarServicio" returnQName="retNS:EliminarServicioReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:tns="http://beans.mantenimiento.srs.upc.edu.pe" qname="pns:servicio" type="tns:ServicioDTO"/>
+      </operation>
+      <operation xmlns:retNS="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:rtns="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:tns="http://servicios.mantenimiento.srs.upc.edu.pe" name="obtenerServicios" qname="obtenerServicios" returnQName="retNS:obtenerServiciosReturn" returnType="rtns:&gt;obtenerServiciosReturn" returnItemQName="tns:item" soapAction="">
+      </operation>
+      <operation xmlns:retNS="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="registrarServicio" qname="RegistrarServicio" returnQName="retNS:RegistrarServicioReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:tns="http://beans.mantenimiento.srs.upc.edu.pe" qname="pns:servicio1" type="tns:ServicioDTO"/>
+      </operation>
+      <operation xmlns:retNS="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="modificarServicio" qname="ModificarServicio" returnQName="retNS:ModificarServicioReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:tns="http://beans.mantenimiento.srs.upc.edu.pe" qname="pns:servicio2" type="tns:ServicioDTO"/>
+      </operation>
+      <operation xmlns:retNS="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:rtns="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:tns="http://servicios.mantenimiento.srs.upc.edu.pe" name="obtenerServicioPorEmpleado" qname="ObtenerServicioPorEmpleado" returnQName="retNS:ObtenerServicioPorEmpleadoReturn" returnType="rtns:&gt;ObtenerServicioPorEmpleadoReturn" returnItemQName="tns:item" soapAction="">
+        <parameter xmlns:tns="http://beans.mantenimiento.srs.upc.edu.pe" xmlns:pns="http://servicios.mantenimiento.srs.upc.edu.pe" qname="pns:empleado" type="tns:EmpleadoDTO"/>
+      </operation>
+      <parameter name="allowedMethods" value="eliminarServicio modificarServicio registrarServicio obtenerServicios obtenerServicioPorEmpleado"/>
+
+      <typeMapping xmlns:ns="http://beans.mantenimiento.srs.upc.edu.pe" qname="ns:EmpleadoDTO" type="java:pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://beans.mantenimiento.srs.upc.edu.pe" qname="ns:ServicioDTO" type="java:pe.edu.upc.srs.mantenimiento.beans.ServicioDTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:cmp-ns="http://beans.mantenimiento.srs.upc.edu.pe" qname="ns:&gt;obtenerServiciosReturn" type="java:pe.edu.upc.srs.mantenimiento.beans.ServicioDTO[]" innerType="cmp-ns:ServicioDTO" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://servicios.mantenimiento.srs.upc.edu.pe" xmlns:cmp-ns="http://beans.mantenimiento.srs.upc.edu.pe" qname="ns:&gt;ObtenerServicioPorEmpleadoReturn" type="java:pe.edu.upc.srs.mantenimiento.beans.ServicioDTO[]" innerType="cmp-ns:ServicioDTO" encodingStyle=""/>
+  </service>
+</deployment>

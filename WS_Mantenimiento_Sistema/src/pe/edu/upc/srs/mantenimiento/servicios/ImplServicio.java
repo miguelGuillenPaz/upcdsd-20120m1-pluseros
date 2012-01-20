@@ -27,13 +27,13 @@ public class ImplServicio implements IServicioServicio {
 	}
 
 	@Override
-	public ServicioDTO obtenerServicios() {
+	public ServicioDTO[] obtenerServicios() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ServicioDTO ObtenerServicioPorEmpleado(EmpleadoDTO empleado) {
+	public ServicioDTO[] ObtenerServicioPorEmpleado(EmpleadoDTO empleado) {
 		// TODO Auto-generated method stub
 		return null;
 	}
