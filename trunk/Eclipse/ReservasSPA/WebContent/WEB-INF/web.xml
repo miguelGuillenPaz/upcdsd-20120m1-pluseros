@@ -42,7 +42,7 @@
 	</filter-mapping>
 	
 	<listener>
-	    <listener-class>sigel.util.listener.AplicationListener</listener-class>
+	    <listener-class>pe.edu.upc.srs.listener.AplicationListener</listener-class>
 	</listener>
 	
 	<env-entry>
