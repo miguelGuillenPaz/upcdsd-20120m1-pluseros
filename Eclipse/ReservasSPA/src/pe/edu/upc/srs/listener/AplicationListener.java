@@ -1,9 +1,8 @@
-package sigel.util.listener;
+package pe.edu.upc.srs.listener;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
