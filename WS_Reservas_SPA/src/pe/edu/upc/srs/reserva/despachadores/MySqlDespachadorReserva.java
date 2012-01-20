@@ -3,6 +3,7 @@
  */
 package pe.edu.upc.srs.reserva.despachadores;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import pe.edu.upc.srs.reserva.beans.Personal;
@@ -29,8 +30,18 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
 
     @Override
     public int registrarReserva(Reserva reserva) {
-    // TODO Auto-generated method stub
-        return 0;
+        int resultado = 0;
+    	
+    	try {
+			getSqlMapExecutor().insert("sp_registrar_reserva", reserva);
+			resultado = 1;
+    	} catch (SQLException e) {
+			System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + e.getMessage());
+			e.printStackTrace();
+			resultado = -1;
+		}
+    	
+    	return resultado;
     }
 
     @Override
