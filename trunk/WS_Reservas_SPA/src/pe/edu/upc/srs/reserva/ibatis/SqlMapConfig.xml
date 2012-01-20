@@ -15,4 +15,6 @@ PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
     Un sqlmap es un archivo xml que define las operaciones
     que puedo hacer sobre una entidad (tabla) -->
     <sqlMap resource="pe/edu/upc/srs/reserva/ibatis/Servicio.xml"/>
+    <sqlMap resource="pe/edu/upc/srs/reserva/ibatis/Empleado.xml"/>
+    <sqlMap resource="pe/edu/upc/srs/reserva/ibatis/Reserva.xml"/>
 </sqlMapConfig>
