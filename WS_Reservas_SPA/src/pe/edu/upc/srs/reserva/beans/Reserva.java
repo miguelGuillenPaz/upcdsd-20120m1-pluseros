@@ -1,3 +1,6 @@
+/**
+ * @author Victor Roncalla
+ */
 package pe.edu.upc.srs.reserva.beans;
 
 public class Reserva {
@@ -5,7 +8,6 @@ public class Reserva {
     /* Atributos */
     private int id;
     private String codigo;
-    private String apellidoPaterno;
     private String dia;
     private String mes;
     private String anio;
@@ -28,12 +30,6 @@ public class Reserva {
 	}
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
-	}
-	public String getApellidoPaterno() {
-		return apellidoPaterno;
-	}
-	public void setApellidoPaterno(String apellidoPaterno) {
-		this.apellidoPaterno = apellidoPaterno;
 	}
 	public String getDia() {
 		return dia;
