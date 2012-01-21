@@ -12,5 +12,4 @@ public interface IDespachadorCliente {
 	
 	public int registrarCliente(ClienteDTO cliente);
 	
-	
 }
