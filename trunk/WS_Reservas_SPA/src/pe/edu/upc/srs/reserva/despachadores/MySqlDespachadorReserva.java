@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 import pe.edu.upc.srs.reserva.beans.Personal;
 import pe.edu.upc.srs.reserva.beans.Reserva;
-import pe.edu.upc.srs.reserva.beans.Servicio;
-
 import com.ibatis.dao.client.DaoManager;
 import com.ibatis.dao.client.template.SqlMapDaoTemplate;
 
@@ -21,9 +19,17 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
 
     @SuppressWarnings("unchecked")
 	@Override
-    public ArrayList<Personal> obtenerEmpleadosPorServicio(Servicio servicio) {
-        ArrayList<Personal> empleados = new ArrayList<Personal>();
-        empleados = (ArrayList<Personal>) queryForList("obtenerEmpleadosPorServicio", servicio.getId());
+    public ArrayList<Personal> obtenerEmpleadosPorServicio(int servicio) {
+        ArrayList<Personal> empleados = null;
+
+        try {
+            empleados = new ArrayList<Personal>();
+            empleados = (ArrayList<Personal>) queryForList("obtenerEmpleadosPorServicio", servicio);
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+        }
+        
 
         return empleados;
     }
@@ -31,22 +37,57 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
     @Override
     public int registrarReserva(Reserva reserva) {
         int resultado = 0;
-    	
-    	try {
-			getSqlMapExecutor().insert("sp_registrar_reserva", reserva);
-			resultado = 1;
-    	} catch (SQLException e) {
-			System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + e.getMessage());
-			e.printStackTrace();
-			resultado = -1;
-		}
-    	
-    	return resultado;
+
+        try {
+            getSqlMapExecutor().insert("sp_registrar_reserva", reserva);
+            resultado = 1;
+        } catch (SQLException excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+            resultado = -1;
+        }
+
+        return resultado;
     }
 
     @Override
-    public int anularReserva(Reserva reserva) {
-    // TODO Auto-generated method stub
-        return 0;
+    public int anularReserva(int codigo) {
+        int resultado = 0;
+
+        try {
+            getSqlMapExecutor().insert("sp_anular_reserva", codigo);
+            resultado = 1;
+        } catch (SQLException e) {
+            System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + e.getMessage());
+            e.printStackTrace();
+            resultado = -1;
+        }
+
+        return resultado;
     }
+
+
+	@Override
+	public ArrayList<Reserva> obtenerHorariosPorServicio(int codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see pe.edu.upc.srs.reserva.despachadores.IDespachadorReserva#obtenerHorariosPorPersonal(int)
+	 */
+	@Override
+	public ArrayList<Reserva> obtenerHorariosPorPersonal(int codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see pe.edu.upc.srs.reserva.despachadores.IDespachadorReserva#buscarReserva(java.lang.String)
+	 */
+	@Override
+	public Reserva buscarReserva(String codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

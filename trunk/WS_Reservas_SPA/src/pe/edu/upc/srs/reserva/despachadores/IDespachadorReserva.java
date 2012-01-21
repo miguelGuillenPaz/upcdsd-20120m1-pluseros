@@ -7,10 +7,12 @@ import java.util.ArrayList;
 
 import pe.edu.upc.srs.reserva.beans.Personal;
 import pe.edu.upc.srs.reserva.beans.Reserva;
-import pe.edu.upc.srs.reserva.beans.Servicio;
 
 public interface IDespachadorReserva {
-    public ArrayList<Personal> obtenerEmpleadosPorServicio(Servicio servicio);
     public int registrarReserva(Reserva reserva);
-    public int anularReserva(Reserva reserva);
+    public int anularReserva(int codigo);
+    public Reserva buscarReserva(String codigo);
+    public ArrayList<Personal> obtenerEmpleadosPorServicio(int servicio);
+    public ArrayList<Reserva> obtenerHorariosPorServicio(int codigo);
+    public ArrayList<Reserva> obtenerHorariosPorPersonal(int codigo);
 }
