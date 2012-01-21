@@ -6,6 +6,7 @@ import com.ibatis.dao.client.DaoManager;
 
 import pe.edu.upc.srs.reserva.beans.Personal;
 import pe.edu.upc.srs.reserva.beans.Reserva;
+import pe.edu.upc.srs.reserva.despachadores.IDespachadorEmpleado;
 import pe.edu.upc.srs.reserva.despachadores.IDespachadorReserva;
 import pe.edu.upc.srs.reserva.utilitarios.UtilDaoConfig;
 
@@ -13,6 +14,7 @@ public class ImplServicioReserva implements IServicioReserva{
 
     DaoManager fabrica = UtilDaoConfig.obtenerDaoManager();
     IDespachadorReserva despachadorReserva = (IDespachadorReserva) fabrica.getDao(IDespachadorReserva.class);
+    IDespachadorEmpleado despachadorEmpleado = (IDespachadorEmpleado) fabrica.getDao(IDespachadorEmpleado.class);
 
     @Override
     public Reserva buscarReserva(String codigo) {
@@ -22,7 +24,7 @@ public class ImplServicioReserva implements IServicioReserva{
     @Override
     public Personal[] obtenerEmpleadosPorServicio(int servicio) {
         ArrayList<Personal> empleados = new ArrayList<Personal>();
-        empleados = despachadorReserva.obtenerEmpleadosPorServicio(servicio);
+        empleados = despachadorEmpleado.obtenerEmpleadosPorServicio(servicio);
 
         return (Personal[]) empleados.toArray(new Personal[empleados.size()]);
     }
