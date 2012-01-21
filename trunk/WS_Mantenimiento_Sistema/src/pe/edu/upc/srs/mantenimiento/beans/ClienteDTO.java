@@ -6,7 +6,8 @@ package pe.edu.upc.srs.mantenimiento.beans;
 
 import java.io.Serializable;
 
-public class ClienteDTO {
+@SuppressWarnings("serial")
+public class ClienteDTO implements Serializable {
 	private int id;
 	private String codigo;
 	private String apellidoPaterno;

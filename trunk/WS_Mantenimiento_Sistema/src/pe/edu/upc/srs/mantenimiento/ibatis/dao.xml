@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE daoConfig>
+
+<daoConfig>
+	<context>
+	<!-- registramos el gestor de transacciones -->
+	<transactionManager type="SQLMAP">
+		<property name ="SqlMapConfigResource"
+		value="pe/edu/upc/srs/mantenimiento/ibatis/SqlMapConfig.xml"/>
+		
+	<!-- registramos daos -->
+	<dao implementation="pe.edu.upc.srs.mantenimiento.despachadores.MysqlCliente" 
+	interface="pe.edu.upc.srs.mantenimiento.despachadores.IDespachadorCliente"/>
+	</transactionManager>
+	</context>
+</daoConfig>
+
