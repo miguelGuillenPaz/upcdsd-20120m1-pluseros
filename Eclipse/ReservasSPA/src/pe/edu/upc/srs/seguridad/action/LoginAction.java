@@ -5,6 +5,9 @@ package pe.edu.upc.srs.seguridad.action;
 
 import java.util.Map;
 
+import pe.edu.upc.srs.reservas.servicios.ImplReservaService;
+import pe.edu.upc.srs.seguridad.servicios.ImplSeguridadService;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,9 +20,12 @@ public class LoginAction extends ActionSupport{
 	
 	@SuppressWarnings("unchecked")
 	public String login(){
+		ImplSeguridadService objImplSeguridadService = new ImplSeguridadService();
 		Map session = ActionContext.getContext().getSession();
 		System.out.println("LOGIN INGRESADO: "+usuario);
 		System.out.println("CLAVE INGRESADO: "+clave);
+		
+		objImplSeguridadService.autenticarCliente(usuario, clave);
 		
 		if(session.get("logged") != null &&
 			session.get("logged").equals(true)){

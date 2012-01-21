@@ -24,9 +24,10 @@ public class AplicationListener implements ServletContextListener{
 		
 		try {
 			Context ctx = new InitialContext();
-			Context myCtx = (Context)ctx.lookup("java:comp/env"); 
-			UtilWebServiceSPA.WS_SISTEMA_RESERVAS_SPA = (String)myCtx.lookup("WS_SISTEMA_RESERVAS_SPA");
+			//Context myCtx = (Context)ctx.lookup("java:comp/env"); 
+			UtilWebServiceSPA.cargarWebServices();
 			System.out.println("Valor del web service: "+UtilWebServiceSPA.WS_SISTEMA_RESERVAS_SPA);
+			System.out.println("Valor del web service: "+UtilWebServiceSPA.WS_LOGIN_SPA);
 			System.out.println("Se leyeron correctamente las variables del web.xml");
 		} catch (NamingException e) {
 			e.printStackTrace();
