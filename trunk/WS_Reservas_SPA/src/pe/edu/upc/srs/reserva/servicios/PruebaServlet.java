@@ -1,14 +1,13 @@
 package pe.edu.upc.srs.reserva.servicios;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pe.edu.upc.srs.reserva.beans.Servicio;
+import pe.edu.upc.srs.reserva.beans.Personal;
+import pe.edu.upc.srs.reserva.beans.Reserva;
 
 /**
  * Servlet implementation class PruebaServlet
@@ -46,13 +45,23 @@ public class PruebaServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		
-		ImplReservaService servicio = new ImplReservaService();
+		ImplServicioReserva servicio = new ImplServicioReserva();
 		
-		Servicio[] servicios = servicio.obtenerServicios();
+		/*Servicio[] servicios = servicio.obtenerServicios();
 		for(int i = 0 ; i < servicios.length ; i++){
 			
 			System.out.println("Servicio: " + servicios[i].getDescripcion());
+		}*/
+
+		Reserva reserva = servicio.buscarReserva("R0000001");
+		System.out.println(reserva);
+		
+		Personal[] empleados = servicio.obtenerEmpleadosPorServicio(3);
+		for(int i = 0 ; i < empleados.length ; i++){
+			
+			System.out.println("Empleado: " + empleados[i].getCodigo() + empleados[i].getNombres());
 		}
+		
 	}
 	
 }
