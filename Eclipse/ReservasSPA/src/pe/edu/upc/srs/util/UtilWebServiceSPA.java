@@ -1,9 +1,12 @@
+/**
+ * @author Christian Arias
+ */
 package pe.edu.upc.srs.util;
 
 import org.apache.axis.client.*;
 
 
-public class UtilSPA {
+public class UtilWebServiceSPA {
 
 	public static String WS_SISTEMA_RESERVAS_SPA;
 	

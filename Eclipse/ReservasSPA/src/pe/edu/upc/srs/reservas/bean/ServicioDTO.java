@@ -1,5 +1,5 @@
 /**
- * @author Victor Roncalla
+ * @author Christian Arias
  */
 package pe.edu.upc.srs.reservas.bean;
 

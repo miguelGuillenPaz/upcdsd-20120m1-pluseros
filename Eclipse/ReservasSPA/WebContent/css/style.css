@@ -190,7 +190,7 @@ ul.menu > li /* Sólo para li de primer nivel */
 }*/
 #div_welcome{
 	height:333px;
-	background:url(../images/icons/icon_question.jpg) no-repeat center;
+	/*background:url(../images/icons/icon_question.jpg) no-repeat center;*/
 	vertical-align: middle;
 }
 .msg_error{

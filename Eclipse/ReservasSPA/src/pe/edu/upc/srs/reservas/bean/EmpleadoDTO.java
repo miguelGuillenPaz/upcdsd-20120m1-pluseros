@@ -1,3 +1,6 @@
+/**
+ * @author Christian Arias
+ */
 package pe.edu.upc.srs.reservas.bean;
 
 import java.io.Serializable;

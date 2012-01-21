@@ -1,3 +1,6 @@
+/**
+ * @author Christian Arias
+ */
 package pe.edu.upc.srs.seguridad.action;
 
 import java.util.Map;
