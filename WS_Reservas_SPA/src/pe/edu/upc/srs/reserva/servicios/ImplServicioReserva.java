@@ -28,7 +28,7 @@ public class ImplServicioReserva implements IServicioReserva{
     }
 
     @Override
-    public int registrarReserva(Reserva reserva) {
+    public String registrarReserva(Reserva reserva) {
         return despachadorReserva.registrarReserva(reserva);
     }
 
