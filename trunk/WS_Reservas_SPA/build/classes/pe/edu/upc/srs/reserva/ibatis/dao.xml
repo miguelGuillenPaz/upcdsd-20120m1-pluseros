@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE daoConfig
+    PUBLIC "-//ibatis.apache.org//DTD DAO Configuration 2.0//EN"
+    "http://ibatis.apache.org/dtd/dao-2.dtd">
+
+<daoConfig>
+    <context>
+        <!--  registramos el gestor de transacciones de ibatis -->
+        <transactionManager type="SQLMAP">
+            <property name="SqlMapConfigResource"
+                      value="pe/edu/upc/srs/reserva/ibatis/SqlMapConfig.xml"/>
+        </transactionManager>
+        <!-- registramos los daos -->
+        <dao implementation="pe.edu.upc.srs.reserva.despachadores.MySqlDespachadorReserva" 
+             interface="pe.edu.upc.srs.reserva.despachadores.IDespachadorReserva"/>
+    </context>
+</daoConfig>
