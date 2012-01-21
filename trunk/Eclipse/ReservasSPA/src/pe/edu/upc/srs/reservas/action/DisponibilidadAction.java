@@ -1,3 +1,6 @@
+/**
+ * @author Christian Arias
+ */
 package pe.edu.upc.srs.reservas.action;
 
 import java.util.ArrayList;

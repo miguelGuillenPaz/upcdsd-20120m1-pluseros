@@ -1,3 +1,6 @@
+/**
+ * @author Christian Arias
+ */
 package pe.edu.upc.srs.navigation.action;
 
 import java.util.Map;

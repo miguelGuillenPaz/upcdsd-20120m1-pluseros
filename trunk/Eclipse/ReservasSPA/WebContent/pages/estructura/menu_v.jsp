@@ -16,10 +16,11 @@ ddaccordion.init(css_menu_options);
 			<li><a href="#">Option 06</a></li>
 			<li><a href="#">Option 07</a></li>
 		</ul>
-	<div class="menuheaders"><a href="#" title="JavaScript">Option Group 01</a></div>
+	<div class="menuheaders"><a href="#" title="JavaScript">Mantenimientos</a></div>
 		<ul class="menucontents">
-		<li><a href="#">Option 08</a></li>
-		<li><a href="#">Option 09</a></li>
+		<li><a href="#">Clientes</a></li>
+		<li><a href="#">Servicios</a></li>
+		<li><a href="#">Empleados</a></li>
 		</ul>
 	<div><a href="#" title="Tools">Option Group 02</a></div>
 </div>

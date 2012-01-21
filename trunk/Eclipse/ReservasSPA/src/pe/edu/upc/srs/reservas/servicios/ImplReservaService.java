@@ -1,3 +1,6 @@
+/**
+ * @author Christian Arias
+ */
 package pe.edu.upc.srs.reservas.servicios;
 
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import org.apache.axis.encoding.ser.BeanDeserializerFactory;
 import org.apache.axis.encoding.ser.BeanSerializerFactory;
 
 import pe.edu.upc.srs.reservas.bean.ServicioDTO;
-import pe.edu.upc.srs.util.UtilSPA;
+import pe.edu.upc.srs.util.UtilWebServiceSPA;
 
 public class ImplReservaService implements IReservaService{
 
@@ -18,7 +21,7 @@ public class ImplReservaService implements IReservaService{
 		// TODO Auto-generated method stub
 		ArrayList<ServicioDTO> lstServicioDTO = null;
 		try {
-			Call objCall = UtilSPA.getCallService(UtilSPA.WS_SISTEMA_RESERVAS_SPA);
+			Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_SISTEMA_RESERVAS_SPA);
 			System.out.println("llego aca 1");
 			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			System.out.println("llego aca 2");
@@ -37,6 +40,9 @@ public class ImplReservaService implements IReservaService{
 				System.out.println(serv.getDuracion());
 				System.out.println(serv.getRutaImagen());
 			}
+			
+			objCall = UtilWebServiceSPA.getCallService("http://192.168.1.42/Instaler_WS_Login/Logueo.asmx");
+			//
 			
 		} catch (Exception e) {
 			e.printStackTrace();
