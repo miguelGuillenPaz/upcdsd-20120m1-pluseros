@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Reserva">
+
+    <typeAlias alias="reserva" 
+               type="pe.edu.upc.srs.reserva.beans.Reserva"/>
+
+    <resultMap id="reservaMap" class="reserva">
+        <result property="id" column="id_reserva"/>
+        <result property="codigo" column="cod_reserva"/>
+        <result property="dia" column="dia_reserva"/>
+        <result property="mes" column="mes_reserva"/>
+        <result property="anio" column="anio_reserva"/>
+        <result property="estado" column="estado"/>
+        <result property="horaInicio" column="hora_inicio"/>
+        <result property="horaFin" column="hora_fin"/>
+        <result property="servicio.descripcion" column="descripcion"/>
+        <result property="cliente.nombres" column="nom_cliente"/>
+        <result property="cliente.apellidoPaterno" column="ape_pat_cliente"/>
+        <result property="cliente.apellidoMaterno" column="ape_mat_cliente"/>
+        <result property="empleado.nombres" column="nom_empleado"/>
+        <result property="empleado.apellidoPaterno" column="ape_pat_empleado"/>
+        <result property="empleado.apellidoMaterno" column="ape_mat_empleado"/>
+    </resultMap>
+
+    <parameterMap id="reservaParam" class="reserva">
+        <parameter property="dia" mode="IN"/>
+        <parameter property="mes" mode="IN"/>
+        <parameter property="anio" mode="IN"/>
+        <parameter property="servicio.id" mode="IN"/>
+        <parameter property="cliente.id" mode="IN"/>
+        <parameter property="personal.id" mode="IN"/>
+        <parameter property="horaInicio" mode="IN"/>
+        <parameter property="horaFin" mode="IN"/>
+        <parameter property="codigo" mode="INOUT"/>
+    </parameterMap>
+
+    <select id="obtenerEmpleadosPorServicio" parameterClass="java.lang.Integer" resultMap="reservaMap">
+        SELECT r.id_reserva,
+               r.cod_reserva,
+               r.dia_reserva,
+               r.mes_reserva,
+               r.anio_reserva,
+               r.estado,
+               r.hora_inicio,
+               r.hora_fin,
+               s.descripcion,
+               c.nombre nom_cliente,
+               c.ape_pat_cliente,
+               c.ape_mat_cliente,
+               e.nombre nom_empleado,
+               e.ape_pat_empleado,
+               e.ape_mat_empleado
+          FROM srs.reserva r,
+               srs.cliente c,
+               srs.empleado e,
+               srs.servicio s
+         WHERE r.cod_reserva = #value#
+           AND r.id_cliente = c.id_cliente
+           AND r.id_empleado = e.id_empleado
+           AND r.id_servicio = s.id_servicio;
+    </select>
+
+    <select id="obtenerHorariosPorPersonal" parameterClass="java.lang.Integer" resultMap="reservaMap">
+        SELECT r.id_reserva,
+               r.cod_reserva,
+               r.dia_reserva,
+               r.mes_reserva,
+               r.anio_reserva,
+               r.estado,
+               r.hora_inicio,
+               r.hora_fin,
+               s.descripcion,
+               c.nombre nom_cliente,
+               c.ape_pat_cliente,
+               c.ape_mat_cliente,
+               e.nombre nom_empleado,
+               e.ape_pat_empleado,
+               e.ape_mat_empleado
+          FROM srs.reserva r,
+               srs.cliente c,
+               srs.empleado e,
+               srs.servicio s
+         WHERE r.cod_reserva = #value#
+           AND r.id_cliente = c.id_cliente
+           AND r.id_empleado = e.id_empleado
+           AND r.id_servicio = s.id_servicio;
+    </select>
+
+    <procedure id="sp_registrar_reserva" parameterClass="pe.edu.upc.srs.reserva.beans.Reserva">
+        {call sp_registrar_reserva(?,?,?,?,?,?,?,?,?)}
+    </procedure>
+    
+    <procedure id="sp_anular_reserva" parameterClass="java.lang.Integer">
+        {call sp_anular_reserva(?)}
+    </procedure>
+</sqlMap>
