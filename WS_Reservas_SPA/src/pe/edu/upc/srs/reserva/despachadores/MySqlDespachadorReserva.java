@@ -35,16 +35,16 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
     }
 
     @Override
-    public int registrarReserva(Reserva reserva) {
-        int resultado = 0;
+    public String registrarReserva(Reserva reserva) {
+        String resultado = "";
 
         try {
             getSqlMapExecutor().insert("sp_registrar_reserva", reserva);
-            resultado = 1;
+            resultado = reserva.getCodigo();
         } catch (SQLException excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + excepcion.getMessage());
             excepcion.printStackTrace();
-            resultado = -1;
+            resultado = "error";
         }
 
         return resultado;
