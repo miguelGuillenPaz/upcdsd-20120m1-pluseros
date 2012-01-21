@@ -30,9 +30,10 @@ public class ImplReservaService implements IReservaService{
 			objCall.setReturnClass(ServicioDTO.class);
 			System.out.println("llego aca 4");
 			
-			lstServicioDTO = (ArrayList<ServicioDTO>) objCall.invoke(new Object[]{});
+			//lstServicioDTO = (ArrayList<ServicioDTO>) objCall.invoke(new Object[]{});
 			
 			//ArrayList<ServicioDTO> lstServicioDTO =((IReservaService) objCall).obtenerServicios();
+			lstServicioDTO = new ArrayList<ServicioDTO>();
 			System.out.println("llego aca 5");
 			for(ServicioDTO serv:lstServicioDTO){
 				System.out.println(serv.getId());
@@ -40,9 +41,6 @@ public class ImplReservaService implements IReservaService{
 				System.out.println(serv.getDuracion());
 				System.out.println(serv.getRutaImagen());
 			}
-			
-			objCall = UtilWebServiceSPA.getCallService("http://192.168.1.42/Instaler_WS_Login/Logueo.asmx");
-			//
 			
 		} catch (Exception e) {
 			e.printStackTrace();

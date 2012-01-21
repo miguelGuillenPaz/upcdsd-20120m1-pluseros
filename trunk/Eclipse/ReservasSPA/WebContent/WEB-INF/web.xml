@@ -45,11 +45,6 @@
 	    <listener-class>pe.edu.upc.srs.listener.AplicationListener</listener-class>
 	</listener>
 	
-	<env-entry>
-		<env-entry-name>WS_SISTEMA_RESERVAS_SPA</env-entry-name>
-	    <env-entry-type>java.lang.String</env-entry-type>
-	    <env-entry-value>http://localhost:8080/WS_Reservas_SPA/services/ImplReservaService</env-entry-value>
-	</env-entry>
 	 <!--  
 	<resource-ref>
 		<res-ref-name>jdbc/opendoc</res-ref-name>
