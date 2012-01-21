@@ -17,6 +17,20 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
         super(daoManager);
     }
 
+    @Override
+    public Reserva buscarReserva(String codigo) {
+        Reserva reserva = null;
+
+        try {
+            reserva = (Reserva) queryForObject("buscarReserva", codigo);
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".buscarReserva(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+        }
+
+        return reserva;
+    }
+
     @SuppressWarnings("unchecked")
 	@Override
     public ArrayList<Personal> obtenerEmpleadosPorServicio(int servicio) {
@@ -26,7 +40,7 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
             empleados = new ArrayList<Personal>();
             empleados = (ArrayList<Personal>) queryForList("obtenerEmpleadosPorServicio", servicio);
         } catch (Exception excepcion) {
-            System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + excepcion.getMessage());
+            System.out.println("Error - " + this.getClass().getName() + ".obtenerEmpleadosPorServicio(): " + excepcion.getMessage());
             excepcion.printStackTrace();
         }
         
@@ -55,10 +69,10 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
         int resultado = 0;
 
         try {
-            getSqlMapExecutor().insert("sp_anular_reserva", codigo);
+            getSqlMapExecutor().update("sp_anular_reserva", codigo);
             resultado = 1;
         } catch (SQLException e) {
-            System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + e.getMessage());
+            System.out.println("Error - " + this.getClass().getName() + ".anularReserva(): " + e.getMessage());
             e.printStackTrace();
             resultado = -1;
         }
@@ -66,28 +80,33 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
         return resultado;
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public ArrayList<Reserva> obtenerHorariosPorServicio(int servicio) {
+        ArrayList<Reserva> horarios = new ArrayList<Reserva>();
 
-	@Override
-	public ArrayList<Reserva> obtenerHorariosPorServicio(int codigo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        try {
+            horarios = (ArrayList<Reserva>) queryForList("obtenerEmpleadosPorServicio", servicio);
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".obtenerEmpleadosPorServicio(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+        }
 
-	/* (non-Javadoc)
-	 * @see pe.edu.upc.srs.reserva.despachadores.IDespachadorReserva#obtenerHorariosPorPersonal(int)
-	 */
-	@Override
-	public ArrayList<Reserva> obtenerHorariosPorPersonal(int codigo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        return horarios;
+    }
 
-	/* (non-Javadoc)
-	 * @see pe.edu.upc.srs.reserva.despachadores.IDespachadorReserva#buscarReserva(java.lang.String)
-	 */
-	@Override
-	public Reserva buscarReserva(String codigo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public ArrayList<Reserva> obtenerHorariosPorPersonal(int personal) {
+        ArrayList<Reserva> horarios = new ArrayList<Reserva>();
+
+        try {
+            horarios = (ArrayList<Reserva>) queryForList("obtenerHorariosPorPersonal", personal);
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".obtenerHorariosPorPersonal(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+        }
+
+        return horarios;
+    }
 }
