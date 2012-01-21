@@ -16,7 +16,7 @@ public class ImplServicioReserva implements IServicioReserva{
 
     @Override
     public Reserva buscarReserva(String codigo) {
-        return null;
+    	return despachadorReserva.buscarReserva(codigo);
     }
 
     @Override
