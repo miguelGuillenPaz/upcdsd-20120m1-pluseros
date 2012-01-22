@@ -98,6 +98,6 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
     </procedure>
     
     <procedure id="sp_anular_reserva" parameterClass="java.lang.Integer">
-        {call sp_anular_reserva(?)}
+        {call sp_anular_reserva(#VALUE#)}
     </procedure>
 </sqlMap>
