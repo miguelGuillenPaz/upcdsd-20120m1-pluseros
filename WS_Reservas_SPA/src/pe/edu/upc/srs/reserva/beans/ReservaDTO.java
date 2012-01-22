@@ -18,7 +18,7 @@ public class ReservaDTO {
     private String horaInicio;
     private String horaFin;
 
-    /* Métodos de acceso */
+    /* MÃ©todos de acceso */
 	public int getId() {
 		return id;
 	}

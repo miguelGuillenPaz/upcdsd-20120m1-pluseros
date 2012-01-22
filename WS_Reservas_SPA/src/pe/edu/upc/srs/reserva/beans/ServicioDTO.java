@@ -14,7 +14,7 @@ public class ServicioDTO implements Serializable{
     private double duracion;
     private String rutaImagen;
 
-    /* Métodos de acceso */
+    /* MÃ©todos de acceso */
     public int getId() {
 		return id;
 	}

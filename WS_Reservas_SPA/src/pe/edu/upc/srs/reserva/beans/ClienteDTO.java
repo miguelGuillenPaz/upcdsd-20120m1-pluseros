@@ -22,7 +22,7 @@ public class ClienteDTO implements Serializable {
     private String rutaFoto;
     private DistritoDTO distrito;
 
-    /* Métodos de acceso */
+    /* MÃ©todos de acceso */
     public int getId() {
 		return id;
 	}

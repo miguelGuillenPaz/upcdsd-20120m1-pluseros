@@ -13,7 +13,7 @@ public class ProvinciaDTO implements Serializable{
     private String nombre;
     private DepartamentoDTO departamento;
 	
-    /* Métodos de acceso */
+    /* MÃ©todos de acceso */
     public String getId() {
 		return id;
 	}
