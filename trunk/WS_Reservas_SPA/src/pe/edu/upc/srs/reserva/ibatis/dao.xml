@@ -14,5 +14,7 @@
         <!-- registramos los daos -->
         <dao implementation="pe.edu.upc.srs.reserva.despachadores.MySqlDespachadorReserva" 
              interface="pe.edu.upc.srs.reserva.despachadores.IDespachadorReserva"/>
+        <dao implementation="pe.edu.upc.srs.reserva.despachadores.MySqlDespachadorEmpleado" 
+             interface="pe.edu.upc.srs.reserva.despachadores.IDespachadorEmpleado"/>
     </context>
 </daoConfig>

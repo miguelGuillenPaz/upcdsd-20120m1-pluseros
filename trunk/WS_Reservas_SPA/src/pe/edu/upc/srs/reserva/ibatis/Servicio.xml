@@ -6,7 +6,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
 <sqlMap namespace="Servicio"   >
 
     <typeAlias alias="servicio" 
-               type="pe.edu.upc.srs.reserva.beans.Servicio"/>
+               type="pe.edu.upc.srs.reserva.beans.ServicioDTO"/>
 
     <resultMap class="servicio" id="serviciomap">
         <result property="id" column="id_servicio" />

@@ -6,7 +6,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
 <sqlMap namespace="Reserva">
 
     <typeAlias alias="reserva" 
-               type="pe.edu.upc.srs.reserva.beans.Reserva"/>
+               type="pe.edu.upc.srs.reserva.beans.ReservaDTO"/>
 
     <resultMap id="reservaMap" class="reserva">
         <result property="id" column="id_reserva"/>
@@ -32,13 +32,39 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <parameter property="anio" mode="IN"/>
         <parameter property="servicio.id" mode="IN"/>
         <parameter property="cliente.id" mode="IN"/>
-        <parameter property="personal.id" mode="IN"/>
+        <parameter property="empleado.id" mode="IN"/>
         <parameter property="horaInicio" mode="IN"/>
         <parameter property="horaFin" mode="IN"/>
         <parameter property="codigo" mode="OUT"/>
     </parameterMap>
 
-    <select id="obtenerEmpleadosPorServicio" parameterClass="java.lang.Integer" resultMap="reservaMap">
+    <select id="buscarReserva" parameterClass="java.lang.String" resultMap="reservaMap">
+        SELECT r.id_reserva,
+               r.cod_reserva,
+               r.dia_reserva,
+               r.mes_reserva,
+               r.anio_reserva,
+               r.estado,
+               r.hora_inicio,
+               r.hora_fin,
+               s.descripcion,
+               c.nombre nom_cliente,
+               c.ape_pat_cliente,
+               c.ape_mat_cliente,
+               e.nombre nom_empleado,
+               e.ape_pat_empleado,
+               e.ape_mat_empleado
+          FROM srs.reserva r,
+               srs.cliente c,
+               srs.empleado e,
+               srs.servicio s
+         WHERE r.cod_reserva = #value#
+           AND r.id_cliente = c.id_cliente
+           AND r.id_empleado = e.id_empleado
+           AND r.id_servicio = s.id_servicio
+    </select>
+
+    <select id="obtenerHorariosPorServicio" parameterClass="java.lang.Integer" resultMap="reservaMap">
        SELECT p.valor,
               IFNULL((SELECT 0 FROM srs.reserva r
                        WHERE (r.id_servicio = 1
@@ -67,7 +93,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
     <select id="obtenerHorariosPorPersonal" parameterClass="java.lang.Integer" resultMap="reservaMap">
     </select>
 
-    <procedure id="sp_registrar_reserva" parameterClass="pe.edu.upc.srs.reserva.beans.Reserva">
+    <procedure id="sp_registrar_reserva" parameterClass="pe.edu.upc.srs.reserva.beans.ReservaDTO">
         {call sp_registrar_reserva(?,?,?,?,?,?,?,?,?)}
     </procedure>
     
