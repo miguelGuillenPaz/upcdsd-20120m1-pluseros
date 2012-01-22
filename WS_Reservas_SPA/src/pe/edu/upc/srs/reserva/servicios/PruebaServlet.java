@@ -1,6 +1,8 @@
 package pe.edu.upc.srs.reserva.servicios;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +48,7 @@ public class PruebaServlet extends HttpServlet {
 		
 		
 		ImplServicioReserva servicio = new ImplServicioReserva();
-		
+			
 		/*Servicio[] servicios = servicio.obtenerServicios();
 		for(int i = 0 ; i < servicios.length ; i++){
 			
@@ -55,12 +57,6 @@ public class PruebaServlet extends HttpServlet {
 
 		ReservaDTO reserva = servicio.buscarReserva("R0000001");
 		System.out.println(reserva);
-		
-		PersonalDTO[] empleados = servicio.obtenerEmpleadosPorServicio(3);
-		for(int i = 0 ; i < empleados.length ; i++){
-			
-			System.out.println("Empleado: " + empleados[i].getCodigo() + empleados[i].getNombres());
-		}
 		
 	}
 	
