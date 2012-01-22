@@ -30,5 +30,20 @@
 		<put-attribute name="title" value="Acceso al Sistema" /> 			
 		<put-attribute name="body" value="/pages/login.jsp"  /> 			
 	</definition>
+	
+	<definition name="d_manto_cliente"  extends="d_plantilla">
+		<put-attribute name="title" value="Mantenimiento de Clientes" /> 			
+		<put-attribute name="body" value="/pages/manto_cliente.jsp?sus=no"  /> 			
+	</definition>
+	
+	<definition name="d_manto_empleado"  extends="d_plantilla">
+		<put-attribute name="title" value="Mantenimiento de Clientes" /> 			
+		<put-attribute name="body" value="/pages/manto_empleado.jsp"  /> 			
+	</definition>
+	
+	<definition name="d_manto_servicio"  extends="d_plantilla">
+		<put-attribute name="title" value="Mantenimiento de Servicio" /> 			
+		<put-attribute name="body" value="/pages/manto_servicio.jsp"  /> 			
+	</definition>
 		
 </tiles-definitions>

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('a[rel*=facebox]').facebox();
 	$("#usuario").focus();
 	$('#datepicker').datepicker({
 		inline: true,
@@ -6,6 +7,19 @@ $(document).ready(function(){
 	});
 	$( "#dialog:ui-dialog" ).dialog( "destroy" );
 });
+
+function popSuscripcion(){
+	
+	$.get('./pages/manto_cliente.jsp?s=1', function(data){
+		$(data).dialog({
+			//autoOpen: false,
+			minWidth: 800,
+			height: 300//,
+			//modal: true
+		});
+	});
+	
+}
 
 var css_menu_options = {headerclass: "menuheaders", 
                     	contentclass: "menucontents", 

@@ -22,7 +22,7 @@ img{
 	padding:0px; 
 	margin:0px;
 }
-input[type="text"], input[type="password"]{ 
+input[type="text"], input[type="password"], input[type="file"]{ 
 	border:1px solid #C2D3E0; 
 	color: #666666; 
 	font-size:11px;
@@ -206,13 +206,18 @@ ul.menu > li /* Sólo para li de primer nivel */
 }
 
 .tbl_Manto_cuerpo{
-	color: #FFFFFF;
-	background-color: #1D65AD;
-	text-align: left;
+	/*color: #FFFFFF;*/
+	background-color: #F0F8FF;
+	text-align: center;
+}
+
+.tbl_Manto_cuerpo td{
+	border-bottom:1px solid #D4EBFF;
 }
 
 .tbl_Manto_cuerpo:hover {
 	background-color: #4F8ECD;
+	border-bottom:1px solid #F0F8FF;
 }
 
 .tbl_Manto_cuerpo td{
@@ -229,6 +234,9 @@ ul.menu > li /* Sólo para li de primer nivel */
 .label{
 	background-color: #E5E5E5;
 	text-align: right;
+}
+.msj_error{
+	color: #E94D43;
 }
 .titulo{
 	font-weight: bold;

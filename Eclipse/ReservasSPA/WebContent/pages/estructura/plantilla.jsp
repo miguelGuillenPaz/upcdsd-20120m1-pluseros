@@ -9,7 +9,9 @@
 <head>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css" />
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/jscripts/jquery-ui/css/smoothness/ui.css" />
-<script src="<%= request.getContextPath() %>/jscripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+<link href="<%= request.getContextPath() %>/jscripts/facebook/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="<%= request.getContextPath() %>/jscripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath() %>/jscripts/facebook/facebox.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath() %>/jscripts/jquery-ui/ui.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath() %>/jscripts/ddaccordion.js" type="text/javascript"></script>
 <script src="<%= request.getContextPath() %>/jscripts/jqfunctions.js" type="text/javascript"></script>
