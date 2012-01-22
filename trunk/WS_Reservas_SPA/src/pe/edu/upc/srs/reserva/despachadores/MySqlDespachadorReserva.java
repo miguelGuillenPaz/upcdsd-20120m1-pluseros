@@ -6,7 +6,7 @@ package pe.edu.upc.srs.reserva.despachadores;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import pe.edu.upc.srs.reserva.beans.Reserva;
+import pe.edu.upc.srs.reserva.beans.ReservaDTO;
 import com.ibatis.dao.client.DaoManager;
 import com.ibatis.dao.client.template.SqlMapDaoTemplate;
 
@@ -17,11 +17,11 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
     }
 
     @Override
-    public Reserva buscarReserva(String codigo) {
-        Reserva reserva = null;
+    public ReservaDTO buscarReserva(String codigo) {
+        ReservaDTO reserva = null;
 
         try {
-            reserva = (Reserva) queryForObject("buscarReserva", codigo);
+            reserva = (ReservaDTO) queryForObject("buscarReserva", codigo);
         } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".buscarReserva(): " + excepcion.getMessage());
             excepcion.printStackTrace();
@@ -31,7 +31,7 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
     }
 
     @Override
-    public String registrarReserva(Reserva reserva) {
+    public String registrarReserva(ReservaDTO reserva) {
         String resultado = "";
 
         try {
@@ -64,11 +64,11 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
 
     @SuppressWarnings("unchecked")
     @Override
-    public ArrayList<Reserva> obtenerHorariosPorServicio(int servicio) {
-        ArrayList<Reserva> horarios = new ArrayList<Reserva>();
+    public ArrayList<ReservaDTO> obtenerHorariosPorServicio(ReservaDTO reserva) {
+        ArrayList<ReservaDTO> horarios = new ArrayList<ReservaDTO>();
 
         try {
-            horarios = (ArrayList<Reserva>) queryForList("obtenerEmpleadosPorServicio", servicio);
+            horarios = (ArrayList<ReservaDTO>) queryForList("obtenerEmpleadosPorServicio", reserva);
         } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".obtenerEmpleadosPorServicio(): " + excepcion.getMessage());
             excepcion.printStackTrace();
@@ -79,11 +79,11 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
 
     @SuppressWarnings("unchecked")
     @Override
-    public ArrayList<Reserva> obtenerHorariosPorPersonal(int personal) {
-        ArrayList<Reserva> horarios = new ArrayList<Reserva>();
+    public ArrayList<ReservaDTO> obtenerHorariosPorPersonal(int personal) {
+        ArrayList<ReservaDTO> horarios = new ArrayList<ReservaDTO>();
 
         try {
-            horarios = (ArrayList<Reserva>) queryForList("obtenerHorariosPorPersonal", personal);
+            horarios = (ArrayList<ReservaDTO>) queryForList("obtenerHorariosPorPersonal", personal);
         } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".obtenerHorariosPorPersonal(): " + excepcion.getMessage());
             excepcion.printStackTrace();

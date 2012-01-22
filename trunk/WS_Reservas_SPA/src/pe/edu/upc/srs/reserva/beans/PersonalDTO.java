@@ -6,7 +6,7 @@ package pe.edu.upc.srs.reserva.beans;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class Personal implements Serializable {
+public class PersonalDTO implements Serializable {
 
 	/* Atributos */
 	private int id;
@@ -20,7 +20,7 @@ public class Personal implements Serializable {
     private String usuario;
     private String clave;
     private String rutaFoto;
-    private Distrito distrito;
+    private DistritoDTO distrito;
 	
     /* Métodos de acceso */
     public int getId() {
@@ -89,10 +89,10 @@ public class Personal implements Serializable {
 	public void setRutaFoto(String rutaFoto) {
 		this.rutaFoto = rutaFoto;
 	}
-	public Distrito getDistrito() {
+	public DistritoDTO getDistrito() {
 		return distrito;
 	}
-	public void setDistrito(Distrito distrito) {
+	public void setDistrito(DistritoDTO distrito) {
 		this.distrito = distrito;
 	}
 

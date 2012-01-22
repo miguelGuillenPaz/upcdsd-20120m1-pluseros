@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import com.ibatis.dao.client.DaoManager;
 
-import pe.edu.upc.srs.reserva.beans.Personal;
-import pe.edu.upc.srs.reserva.beans.Reserva;
+import pe.edu.upc.srs.reserva.beans.PersonalDTO;
+import pe.edu.upc.srs.reserva.beans.ReservaDTO;
 import pe.edu.upc.srs.reserva.despachadores.IDespachadorEmpleado;
 import pe.edu.upc.srs.reserva.despachadores.IDespachadorReserva;
 import pe.edu.upc.srs.reserva.utilitarios.UtilDaoConfig;
@@ -17,20 +17,20 @@ public class ImplServicioReserva implements IServicioReserva{
     IDespachadorEmpleado despachadorEmpleado = (IDespachadorEmpleado) fabrica.getDao(IDespachadorEmpleado.class);
 
     @Override
-    public Reserva buscarReserva(String codigo) {
+    public ReservaDTO buscarReserva(String codigo) {
     	return despachadorReserva.buscarReserva(codigo);
     }
 
     @Override
-    public Personal[] obtenerEmpleadosPorServicio(int servicio) {
-        ArrayList<Personal> empleados = new ArrayList<Personal>();
+    public PersonalDTO[] obtenerEmpleadosPorServicio(int servicio) {
+        ArrayList<PersonalDTO> empleados = new ArrayList<PersonalDTO>();
         empleados = despachadorEmpleado.obtenerEmpleadosPorServicio(servicio);
 
-        return (Personal[]) empleados.toArray(new Personal[empleados.size()]);
+        return (PersonalDTO[]) empleados.toArray(new PersonalDTO[empleados.size()]);
     }
 
     @Override
-    public String registrarReserva(Reserva reserva) {
+    public String registrarReserva(ReservaDTO reserva) {
         return despachadorReserva.registrarReserva(reserva);
     }
 
@@ -40,18 +40,18 @@ public class ImplServicioReserva implements IServicioReserva{
     }
 
     @Override
-    public Reserva[] obtenerHorariosPorServicio(int servicio) {
-        ArrayList<Reserva> horarios = new ArrayList<Reserva>();
-        horarios = despachadorReserva.obtenerHorariosPorServicio(servicio);
+    public ReservaDTO[] obtenerHorariosPorServicio(ReservaDTO reserva) {
+        ArrayList<ReservaDTO> horarios = new ArrayList<ReservaDTO>();
+        horarios = despachadorReserva.obtenerHorariosPorServicio(reserva);
 
-        return (Reserva[]) horarios.toArray(new Reserva[horarios.size()]);
+        return (ReservaDTO[]) horarios.toArray(new ReservaDTO[horarios.size()]);
     }
 
     @Override
-    public Reserva[] obtenerHorariosPorPersonal(int personal) {
-        ArrayList<Reserva> horarios = new ArrayList<Reserva>();
-        horarios = despachadorReserva.obtenerHorariosPorServicio(personal);
+    public ReservaDTO[] obtenerHorariosPorPersonal(int personal) {
+        ArrayList<ReservaDTO> horarios = new ArrayList<ReservaDTO>();
+        horarios = despachadorReserva.obtenerHorariosPorPersonal(personal);
 
-        return (Reserva[]) horarios.toArray(new Reserva[horarios.size()]);
+        return (ReservaDTO[]) horarios.toArray(new ReservaDTO[horarios.size()]);
     }
 }

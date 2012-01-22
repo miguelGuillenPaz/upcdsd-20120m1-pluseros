@@ -5,12 +5,12 @@ package pe.edu.upc.srs.reserva.despachadores;
 
 import java.util.ArrayList;
 
-import pe.edu.upc.srs.reserva.beans.Reserva;
+import pe.edu.upc.srs.reserva.beans.ReservaDTO;
 
 public interface IDespachadorReserva {
-    public String registrarReserva(Reserva reserva);
+    public String registrarReserva(ReservaDTO reserva);
     public int anularReserva(int codigo);
-    public Reserva buscarReserva(String codigo);
-    public ArrayList<Reserva> obtenerHorariosPorServicio(int codigo);
-    public ArrayList<Reserva> obtenerHorariosPorPersonal(int codigo);
+    public ReservaDTO buscarReserva(String codigo);
+    public ArrayList<ReservaDTO> obtenerHorariosPorServicio(ReservaDTO reserva);
+    public ArrayList<ReservaDTO> obtenerHorariosPorPersonal(int codigo);
 }

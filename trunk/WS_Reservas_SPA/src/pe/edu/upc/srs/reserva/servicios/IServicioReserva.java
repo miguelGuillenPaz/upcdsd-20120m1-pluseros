@@ -3,14 +3,14 @@
  */
 package pe.edu.upc.srs.reserva.servicios;
 
-import pe.edu.upc.srs.reserva.beans.Personal;
-import pe.edu.upc.srs.reserva.beans.Reserva;
+import pe.edu.upc.srs.reserva.beans.PersonalDTO;
+import pe.edu.upc.srs.reserva.beans.ReservaDTO;
 
 public interface IServicioReserva {
-    public String registrarReserva(Reserva reserva);
+    public String registrarReserva(ReservaDTO reserva);
     public int anularReserva(int codigo);
-    public Reserva buscarReserva(String codigo);
-    public Personal[] obtenerEmpleadosPorServicio(int servicio);
-    public Reserva[] obtenerHorariosPorServicio(int servicio);
-    public Reserva[] obtenerHorariosPorPersonal(int personal);
+    public ReservaDTO buscarReserva(String codigo);
+    public PersonalDTO[] obtenerEmpleadosPorServicio(int servicio);
+    public ReservaDTO[] obtenerHorariosPorServicio(ReservaDTO reserva);
+    public ReservaDTO[] obtenerHorariosPorPersonal(int personal);
 }

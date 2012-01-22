@@ -6,18 +6,18 @@ package pe.edu.upc.srs.reserva.beans;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class Distrito implements Serializable{
+public class ProvinciaDTO implements Serializable{
 
 	/* Atributos */
 	private String id;
     private String nombre;
-    private Provincia provincia;
+    private DepartamentoDTO departamento;
 	
     /* Métodos de acceso */
     public String getId() {
 		return id;
 	}
-	public void setId(String id) {
+		public void setId(String id) {
 		this.id = id;
 	}
 	public String getNombre() {
@@ -26,11 +26,13 @@ public class Distrito implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Provincia getProvincia() {
-		return provincia;
+	public DepartamentoDTO getDepartamento() {
+		return departamento;
 	}
-	public void setProvincia(Provincia provincia) {
-		this.provincia = provincia;
+	public void setDepartamento(DepartamentoDTO departamento) {
+		this.departamento = departamento;
 	}
     
+
+
 }
