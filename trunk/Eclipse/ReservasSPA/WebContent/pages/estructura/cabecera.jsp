@@ -12,7 +12,7 @@
 						Hola, <span class="titulo">alderfg</span>
 					</s:if>
 					<s:else>
-						<s:a href="#">Reg&iacute;strate</s:a>
+						<a rel="facebox" href="<%= request.getContextPath() %>/pages/manto_cliente.jsp?sus=ok">Reg&iacute;strate</a>
 					</s:else>
 				</div>
 				<img src="<%= request.getContextPath() %>/images/estructura/cabecera_1.gif" alt="" />

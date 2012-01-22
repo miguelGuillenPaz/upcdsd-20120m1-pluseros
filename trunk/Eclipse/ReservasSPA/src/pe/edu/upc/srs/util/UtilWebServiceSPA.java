@@ -22,6 +22,7 @@ public class UtilWebServiceSPA {
 	
 	public static Call getCallService(String ws){
 		Service servicio= new Service();
+		
 		System.out.println("se instancia el nuevo servicio");
 		try {
 			System.out.println("antes del call service");

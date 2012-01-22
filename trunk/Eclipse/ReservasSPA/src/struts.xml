@@ -31,5 +31,17 @@
 			<result name="success">/pages/div_disponibilidad.jsp</result>
 		</action>
 		
+		<action name="mantenerServicio" method="mantenerServicio" class="pe.edu.upc.srs.reservas.action.ServicioAction">
+			<result name="success" type="tiles">d_manto_servicio</result>
+		</action>
+		
+		<action name="mantenerCliente" method="mantenerCliente" class="pe.edu.upc.srs.reservas.action.ClienteAction">
+			<result name="success" type="tiles">d_manto_cliente</result>
+		</action>
+		
+		<action name="mantenerEmpleado" method="mantenerEmpleado" class="pe.edu.upc.srs.reservas.action.EmpleadoAction">
+			<result name="success" type="tiles">d_manto_empleado</result>
+		</action>
+		
 	</package>
 </struts>

@@ -25,7 +25,7 @@ public class LoginAction extends ActionSupport{
 		System.out.println("LOGIN INGRESADO: "+usuario);
 		System.out.println("CLAVE INGRESADO: "+clave);
 		
-		objImplSeguridadService.autenticarCliente(usuario, clave);
+		//objImplSeguridadService.autenticarCliente(usuario, clave);
 		
 		if(session.get("logged") != null &&
 			session.get("logged").equals(true)){
