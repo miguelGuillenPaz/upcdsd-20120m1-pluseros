@@ -3,7 +3,7 @@
  */
 package pe.edu.upc.srs.reserva.beans;
 
-public class Reserva {
+public class ReservaDTO {
 
     /* Atributos */
     private int id;
@@ -12,9 +12,9 @@ public class Reserva {
     private String mes;
     private String anio;
     private String estado;
-    private Servicio servicio;
-    private Cliente cliente;
-    private Personal empleado;
+    private ServicioDTO servicio;
+    private ClienteDTO cliente;
+    private PersonalDTO empleado;
     private String horaInicio;
     private String horaFin;
 
@@ -55,22 +55,22 @@ public class Reserva {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public Servicio getServicio() {
+	public ServicioDTO getServicio() {
 		return servicio;
 	}
-	public void setServicio(Servicio servicio) {
+	public void setServicio(ServicioDTO servicio) {
 		this.servicio = servicio;
 	}
-	public Cliente getCliente() {
+	public ClienteDTO getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(ClienteDTO cliente) {
 		this.cliente = cliente;
 	}
-	public Personal getEmpleado() {
+	public PersonalDTO getEmpleado() {
 		return empleado;
 	}
-	public void setEmpleado(Personal empleado) {
+	public void setEmpleado(PersonalDTO empleado) {
 		this.empleado = empleado;
 	}
 	public String getHoraInicio() {

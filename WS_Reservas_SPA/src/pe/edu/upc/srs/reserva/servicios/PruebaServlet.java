@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pe.edu.upc.srs.reserva.beans.Personal;
-import pe.edu.upc.srs.reserva.beans.Reserva;
+import pe.edu.upc.srs.reserva.beans.PersonalDTO;
+import pe.edu.upc.srs.reserva.beans.ReservaDTO;
 
 /**
  * Servlet implementation class PruebaServlet
@@ -53,10 +53,10 @@ public class PruebaServlet extends HttpServlet {
 			System.out.println("Servicio: " + servicios[i].getDescripcion());
 		}*/
 
-		Reserva reserva = servicio.buscarReserva("R0000001");
+		ReservaDTO reserva = servicio.buscarReserva("R0000001");
 		System.out.println(reserva);
 		
-		Personal[] empleados = servicio.obtenerEmpleadosPorServicio(3);
+		PersonalDTO[] empleados = servicio.obtenerEmpleadosPorServicio(3);
 		for(int i = 0 ; i < empleados.length ; i++){
 			
 			System.out.println("Empleado: " + empleados[i].getCodigo() + empleados[i].getNombres());

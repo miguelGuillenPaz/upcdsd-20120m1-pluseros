@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ImplServicioReservaService WSDL service -->
+
+  <service name="ImplServicioReserva" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://servicios.reserva.srs.upc.edu.pe"/>
+      <parameter name="wsdlServiceElement" value="ImplServicioReservaService"/>
+      <parameter name="schemaUnqualified" value="http://beans.reserva.srs.upc.edu.pe,http://servicios.reserva.srs.upc.edu.pe"/>
+      <parameter name="wsdlServicePort" value="ImplServicioReserva"/>
+      <parameter name="className" value="pe.edu.upc.srs.reserva.servicios.ImplServicioReserva"/>
+      <parameter name="wsdlPortType" value="ImplServicioReserva"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://servicios.reserva.srs.upc.edu.pe" xmlns:rtns="http://beans.reserva.srs.upc.edu.pe" name="buscarReserva" qname="operNS:buscarReserva" returnQName="buscarReservaReturn" returnType="rtns:Reserva" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="codigo" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://servicios.reserva.srs.upc.edu.pe" xmlns:rtns="http://servicios.reserva.srs.upc.edu.pe" xmlns:tns2="http://beans.reserva.srs.upc.edu.pe" name="obtenerEmpleadosPorServicio" qname="operNS:obtenerEmpleadosPorServicio" returnQName="obtenerEmpleadosPorServicioReturn" returnType="rtns:ArrayOf_tns1_Personal" returnItemType="tns2:Personal" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="servicio" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://servicios.reserva.srs.upc.edu.pe" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="registrarReserva" qname="operNS:registrarReserva" returnQName="registrarReservaReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:tns="http://beans.reserva.srs.upc.edu.pe" qname="reserva" type="tns:Reserva"/>
+      </operation>
+      <operation xmlns:operNS="http://servicios.reserva.srs.upc.edu.pe" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="anularReserva" qname="operNS:anularReserva" returnQName="anularReservaReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="codigo" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://servicios.reserva.srs.upc.edu.pe" xmlns:rtns="http://servicios.reserva.srs.upc.edu.pe" xmlns:tns2="http://beans.reserva.srs.upc.edu.pe" name="obtenerHorariosPorServicio" qname="operNS:obtenerHorariosPorServicio" returnQName="obtenerHorariosPorServicioReturn" returnType="rtns:ArrayOf_tns1_Reserva" returnItemType="tns2:Reserva" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="servicio" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://servicios.reserva.srs.upc.edu.pe" xmlns:rtns="http://servicios.reserva.srs.upc.edu.pe" xmlns:tns2="http://beans.reserva.srs.upc.edu.pe" name="obtenerHorariosPorPersonal" qname="operNS:obtenerHorariosPorPersonal" returnQName="obtenerHorariosPorPersonalReturn" returnType="rtns:ArrayOf_tns1_Reserva" returnItemType="tns2:Reserva" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="personal" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="registrarReserva buscarReserva obtenerHorariosPorServicio anularReserva obtenerEmpleadosPorServicio obtenerHorariosPorPersonal"/>
+
+      <typeMapping xmlns:ns="http://beans.reserva.srs.upc.edu.pe" qname="ns:Cliente" type="java:pe.edu.upc.srs.reserva.beans.Cliente" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <typeMapping xmlns:ns="http://beans.reserva.srs.upc.edu.pe" qname="ns:Reserva" type="java:pe.edu.upc.srs.reserva.beans.Reserva" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <typeMapping xmlns:ns="http://beans.reserva.srs.upc.edu.pe" qname="ns:Departamento" type="java:pe.edu.upc.srs.reserva.beans.Departamento" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <arrayMapping xmlns:ns="http://servicios.reserva.srs.upc.edu.pe" xmlns:cmp-ns="http://beans.reserva.srs.upc.edu.pe" qname="ns:ArrayOf_tns1_Reserva" type="java:pe.edu.upc.srs.reserva.beans.Reserva[]" innerType="cmp-ns:Reserva" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <typeMapping xmlns:ns="http://beans.reserva.srs.upc.edu.pe" qname="ns:Provincia" type="java:pe.edu.upc.srs.reserva.beans.Provincia" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <typeMapping xmlns:ns="http://beans.reserva.srs.upc.edu.pe" qname="ns:Personal" type="java:pe.edu.upc.srs.reserva.beans.Personal" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <arrayMapping xmlns:ns="http://servicios.reserva.srs.upc.edu.pe" xmlns:cmp-ns="http://beans.reserva.srs.upc.edu.pe" qname="ns:ArrayOf_tns1_Personal" type="java:pe.edu.upc.srs.reserva.beans.Personal[]" innerType="cmp-ns:Personal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <typeMapping xmlns:ns="http://beans.reserva.srs.upc.edu.pe" qname="ns:Servicio" type="java:pe.edu.upc.srs.reserva.beans.Servicio" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <typeMapping xmlns:ns="http://beans.reserva.srs.upc.edu.pe" qname="ns:Distrito" type="java:pe.edu.upc.srs.reserva.beans.Distrito" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </service>
+</deployment>

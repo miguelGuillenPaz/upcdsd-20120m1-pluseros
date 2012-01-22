@@ -1,17 +1,18 @@
 /**
  * @author Victor Roncalla
  */
-
 package pe.edu.upc.srs.reserva.beans;
 
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class TipoDocumento implements Serializable{
+public class ServicioDTO implements Serializable{
 
 	/* Atributos */
 	private int id;
     private String descripcion;
+    private double duracion;
+    private String rutaImagen;
 
     /* Métodos de acceso */
     public int getId() {
@@ -25,5 +26,17 @@ public class TipoDocumento implements Serializable{
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public double getDuracion() {
+		return duracion;
+	}
+	public void setDuracion(double duracion) {
+		this.duracion = duracion;
+	}
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
 	}
 }
