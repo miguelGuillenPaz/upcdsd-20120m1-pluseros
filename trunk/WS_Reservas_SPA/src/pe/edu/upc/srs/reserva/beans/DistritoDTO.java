@@ -13,7 +13,7 @@ public class DistritoDTO implements Serializable{
     private String nombre;
     private ProvinciaDTO provincia;
 	
-    /* Métodos de acceso */
+    /* MÃ©todos de acceso */
     public String getId() {
 		return id;
 	}

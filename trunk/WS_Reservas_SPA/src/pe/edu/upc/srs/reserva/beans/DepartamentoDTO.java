@@ -12,7 +12,7 @@ public class DepartamentoDTO implements Serializable {
 	private String id;
     private String nombre;
 
-    /* Métodos de acceso */
+    /* MÃ©todos de acceso */
     public String getId() {
 		return id;
 	}
