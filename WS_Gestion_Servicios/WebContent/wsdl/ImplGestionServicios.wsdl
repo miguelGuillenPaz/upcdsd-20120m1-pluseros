@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicios.servicios.gestion.srs.upc.edu.pe" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servicios.servicios.gestion.srs.upc.edu.pe" xmlns:intf="http://servicios.servicios.gestion.srs.upc.edu.pe" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://beans.servicios.gestion.srs.upc.edu.pe" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://beans.servicios.gestion.srs.upc.edu.pe" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://servicios.servicios.gestion.srs.upc.edu.pe"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="DepartamentoDTO">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ProvinciaDTO">
+    <sequence>
+     <element name="departamento" nillable="true" type="tns1:DepartamentoDTO"/>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DistritoDTO">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="provincia" nillable="true" type="tns1:ProvinciaDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="ClienteDTO">
+    <sequence>
+     <element name="apellidoMaterno" nillable="true" type="xsd:string"/>
+     <element name="apellidoPaterno" nillable="true" type="xsd:string"/>
+     <element name="clave" nillable="true" type="xsd:string"/>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="direccion" nillable="true" type="xsd:string"/>
+     <element name="distrito" nillable="true" type="tns1:DistritoDTO"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="nombres" nillable="true" type="xsd:string"/>
+     <element name="rutaFoto" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PersonalDTO">
+    <sequence>
+     <element name="apellidoMaterno" nillable="true" type="xsd:string"/>
+     <element name="apellidoPaterno" nillable="true" type="xsd:string"/>
+     <element name="clave" nillable="true" type="xsd:string"/>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="direccion" nillable="true" type="xsd:string"/>
+     <element name="distrito" nillable="true" type="tns1:DistritoDTO"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="nombres" nillable="true" type="xsd:string"/>
+     <element name="rutaFoto" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ServicioDTO">
+    <sequence>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="duracion" type="xsd:double"/>
+     <element name="id" type="xsd:int"/>
+     <element name="rutaImagen" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ReservaDTO">
+    <sequence>
+     <element name="anio" nillable="true" type="xsd:string"/>
+     <element name="cliente" nillable="true" type="tns1:ClienteDTO"/>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="dia" nillable="true" type="xsd:string"/>
+     <element name="empleado" nillable="true" type="tns1:PersonalDTO"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="horaFin" nillable="true" type="xsd:string"/>
+     <element name="horaInicio" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="mes" nillable="true" type="xsd:string"/>
+     <element name="servicio" nillable="true" type="tns1:ServicioDTO"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://servicios.servicios.gestion.srs.upc.edu.pe" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.servicios.gestion.srs.upc.edu.pe"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns1_PersonalDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PersonalDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_ReservaDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ReservaDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="anularReservaResponse">
+
+      <wsdl:part name="anularReservaReturn" type="xsd:int">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerEmpleadosPorServicioRequest">
+
+      <wsdl:part name="servicio" type="xsd:int">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerHorariosPorPersonalRequest">
+
+      <wsdl:part name="personal" type="xsd:int">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="anularReservaRequest">
+
+      <wsdl:part name="codigo" type="xsd:int">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registrarReservaResponse">
+
+      <wsdl:part name="registrarReservaReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerEmpleadosPorServicioResponse">
+
+      <wsdl:part name="obtenerEmpleadosPorServicioReturn" type="impl:ArrayOf_tns1_PersonalDTO">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarReservaRequest">
+
+      <wsdl:part name="codigo" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerHorariosPorServicioResponse">
+
+      <wsdl:part name="obtenerHorariosPorServicioReturn" type="impl:ArrayOf_tns1_ReservaDTO">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerHorariosPorPersonalResponse">
+
+      <wsdl:part name="obtenerHorariosPorPersonalReturn" type="impl:ArrayOf_tns1_ReservaDTO">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="autenticarClienteResponse">
+
+      <wsdl:part name="autenticarClienteReturn" type="tns1:ClienteDTO">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="autenticarClienteRequest">
+
+      <wsdl:part name="strUsuario" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="strClave" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarReservaResponse">
+
+      <wsdl:part name="buscarReservaReturn" type="tns1:ReservaDTO">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registrarReservaRequest">
+
+      <wsdl:part name="reserva" type="tns1:ReservaDTO">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerHorariosPorServicioRequest">
+
+      <wsdl:part name="reserva" type="tns1:ReservaDTO">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ImplGestionServicios">
+
+      <wsdl:operation name="autenticarCliente" parameterOrder="strUsuario strClave">
+
+         <wsdl:input message="impl:autenticarClienteRequest" name="autenticarClienteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:autenticarClienteResponse" name="autenticarClienteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registrarReserva" parameterOrder="reserva">
+
+         <wsdl:input message="impl:registrarReservaRequest" name="registrarReservaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:registrarReservaResponse" name="registrarReservaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="anularReserva" parameterOrder="codigo">
+
+         <wsdl:input message="impl:anularReservaRequest" name="anularReservaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:anularReservaResponse" name="anularReservaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarReserva" parameterOrder="codigo">
+
+         <wsdl:input message="impl:buscarReservaRequest" name="buscarReservaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buscarReservaResponse" name="buscarReservaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerEmpleadosPorServicio" parameterOrder="servicio">
+
+         <wsdl:input message="impl:obtenerEmpleadosPorServicioRequest" name="obtenerEmpleadosPorServicioRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerEmpleadosPorServicioResponse" name="obtenerEmpleadosPorServicioResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerHorariosPorServicio" parameterOrder="reserva">
+
+         <wsdl:input message="impl:obtenerHorariosPorServicioRequest" name="obtenerHorariosPorServicioRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerHorariosPorServicioResponse" name="obtenerHorariosPorServicioResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerHorariosPorPersonal" parameterOrder="personal">
+
+         <wsdl:input message="impl:obtenerHorariosPorPersonalRequest" name="obtenerHorariosPorPersonalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerHorariosPorPersonalResponse" name="obtenerHorariosPorPersonalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ImplGestionServiciosSoapBinding" type="impl:ImplGestionServicios">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="autenticarCliente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="autenticarClienteRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="autenticarClienteResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registrarReserva">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="registrarReservaRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="registrarReservaResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="anularReserva">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="anularReservaRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="anularReservaResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarReserva">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarReservaRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarReservaResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerEmpleadosPorServicio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerEmpleadosPorServicioRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerEmpleadosPorServicioResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerHorariosPorServicio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerHorariosPorServicioRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerHorariosPorServicioResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerHorariosPorPersonal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerHorariosPorPersonalRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerHorariosPorPersonalResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.servicios.gestion.srs.upc.edu.pe" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ImplGestionServiciosService">
+
+      <wsdl:port binding="impl:ImplGestionServiciosSoapBinding" name="ImplGestionServicios">
+
+         <wsdlsoap:address location="http://localhost:8081/WS_Gestion_Servicios/services/ImplGestionServicios"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
