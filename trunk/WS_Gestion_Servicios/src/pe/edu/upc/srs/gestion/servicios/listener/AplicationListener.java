@@ -1,12 +1,12 @@
 /**
  * @author Christian Arias
  */
-package pe.edu.upc.srs.listener;
+package pe.edu.upc.srs.gestion.servicios.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import pe.edu.upc.srs.utilitarios.UtilWebService;
+import pe.edu.upc.srs.gestion.servicios.utilitarios.UtilWebService;
 
 public class AplicationListener implements ServletContextListener{
 
