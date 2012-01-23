@@ -1,7 +1,7 @@
 /**
  * @author Christian Arias
  */
-package pe.edu.upc.srs.utilitarios;
+package pe.edu.upc.srs.gestion.servicios.utilitarios;
 
 import org.apache.axis.client.*;
 
@@ -12,12 +12,12 @@ public class UtilWebService {
 	public static String WS_RESERVA_SRS;
 	public static String WS_MANTENIMIENTO_SPA;
 	
-	private static String fichero = "pe.edu.upc.srs.util.servicios";
+	private static String fichero = "pe.edu.upc.srs.gestion.servicios.configuracion.servicios";
 	
 	public static void cargarWebServices(){
 		WS_AUTENTICACION_SRS = UtilProperties.getMessage(fichero, "WS_AUTENTICACION_SRS");
-		WS_RESERVA_SRS = UtilProperties.getMessage(fichero, "WS_RESERVA_SRS");
-		WS_MANTENIMIENTO_SPA = UtilProperties.getMessage(fichero, "WS_MANTENIMIENTO_SPA");
+		WS_RESERVA_SRS = UtilProperties.getMessage(fichero, "WS_RESERVAS_SRS");
+		WS_MANTENIMIENTO_SPA = UtilProperties.getMessage(fichero, "WS_MANTENIMIENTO_SRS");
 	}
 	
 	public static Call getCallService(String url){
