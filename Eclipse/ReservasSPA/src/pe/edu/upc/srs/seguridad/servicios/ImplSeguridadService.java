@@ -19,8 +19,8 @@ public class ImplSeguridadService implements ISeguridadService {
 		// TODO Auto-generated method stub
 		ClienteDTO objClienteDTO = null;
 		try {
-			Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_LOGIN_SPA);
-			System.out.println("llego aca 1");
+			Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
+			/*System.out.println("llego aca 1");
 			objCall.registerTypeMapping(ClienteDTO.class, new QName("http://tempuri.org/","ClienteDTO"), 
 					BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			objCall.setOperationName(new QName("http://tempuri.org/","RetornaCliente"));
@@ -48,7 +48,7 @@ public class ImplSeguridadService implements ISeguridadService {
 			System.out.println("llego aca 6");
 
 			System.out.println(objClienteDTO.getNombres());
-			System.out.println(objClienteDTO.getApellidoPaterno());
+			System.out.println(objClienteDTO.getApellidoPaterno());*/
 			
 		} catch (Exception e) {
 			e.printStackTrace();

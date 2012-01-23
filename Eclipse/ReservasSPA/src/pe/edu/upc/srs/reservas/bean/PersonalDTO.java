@@ -1,19 +1,19 @@
 /**
- * @author Christian Arias
+ * @author Victor Roncalla
  */
 package pe.edu.upc.srs.reservas.bean;
 
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class ClienteDTO implements Serializable {
+public class PersonalDTO implements Serializable {
 
 	/* Atributos */
 	private int id;
     private String codigo;
+    private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private String nombres;
     private String direccion;
     private String telefono;
     private String email;
@@ -21,8 +21,8 @@ public class ClienteDTO implements Serializable {
     private String clave;
     private String rutaFoto;
     private DistritoDTO distrito;
-
-    /* M�todos de acceso */
+	
+    /* Métodos de acceso */
     public int getId() {
 		return id;
 	}
@@ -35,6 +35,12 @@ public class ClienteDTO implements Serializable {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
+	public String getNombres() {
+		return nombres;
+	}
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
 	public String getApellidoPaterno() {
 		return apellidoPaterno;
 	}
@@ -46,12 +52,6 @@ public class ClienteDTO implements Serializable {
 	}
 	public void setApellidoMaterno(String apellidoMaterno) {
 		this.apellidoMaterno = apellidoMaterno;
-	}
-	public String getNombres() {
-		return nombres;
-	}
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
 	}
 	public String getDireccion() {
 		return direccion;
@@ -95,4 +95,5 @@ public class ClienteDTO implements Serializable {
 	public void setDistrito(DistritoDTO distrito) {
 		this.distrito = distrito;
 	}
+
 }

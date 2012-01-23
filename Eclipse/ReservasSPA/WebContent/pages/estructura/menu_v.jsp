@@ -8,13 +8,7 @@ ddaccordion.init(css_menu_options);
 		<a href="#" title="">Reservas</a></div>
 		<ul class="menucontents">
 			<li><s:a action="disponibilidad.action" >Disponibilidad de Horarios</s:a></li>
-			<li><a href="#">Option 01</a></li>
-			<li><a href="#">Option 02</a></li>
-			<li><a href="#">Option 03</a></li>
-			<li><a href="#">Option 04</a></li>
-			<li><a href="#">Option 05</a></li>
-			<li><a href="#">Option 06</a></li>
-			<li><a href="#">Option 07</a></li>
+			<li><s:a action="anularReserva.action">Anular Reserva</s:a></li>
 		</ul>
 	<div class="menuheaders"><a href="#" title="JavaScript">Mantenimientos</a></div>
 		<ul class="menucontents">

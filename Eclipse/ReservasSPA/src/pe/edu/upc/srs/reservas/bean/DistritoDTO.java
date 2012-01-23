@@ -6,7 +6,7 @@ package pe.edu.upc.srs.reservas.bean;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class Distrito implements Serializable{
+public class DistritoDTO implements Serializable{
 
 	/* Atributos */
 	private String id;

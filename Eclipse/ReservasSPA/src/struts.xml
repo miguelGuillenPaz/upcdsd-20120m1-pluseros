@@ -43,5 +43,17 @@
 			<result name="success" type="tiles">d_manto_empleado</result>
 		</action>
 		
+		<action name="anularReserva" method="anularReserva" class="pe.edu.upc.srs.reservas.action.ReservaAction">
+			<result name="success" type="tiles">d_anular_reserva</result>
+		</action>
+		
+		<action name="buscarReservaAnulacion" method="buscarReserva" class="pe.edu.upc.srs.reservas.action.ReservaAction">
+			<result name="success" type="tiles">d_anular_reserva</result>
+		</action>
+		
+		<action name="registrarAnulacionReserva" method="registrarAnulacionReserva" class="pe.edu.upc.srs.reservas.action.ReservaAction">
+			<result name="success" type="tiles">d_anular_reserva</result>
+		</action>
+		
 	</package>
 </struts>
