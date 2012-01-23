@@ -21,7 +21,7 @@
 			</td>
 			<td align="right" width="" valign="middle" >&nbsp;
 				<% if(request.getParameter("sus").equals("ok") == false){ %>
-				<sx:a targets="process" href="listarUsuarios.action" >
+				<sx:a targets="process" href="" >
 					<img  align="middle"width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_add.png"/>
 				<s:text name="M_Usuarios.nuevo"/> 
 				</sx:a>

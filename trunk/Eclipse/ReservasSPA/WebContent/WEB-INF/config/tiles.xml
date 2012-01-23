@@ -45,5 +45,10 @@
 		<put-attribute name="title" value="Mantenimiento de Servicio" /> 			
 		<put-attribute name="body" value="/pages/manto_servicio.jsp"  /> 			
 	</definition>
+	
+	<definition name="d_anular_reserva"  extends="d_plantilla">
+		<put-attribute name="title" value="Anular Reserva" /> 			
+		<put-attribute name="body" value="/pages/div_anularReserva.jsp"  /> 			
+	</definition>
 		
 </tiles-definitions>

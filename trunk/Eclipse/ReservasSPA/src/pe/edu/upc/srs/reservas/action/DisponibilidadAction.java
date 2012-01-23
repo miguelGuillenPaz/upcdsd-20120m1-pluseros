@@ -5,7 +5,7 @@ package pe.edu.upc.srs.reservas.action;
 
 import java.util.ArrayList;
 
-import pe.edu.upc.srs.reservas.bean.EmpleadoDTO;
+import pe.edu.upc.srs.reservas.bean.PersonalDTO;
 import pe.edu.upc.srs.reservas.bean.ServicioDTO;
 import pe.edu.upc.srs.reservas.servicios.IReservaService;
 import pe.edu.upc.srs.reservas.servicios.ImplReservaService;
@@ -17,7 +17,7 @@ public class DisponibilidadAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private int id_servicio;
 	private int id_empleado;
-	private ArrayList<EmpleadoDTO> lstEmpleadoDTO;
+	private ArrayList<PersonalDTO> lstPersonalDTO;
 	private ArrayList<ServicioDTO> lstServicioDTO;
 	//private EmpleadoDTO objEmpleadoDTO;
 
@@ -35,14 +35,14 @@ public class DisponibilidadAction extends ActionSupport{
 		
 		
 		System.out.println("el codigo seleccionado es: "+id_servicio);
-		lstEmpleadoDTO = new ArrayList<EmpleadoDTO>();
+		lstPersonalDTO = new ArrayList<PersonalDTO>();
 		/* Se implementa la logica de consulta al web service */
 		for (int i = 0; i < 6; i++) {
-			EmpleadoDTO objEmpleadoDTO = new EmpleadoDTO();
-			objEmpleadoDTO = new EmpleadoDTO();
-			objEmpleadoDTO.setId_empleado(i);
-			objEmpleadoDTO.setNombre("Empleado "+(i+1));
-			lstEmpleadoDTO.add(objEmpleadoDTO);
+			PersonalDTO objPersonalDTO = new PersonalDTO();
+			objPersonalDTO = new PersonalDTO();
+			objPersonalDTO.setId(i);
+			objPersonalDTO.setNombres("Empleado "+(i+1));
+			lstPersonalDTO.add(objPersonalDTO);
 		}
 		System.out.println("fin del action");
 		
@@ -64,12 +64,12 @@ public class DisponibilidadAction extends ActionSupport{
 		return id_servicio;
 	}
 
-	public void setLstEmpleadoDTO(ArrayList<EmpleadoDTO> lstEmpleadoDTO) {
-		this.lstEmpleadoDTO = lstEmpleadoDTO;
+	public void setLstPersonalDTO(ArrayList<PersonalDTO> lstPersonalDTO) {
+		this.lstPersonalDTO = lstPersonalDTO;
 	}
 
-	public ArrayList<EmpleadoDTO> getLstEmpleadoDTO() {
-		return lstEmpleadoDTO;
+	public ArrayList<PersonalDTO> getLstPersonalDTO() {
+		return lstPersonalDTO;
 	}
 
 	public void setId_empleado(int id_empleado) {

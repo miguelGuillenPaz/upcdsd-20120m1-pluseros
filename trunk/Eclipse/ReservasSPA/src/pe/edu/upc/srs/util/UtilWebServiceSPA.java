@@ -8,16 +8,16 @@ import org.apache.axis.client.*;
 
 public class UtilWebServiceSPA {
 
-	public static String WS_SISTEMA_RESERVAS_SPA;
-	public static String WS_LOGIN_SPA;
+	public static String WS_GESTION_SERVICIOS;
+	//public static String WS_RESERVA_SPA;
+	//public static String WS_LOGIN_SPA;
 	private static String fichero = "pe.edu.upc.srs.util.WS";
 	
 	public static void cargarWebServices(){
 	
-		String key = "WS_SISTEMA_RESERVAS_SPA";
-		WS_SISTEMA_RESERVAS_SPA = UtilProperties.getMessage(fichero, key);
-		key = "WS_LOGIN_SPA";
-		WS_LOGIN_SPA = UtilProperties.getMessage(fichero, key);
+		String key = "WS_GESTION_SERVICIOS";
+		WS_GESTION_SERVICIOS = UtilProperties.getMessage(fichero, key);
+		
 	}
 	
 	public static Call getCallService(String ws){
