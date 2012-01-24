@@ -7,19 +7,35 @@
 package pe.edu.upc.srs.mantenimiento.despachadores;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 
 import pe.edu.upc.srs.mantenimiento.beans.ClienteDTO;
 
+import com.ibatis.dao.client.DaoManager;
+import com.ibatis.dao.client.template.SqlMapDaoTemplate;
 
 
+public class MySqlCliente extends SqlMapDaoTemplate implements IDespachadorCliente {
 
-public class MySqlCliente implements IDespachadorCliente {
+	public MySqlCliente(DaoManager daoManager) {
+		super(daoManager);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public int registrarCliente(ClienteDTO cliente) {
-		// TODO Auto-generated method stub
-		return 0;
+		int resultado=0;
+		
+		try{
+			getSqlMapExecutor().insert("sp_registrar_clientes", cliente);
+			resultado =1;
+		}catch (SQLException e) {
+			System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + e.getMessage() );
+			e.printStackTrace();
+			resultado =1;
+		}
+	
+		return resultado;
 	}
 
 }
