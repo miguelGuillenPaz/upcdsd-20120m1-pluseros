@@ -23,5 +23,8 @@
 	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/plugin.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/resources.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/rt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/miguel/Documents/Proyectos/Sistemas Distribuidos (Mantenimiento)/WS_Mantenimiento_Sistema/WebContent/WEB-INF/lib/ibatis-common-2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/miguel/Documents/Proyectos/Sistemas Distribuidos (Mantenimiento)/WS_Mantenimiento_Sistema/WebContent/WEB-INF/lib/ibatis-dao-2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/miguel/Documents/Proyectos/Sistemas Distribuidos (Mantenimiento)/WS_Mantenimiento_Sistema/WebContent/WEB-INF/lib/ibatis-sqlmap-2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
