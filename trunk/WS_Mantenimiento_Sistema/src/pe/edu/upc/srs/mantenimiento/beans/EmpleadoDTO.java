@@ -1,6 +1,7 @@
 /**
- *@autor : Lizbeth Díaz 
- **/
+ * @author Elías García
+ */
+
 package pe.edu.upc.srs.mantenimiento.beans;
 
 import java.io.Serializable;
@@ -9,61 +10,61 @@ public class EmpleadoDTO implements Serializable{
 	
 	private static final long serialVersionUID = 6246826969585329348L;
 
-	private int id_empleado;
-	private String nombre;
-	private String ape_pat_empleado;
-	private String ape_mat_empleado;
-	private String direccion;
-	private int tipo_documento_identidad;
-	private String nro_documento_identidad;
+	private int id;
+	private String codigo;
+	private String nombres;
+	private String apePatEmp;
+	private String apeMatEmp;
+	private String tipo_doc_identidad;
+	private String nro_doc_identidad;
 	private String distrito;
-	private String cod_empleado;
+	private String direccion;
 	private String cargo;
 	private String usuario;
 	private String clave;
 	private String foto;
 	
-	public int getId_empleado() {
-		return id_empleado;
+	public int getId() {
+		return id;
 	}
-	public void setId_empleado(int idEmpleado) {
-		id_empleado = idEmpleado;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getNombre() {
-		return nombre;
+	public String getCodigo() {
+		return codigo;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
-	public String getApe_pat_empleado() {
-		return ape_pat_empleado;
+	public String getNombres() {
+		return nombres;
 	}
-	public void setApe_pat_empleado(String apePatEmpleado) {
-		ape_pat_empleado = apePatEmpleado;
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
 	}
-	public String getApe_mat_empleado() {
-		return ape_mat_empleado;
+	public String getApePatEmp() {
+		return apePatEmp;
 	}
-	public void setApe_mat_empleado(String apeMatEmpleado) {
-		ape_mat_empleado = apeMatEmpleado;
+	public void setApePatEmp(String apePatEmp) {
+		this.apePatEmp = apePatEmp;
 	}
-	public String getDireccion() {
-		return direccion;
+	public String getApeMatEmp() {
+		return apeMatEmp;
 	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setApeMatEmp(String apeMatEmp) {
+		this.apeMatEmp = apeMatEmp;
 	}
-	public int getTipo_documento_identidad() {
-		return tipo_documento_identidad;
+	public String getTipo_doc_identidad() {
+		return tipo_doc_identidad;
 	}
-	public void setTipo_documento_identidad(int tipoDocumentoIdentidad) {
-		tipo_documento_identidad = tipoDocumentoIdentidad;
+	public void setTipo_doc_identidad(String tipo_doc_identidad) {
+		this.tipo_doc_identidad = tipo_doc_identidad;
 	}
-	public String getNro_documento_identidad() {
-		return nro_documento_identidad;
+	public String getNro_doc_identidad() {
+		return nro_doc_identidad;
 	}
-	public void setNro_documento_identidad(String nroDocumentoIdentidad) {
-		nro_documento_identidad = nroDocumentoIdentidad;
+	public void setNro_doc_identidad(String nro_doc_identidad) {
+		this.nro_doc_identidad = nro_doc_identidad;
 	}
 	public String getDistrito() {
 		return distrito;
@@ -71,11 +72,11 @@ public class EmpleadoDTO implements Serializable{
 	public void setDistrito(String distrito) {
 		this.distrito = distrito;
 	}
-	public String getCod_empleado() {
-		return cod_empleado;
+	public String getDireccion() {
+		return direccion;
 	}
-	public void setCod_empleado(String codEmpleado) {
-		cod_empleado = codEmpleado;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	public String getCargo() {
 		return cargo;
@@ -101,9 +102,5 @@ public class EmpleadoDTO implements Serializable{
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 	
-
 }
