@@ -20,6 +20,7 @@ public class ClienteDTO implements Serializable {
 	private String clave;
 	private String rutaFoto;
 	private int id_distrito;
+	
 	public int getId() {
 		return id;
 	}
