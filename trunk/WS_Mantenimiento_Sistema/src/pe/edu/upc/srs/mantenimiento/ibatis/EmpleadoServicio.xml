@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EmpleadoServicio">
+
+    <typeAlias alias="empleadoservicio" 
+               type="pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO"/>
+
+
+	<procedure id="sp_registrar_empleadoservicio" parameterClass="pe.edu.upc.srs.reserva.beans.EmpleadoServicioDTO">
+		{call sp_registrar_empleadoservicio(?,?)}
+	</procedure>
+	
+	<procedure id="sp_modificar_empleadoservicio" parameterClass="pe.edu.upc.srs.reserva.beans.EmpleadoServicioDTO">
+		{call sp_modificar_empleadoservicio(?,?)}
+	</procedure>
+	
+	<procedure id="sp_eliminar_servicio" parameterClass="java.lang.Integer">
+		{call sp_eliminar_empleadoservicio(#VALUE#,#VALUE#)}
+	</procedure>
+	
+	<procedure id="sp_obtenerempleadoservicio_empleadoservicio" parameterClass="pe.edu.upc.srs.reserva.beans.EmpleadoServicioDTO">
+		{call sp_obtenerempleadoservicio_empleadoservicio}
+	</procedure>
+	
+	<procedure id="sp_buscar_serviciosxempleado" parameterClass="java.lang.Integer">
+		{call sp_buscar_serviciosxempleado(#VALUE#)}
+	</procedure>
+	
+	<procedure id="sp_buscar_empleadosxservicio" parameterClass="java.lang.Integer">
+		{call sp_buscar_empleadosxservicio(#VALUE#)}
+	</procedure>
+	
+</sqlMap>

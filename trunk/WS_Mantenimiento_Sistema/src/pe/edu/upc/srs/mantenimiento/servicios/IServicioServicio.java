@@ -9,8 +9,8 @@ public interface IServicioServicio {
 	
 	public int RegistrarServicio(ServicioDTO servicio);
 	public int ModificarServicio(ServicioDTO servicio);
-	public int EliminarServicio(ServicioDTO servicio);
+	public int EliminarServicio(int codigo);
+	public ServicioDTO buscarServicio(int codigo);
 	public ServicioDTO[] obtenerServicios();
-	public ServicioDTO[]  ObtenerServicioPorEmpleado(EmpleadoDTO empleado);
-	 
+	
 }
