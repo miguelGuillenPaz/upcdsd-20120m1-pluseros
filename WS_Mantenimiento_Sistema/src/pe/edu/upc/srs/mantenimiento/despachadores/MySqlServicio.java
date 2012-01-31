@@ -22,10 +22,10 @@ public class MySqlServicio extends SqlMapDaoTemplate implements IDespachadorServ
 		int resultado = 0;
     	
     	try {
-			getSqlMapExecutor().insert("sp_registrar_servicio", servicio);
+			getSqlMapExecutor().insert("sp_registrar_empleadoservicio", servicio);
 			resultado = 1;
     	} catch (SQLException e) {
-			System.out.println("Error - " + this.getClass().getName() + ".registrarServicio(): " + e.getMessage());
+			System.out.println("Error - " + this.getClass().getName() + ".registrarEmpleadoServicio(): " + e.getMessage());
 			e.printStackTrace();
 			resultado = -1;
 		}
@@ -38,7 +38,7 @@ public class MySqlServicio extends SqlMapDaoTemplate implements IDespachadorServ
 		int resultado = 0;
     	
     	try {
-			getSqlMapExecutor().insert("sp_modificar_servicio", servicio);
+			getSqlMapExecutor().update("sp_modificar_servicio", servicio);
 			resultado = 1;
     	} catch (SQLException e) {
 			System.out.println("Error - " + this.getClass().getName() + ".modificarServicio(): " + e.getMessage());
@@ -55,7 +55,7 @@ public class MySqlServicio extends SqlMapDaoTemplate implements IDespachadorServ
 		int resultado = 0;
     	
     	try {
-			getSqlMapExecutor().insert("sp_eliminar_servicio", codigo);
+			getSqlMapExecutor().delete("sp_eliminar_servicio", codigo);
 			resultado = 1;
     	} catch (SQLException e) {
 			System.out.println("Error - " + this.getClass().getName() + ".eliminarServicio(): " + e.getMessage());
@@ -75,10 +75,10 @@ public class MySqlServicio extends SqlMapDaoTemplate implements IDespachadorServ
 
 	@Override
 	public ArrayList<ServicioDTO> obtenerServicios() {
-		ArrayList<ServicioDTO> servicio = new ArrayList<ServicioDTO>();
-        servicio = (ArrayList<ServicioDTO>) queryForList("obtenerServicios","");
-
-        return servicio;
+		//ArrayList<ServicioDTO> servicio = new ArrayList<ServicioDTO>();
+        //servicio = (ArrayList<ServicioDTO>) queryForList("obtenerServicios","");
+        //return servicio;
+        return null;
 	}
 
 }
