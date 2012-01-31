@@ -3,42 +3,82 @@
  **/
 package pe.edu.upc.srs.mantenimiento.despachadores;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-import pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO;
+import com.ibatis.dao.client.DaoManager;
+import com.ibatis.dao.client.template.SqlMapDaoTemplate;
+
 import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
 
-public class MySqlServicio implements IDespachadorServicio {
+public class MySqlServicio extends SqlMapDaoTemplate implements IDespachadorServicio {
+	
+	public MySqlServicio(DaoManager daoManager) {
+		super(daoManager);
+	}
 
 	@Override
 	public int RegistrarServicio(ServicioDTO servicio) {
-		// TODO Auto-generated method stub
-		return 0;
+		int resultado = 0;
+    	
+    	try {
+			getSqlMapExecutor().insert("sp_registrar_servicio", servicio);
+			resultado = 1;
+    	} catch (SQLException e) {
+			System.out.println("Error - " + this.getClass().getName() + ".registrarServicio(): " + e.getMessage());
+			e.printStackTrace();
+			resultado = -1;
+		}
+    	
+    	return resultado;
 	}
 
 	@Override
 	public int ModificarServicio(ServicioDTO servicio) {
-		// TODO Auto-generated method stub
-		return 0;
+		int resultado = 0;
+    	
+    	try {
+			getSqlMapExecutor().insert("sp_modificar_servicio", servicio);
+			resultado = 1;
+    	} catch (SQLException e) {
+			System.out.println("Error - " + this.getClass().getName() + ".modificarServicio(): " + e.getMessage());
+			e.printStackTrace();
+			resultado = -1;
+		}
+    	
+    	return resultado;
+
 	}
 
 	@Override
-	public int EliminarServicio(ServicioDTO servicio) {
+	public int EliminarServicio(int codigo) {
+		int resultado = 0;
+    	
+    	try {
+			getSqlMapExecutor().insert("sp_eliminar_servicio", codigo);
+			resultado = 1;
+    	} catch (SQLException e) {
+			System.out.println("Error - " + this.getClass().getName() + ".eliminarServicio(): " + e.getMessage());
+			e.printStackTrace();
+			resultado = -1;
+		}
+    	
+    	return resultado;
+
+	}
+
+	@Override
+	public ServicioDTO buscarServicio(int codigo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
 	public ArrayList<ServicioDTO> obtenerServicios() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		ArrayList<ServicioDTO> servicio = new ArrayList<ServicioDTO>();
+        servicio = (ArrayList<ServicioDTO>) queryForList("obtenerServicios","");
 
-	@Override
-	public ArrayList<ServicioDTO> ObtenerServicioPorEmpleado(
-			EmpleadoDTO empleado) {
-		// TODO Auto-generated method stub
-		return null;
+        return servicio;
 	}
 
 }

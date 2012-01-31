@@ -3,41 +3,44 @@
  **/
 package pe.edu.upc.srs.mantenimiento.servicios;
 
-import pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO;
+import java.util.ArrayList;
+
+import com.ibatis.dao.client.DaoManager;
+
 import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
+import pe.edu.upc.srs.mantenimiento.despachadores.IDespachadorServicio;
+import pe.edu.upc.srs.mantenimiento.utilitarios.UtilDaoConfig;
 
 public class ImplServicio implements IServicioServicio {
+	
+	DaoManager fabrica = UtilDaoConfig.obtenerDaoManager();
+	IDespachadorServicio despachadorServicio = (IDespachadorServicio) fabrica.getDao(IDespachadorServicio.class);
 
 	@Override
 	public int RegistrarServicio(ServicioDTO servicio) {
-		// TODO Auto-generated method stub
-		return 0;
+		return despachadorServicio.RegistrarServicio(servicio);
 	}
 
 	@Override
 	public int ModificarServicio(ServicioDTO servicio) {
-		// TODO Auto-generated method stub
-		return 0;
+		return despachadorServicio.ModificarServicio(servicio);
 	}
 
 	@Override
-	public int EliminarServicio(ServicioDTO servicio) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int EliminarServicio(int codigo) {
+		return despachadorServicio.EliminarServicio(codigo);
+	}
+
+	@Override
+	public ServicioDTO buscarServicio(int codigo) {
+		return despachadorServicio.buscarServicio(codigo);
 	}
 
 	@Override
 	public ServicioDTO[] obtenerServicios() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ServicioDTO> servicio = new ArrayList<ServicioDTO>();
+		servicio =despachadorServicio.obtenerServicios();
+		return (ServicioDTO[]) servicio.toArray(new ServicioDTO[servicio.size()]);
 	}
-
-	@Override
-	public ServicioDTO[] ObtenerServicioPorEmpleado(EmpleadoDTO empleado) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 
 }
