@@ -12,8 +12,8 @@ public interface IServicioMantenimiento {
 	public int registrarCliente(ClienteDTO cliente);
 	
 	public int modificarServicio(ServicioDTO servicio);
-	public int eliminarServicio(ServicioDTO servicio);
+	public int eliminarServicio(int codigo);
+	public ServicioDTO buscarServicio(int codigo);
 	public ServicioDTO[] obtenerServicios();
-	public ServicioDTO[]  ObtenerServicioPorEmpleado(EmpleadoDTO empleado);
 	 
 }
