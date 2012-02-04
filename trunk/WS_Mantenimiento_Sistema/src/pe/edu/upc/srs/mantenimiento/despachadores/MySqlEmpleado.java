@@ -23,7 +23,6 @@ public class MySqlEmpleado extends SqlMapDaoTemplate implements IDespachadorEmpl
 	@Override
 	public int registrarEmpleado(EmpleadoDTO empleado) {
 		int resultado = 0;
-		
 		try {
 			getSqlMapExecutor().insert("sp_registrar_empleado", empleado);
 			resultado = 1;
@@ -32,7 +31,6 @@ public class MySqlEmpleado extends SqlMapDaoTemplate implements IDespachadorEmpl
 			excepcion.printStackTrace();
             resultado = -1;
 		}
-		
 		return resultado;
 	}
 
