@@ -1,6 +1,9 @@
 package pe.edu.upc.srs.mantenimiento.servicios;
 
+import java.util.ArrayList;
+
 import pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO;
+import pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO;
 import pe.edu.upc.srs.mantenimiento.despachadores.IDespachadorEmpleado;
 import pe.edu.upc.srs.mantenimiento.utilitarios.UtilDaoConfig;
 
@@ -14,6 +17,12 @@ public class ImplEmpleado implements IServicioEmpleado {
 	@Override
 	public int registrarEmpleado(EmpleadoDTO empleado) {
 		return despachadorEmpleado.registrarEmpleado(empleado);
+	}
+
+	@Override
+	public int asociarServicio(ArrayList<EmpleadoServicioDTO> empserv) {
+		// TODO Auto-generated method stub
+		return despachadorEmpleado.asociarServicio(empserv);
 	}
 
 }
