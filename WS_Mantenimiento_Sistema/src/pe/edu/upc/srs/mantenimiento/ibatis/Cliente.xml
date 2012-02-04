@@ -3,9 +3,11 @@
 PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
 "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
-<sqlMap namespace="Clientes">
-<typeAlias alias="clientes" type="pe.edu.upc.srs.reserva.beans.ClienteDTO"/>
+<sqlMap namespace="Cliente">
+	<typeAlias alias="cliente"
+				type="pe.edu.upc.srs.mantenimiento.beans.ClienteDTO"/>
 
-<procedure id="sp_registrar_clientes">
-</procedure>
+	<procedure id="sp_registrar_clientes" parameterClass="cliente">
+	</procedure>
+	
 </sqlMap>
