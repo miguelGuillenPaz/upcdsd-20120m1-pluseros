@@ -11,11 +11,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
+import pe.edu.upc.srs.mantenimiento.despachadores.IDespachadorServicio;
 import pe.edu.upc.srs.mantenimiento.despachadores.MySqlServicio;
+import pe.edu.upc.srs.mantenimiento.servicios.ImplServicio;
 
 public class MantenimientoTest {
 
-	public MySqlServicio servicio;
+	ImplServicio servicio = new ImplServicio();
 
 	@Before
 	public void AntesDelTest() throws Exception {
@@ -26,11 +28,11 @@ public class MantenimientoTest {
 		 * esta clase.  
 		 **/  
 
-		int rpta =0;
-		ServicioDTO serv = new ServicioDTO();
-		serv.setId(1);
-		serv.setDescripcion("prueba antes");
-		rpta= servicio.RegistrarServicio(serv);
+		//int rpta =0;
+		//ServicioDTO serv = new ServicioDTO();
+		//serv.setId(1);
+		//serv.setDescripcion("prueba antes");
+		//rpta= servicio.registrarServicio(serv);
 	}
 
 	@After
@@ -39,8 +41,15 @@ public class MantenimientoTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 		//
+		
+		int rpta =0;
+		ServicioDTO serv = new ServicioDTO();
+		serv.setId(1);
+		serv.setDescripcion("prueba");
+		rpta= servicio.RegistrarServicio(serv);
+		assertTrue(rpta==1);
 	}
 
 }

@@ -6,13 +6,32 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
 <sqlMap namespace="Servicio"   >
 
     <typeAlias alias="servicio" 
-               type="pe.edu.upc.srs.reserva.beans.ServicioDTO"/>
-
-	<procedure id="sp_registrar_servicio" parameterClass="pe.edu.upc.srs.reserva.beans.ServicioDTO">
-		{call sp_registrar_servicio(?,?,?,?)}
+               type="pe.edu.upc.srs.mantenimiento.beans.ServicioDTO"/>
+               
+    <resultMap id="servicioResult" class="pe.edu.upc.srs.mantenimiento.beans.ServicioDTO">        
+    	<result property="id" column="id_servicio" />       
+    	<result property="descripcion" column="descripcion" />        
+    	<result property="duracion" column="duracion_horas" />        
+    	<result property="rutaImagen" column="imagen" />           
+    </resultMap>    
+    
+    <parameterMap id="servicioParam" class="servicio">
+        <parameter property="descripcion" mode="IN"/>
+        <parameter property="duracion" mode="IN"/>
+        <parameter property="rutaImagen" mode="IN"/>
+    </parameterMap>
+        <parameterMap id="servicioParamMod" class="servicio">
+        <parameter property="id" mode="IN"/>
+        <parameter property="descripcion" mode="IN"/>
+        <parameter property="duracion" mode="IN"/>
+        <parameter property="rutaImagen" mode="IN"/>
+    </parameterMap>
+    	
+	<procedure id="sp_registrar_servicio" parameterMap="servicioParam" parameterClass="pe.edu.upc.srs.mantenimiento.beans.ServicioDTO">
+		{call sp_registrar_servicio(?,?,?)}
 	</procedure>
 	
-	<procedure id="sp_modificar_servicio" parameterClass="pe.edu.upc.srs.reserva.beans.ServicioDTO">
+	<procedure id="sp_modificar_servicio" parameterMap="servicioParamMod" parameterClass="pe.edu.upc.srs.mantenimiento.beans.ServicioDTO">
 		{call sp_modificar_servicio(?,?,?,?)}
 	</procedure>
 	
@@ -20,12 +39,12 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
 		{call sp_eliminar_servicio(#VALUE#)}
 	</procedure>
 	
-	<procedure id="sp_obtenerservicios_servicio" parameterClass="pe.edu.upc.srs.reserva.beans.ServicioDTO">
+	<procedure id="sp_obtenerservicios_servicio"  resultMap="servicioResult" >
 		{call sp_obtenerservicios_servicio}
 	</procedure>
 	
 	<procedure id="sp_buscar_servicio" parameterClass="java.lang.Integer">
-		{call sp_buscar_servicio(#VALUE#)}
+		{call sp_buscar_servicio(?)}
 	</procedure>
 	
 </sqlMap>
