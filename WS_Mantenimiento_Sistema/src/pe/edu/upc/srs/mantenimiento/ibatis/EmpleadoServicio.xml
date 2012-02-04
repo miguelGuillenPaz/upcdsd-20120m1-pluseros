@@ -9,15 +9,15 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
                type="pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO"/>
 
 
-	<procedure id="sp_registrar_empleadoservicio" parameterClass="pe.edu.upc.srs.reserva.beans.EmpleadoServicioDTO">
+	<procedure id="sp_registrar_empleadoservicio" parameterClass="pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO">
 		{call sp_registrar_empleadoservicio(?,?)}
 	</procedure>
 	
-	<procedure id="sp_modificar_empleadoservicio" parameterClass="pe.edu.upc.srs.reserva.beans.EmpleadoServicioDTO">
+	<procedure id="sp_modificar_empleadoservicio" parameterClass="pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO">
 		{call sp_modificar_empleadoservicio(?,?)}
 	</procedure>
 	
-	<procedure id="sp_eliminar_servicio" parameterClass="java.lang.Integer">
+	<procedure id="sp_eliminar_empleadoservicio" parameterClass="java.lang.Integer">
 		{call sp_eliminar_empleadoservicio(#VALUE#,#VALUE#)}
 	</procedure>
 	
