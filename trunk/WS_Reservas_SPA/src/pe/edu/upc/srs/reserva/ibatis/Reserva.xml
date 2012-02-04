@@ -64,6 +64,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
            AND r.id_servicio = s.id_servicio
     </select>
 
+    <!--  
     <select id="obtenerHorariosPorServicio" parameterClass="java.lang.Integer" resultMap="reservaMap">
        SELECT p.valor,
               IFNULL((SELECT 0 FROM srs.reserva r
@@ -82,16 +83,12 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
           AND (p.valor + (SELECT duracion_horas
                             FROM srs.servicio s
                            WHERE s.id_servicio = 1))
-         <isLessEqual>
+         <=
          (SELECT MAX(CAST(pp.valor AS UNSIGNED))
             FROM srs.parametros pp
            WHERE pp.tipo = 'HORA')
-         </isLessEqual>
-          AND CAST(p.valor AS UNSIGNED) >= IF((CAST(NOW() AS CHAR(10))) = CONCAT('2012','-','01','-','22'),HOUR(CURTIME()) + 2,p.valor)
-    </select>
-
-    <select id="obtenerHorariosPorPersonal" parameterClass="java.lang.Integer" resultMap="reservaMap">
-    </select>
+             AND CAST(p.valor AS UNSIGNED) >= IF((CAST(NOW() AS CHAR(10))) = CONCAT('2012','-','01','-','22'),HOUR(CURTIME()) + 2,p.valor)
+    </select>-->
 
     <procedure id="sp_registrar_reserva" parameterClass="pe.edu.upc.srs.reserva.beans.ReservaDTO">
         {call sp_registrar_reserva(?,?,?,?,?,?,?,?,?)}
