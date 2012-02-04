@@ -48,7 +48,7 @@ public class MantenimientoTest {
 		ServicioDTO serv = new ServicioDTO();
 		serv.setId(1);
 		serv.setDescripcion("prueba");
-		rpta= servicio.RegistrarServicio(serv);
+		rpta= servicio.registrarServicio(serv);
 		assertTrue(rpta==1);
 	}
 
