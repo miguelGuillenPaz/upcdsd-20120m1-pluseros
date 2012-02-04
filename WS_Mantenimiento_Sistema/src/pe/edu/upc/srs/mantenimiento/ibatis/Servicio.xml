@@ -20,7 +20,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <parameter property="duracion" mode="IN"/>
         <parameter property="rutaImagen" mode="IN"/>
     </parameterMap>
-        <parameterMap id="servicioParamMod" class="servicio">
+    
+    <parameterMap id="servicioParamMod" class="servicio">
         <parameter property="id" mode="IN"/>
         <parameter property="descripcion" mode="IN"/>
         <parameter property="duracion" mode="IN"/>
