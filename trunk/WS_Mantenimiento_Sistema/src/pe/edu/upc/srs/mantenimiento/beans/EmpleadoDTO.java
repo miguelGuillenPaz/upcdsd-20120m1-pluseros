@@ -5,6 +5,7 @@
 package pe.edu.upc.srs.mantenimiento.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class EmpleadoDTO implements Serializable{
 	
@@ -23,6 +24,7 @@ public class EmpleadoDTO implements Serializable{
 	private String usuario;
 	private String clave;
 	private String foto;
+	private ArrayList<ServicioDTO> lstServicioDTO;
 	
 	public int getId() {
 		return id;
@@ -101,6 +103,12 @@ public class EmpleadoDTO implements Serializable{
 	}
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	public ArrayList<ServicioDTO> getLstServicioDTO() {
+		return lstServicioDTO;
+	}
+	public void setLstServicioDTO(ArrayList<ServicioDTO> lstServicioDTO) {
+		this.lstServicioDTO = lstServicioDTO;
 	}
 	
 }

@@ -5,11 +5,14 @@
 package pe.edu.upc.srs.mantenimiento.despachadores;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.ibatis.dao.client.DaoManager;
 import com.ibatis.dao.client.template.SqlMapDaoTemplate;
 
 import pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO;
+import pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO;
+import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
 
 public class MySqlEmpleado extends SqlMapDaoTemplate implements IDespachadorEmpleado{
 	
@@ -23,6 +26,24 @@ public class MySqlEmpleado extends SqlMapDaoTemplate implements IDespachadorEmpl
 		
 		try {
 			getSqlMapExecutor().insert("sp_registrar_empleado", empleado);
+			resultado = 1;
+		} catch (SQLException excepcion){
+			System.out.println("Error - " + this.getClass().getName() + ".registrarEmpleado(): " + excepcion.getMessage());
+			excepcion.printStackTrace();
+            resultado = -1;
+		}
+		
+		return resultado;
+	}
+
+	@Override
+	public int asociarServicio(ArrayList<EmpleadoServicioDTO> empserv) {
+		int resultado = 0;
+		
+		try {
+			for(EmpleadoServicioDTO es : empserv){
+				getSqlMapExecutor().insert("sp_registrar_empleadoservicio", es);
+			}
 			resultado = 1;
 		} catch (SQLException excepcion){
 			System.out.println("Error - " + this.getClass().getName() + ".registrarEmpleado(): " + excepcion.getMessage());
