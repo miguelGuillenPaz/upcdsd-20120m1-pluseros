@@ -10,13 +10,11 @@ public class ImplCliente implements IServicioCliente {
 	
 	DaoManager fabrica = UtilDaoConfig.obtenerDaoManager();
 	IDespachadorCliente despachadorCliente= (IDespachadorCliente) fabrica.getDao(IDespachadorCliente.class);
-	
-	
 
 	@Override
-	public int registrarClientes(ClienteDTO cliente) {
-
+	public int registrarCliente(ClienteDTO cliente) {
 		return despachadorCliente.registrarCliente(cliente);
+		
 	}
 
 }
