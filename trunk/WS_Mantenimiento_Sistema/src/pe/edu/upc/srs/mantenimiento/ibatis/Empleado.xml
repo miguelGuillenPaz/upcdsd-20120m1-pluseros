@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Empleado" >
+
+	<typeAlias alias="empleado"
+				type="pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO"/>
+	
+	<procedure id="sp_registrar_empleado" parameterClass="empleado">
+		{call sp_registrar_empleado(?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+	
+</sqlMap>
