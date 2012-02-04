@@ -3,6 +3,7 @@
  **/
 package pe.edu.upc.srs.mantenimiento.servicios;
 
+import pe.edu.upc.srs.mantenimiento.beans.ClienteDTO;
 import pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO;
 import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
 
@@ -51,6 +52,18 @@ public class ImplServicioMantenimiento implements IServicioMantenimiento {
 	public ServicioDTO[] ObtenerServicioPorEmpleado(EmpleadoDTO empleado) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int registarEmpleado(EmpleadoDTO empleado) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int registrarCliente(ClienteDTO cliente) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

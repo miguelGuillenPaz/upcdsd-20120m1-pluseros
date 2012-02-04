@@ -17,17 +17,17 @@ public class ImplServicio implements IServicioServicio {
 	IDespachadorServicio despachadorServicio = (IDespachadorServicio) fabrica.getDao(IDespachadorServicio.class);
 
 	@Override
-	public int RegistrarServicio(ServicioDTO servicio) {
+	public int registrarServicio(ServicioDTO servicio) {
 		return despachadorServicio.registrarServicio(servicio);
 	}
 
 	@Override
-	public int ModificarServicio(ServicioDTO servicio) {
+	public int modificarServicio(ServicioDTO servicio) {
 		return despachadorServicio.modificarServicio(servicio);
 	}
 
 	@Override
-	public int EliminarServicio(int codigo) {
+	public int eliminarServicio(int codigo) {
 		return despachadorServicio.eliminarServicio(codigo);
 	}
 
