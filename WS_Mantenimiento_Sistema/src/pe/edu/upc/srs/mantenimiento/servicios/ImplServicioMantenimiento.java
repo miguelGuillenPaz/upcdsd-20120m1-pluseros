@@ -8,63 +8,43 @@ import pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO;
 import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
 
 public class ImplServicioMantenimiento implements IServicioMantenimiento {
+	IServicioCliente interfazCliente;
+	IServicioEmpleado interfazEmpleado;
+	IServicioServicio interfazServicio;	
 
-	/* (non-Javadoc)
-	 * @see pe.edu.upc.srs.mantenimiento.servicios.IServicioMantenimiento#registrarServicio(pe.edu.upc.srs.mantenimiento.beans.ServicioDTO)
-	 */
 	@Override
 	public int registrarServicio(ServicioDTO servicio) {
-		// TODO Auto-generated method stub
-		return 0;
+		return interfazServicio.registrarServicio(servicio);
 	}
 
-	/* (non-Javadoc)
-	 * @see pe.edu.upc.srs.mantenimiento.servicios.IServicioMantenimiento#modificarServicio(pe.edu.upc.srs.mantenimiento.beans.ServicioDTO)
-	 */
 	@Override
 	public int modificarServicio(ServicioDTO servicio) {
-		// TODO Auto-generated method stub
-		return 0;
+		return interfazServicio.modificarServicio(servicio);
 	}
 
-	/* (non-Javadoc)
-	 * @see pe.edu.upc.srs.mantenimiento.servicios.IServicioMantenimiento#eliminarServicio(pe.edu.upc.srs.mantenimiento.beans.ServicioDTO)
-	 */
 	@Override
-	public int eliminarServicio(ServicioDTO servicio) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int eliminarServicio(int codigo) {
+		return interfazServicio.eliminarServicio(codigo);
 	}
 
-	/* (non-Javadoc)
-	 * @see pe.edu.upc.srs.mantenimiento.servicios.IServicioMantenimiento#obtenerServicios()
-	 */
 	@Override
 	public ServicioDTO[] obtenerServicios() {
-		// TODO Auto-generated method stub
-		return null;
+		return interfazServicio.obtenerServicios();
 	}
 
-	/* (non-Javadoc)
-	 * @see pe.edu.upc.srs.mantenimiento.servicios.IServicioMantenimiento#ObtenerServicioPorEmpleado(pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO)
-	 */
 	@Override
-	public ServicioDTO[] ObtenerServicioPorEmpleado(EmpleadoDTO empleado) {
-		// TODO Auto-generated method stub
-		return null;
+	public ServicioDTO buscarServicio(int codigo) {
+		return interfazServicio.buscarServicio(codigo);
 	}
 
 	@Override
 	public int registarEmpleado(EmpleadoDTO empleado) {
-		// TODO Auto-generated method stub
-		return 0;
+		return interfazEmpleado.registrarEmpleado(empleado);
 	}
 
 	@Override
 	public int registrarCliente(ClienteDTO cliente) {
-		// TODO Auto-generated method stub
-		return 0;
+		return interfazCliente.registrarCliente(cliente);
 	}
-
 
 }
