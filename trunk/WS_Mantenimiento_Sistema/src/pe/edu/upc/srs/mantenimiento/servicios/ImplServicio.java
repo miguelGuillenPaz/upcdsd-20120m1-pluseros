@@ -18,17 +18,17 @@ public class ImplServicio implements IServicioServicio {
 
 	@Override
 	public int RegistrarServicio(ServicioDTO servicio) {
-		return despachadorServicio.RegistrarServicio(servicio);
+		return despachadorServicio.registrarServicio(servicio);
 	}
 
 	@Override
 	public int ModificarServicio(ServicioDTO servicio) {
-		return despachadorServicio.ModificarServicio(servicio);
+		return despachadorServicio.modificarServicio(servicio);
 	}
 
 	@Override
 	public int EliminarServicio(int codigo) {
-		return despachadorServicio.EliminarServicio(codigo);
+		return despachadorServicio.eliminarServicio(codigo);
 	}
 
 	@Override

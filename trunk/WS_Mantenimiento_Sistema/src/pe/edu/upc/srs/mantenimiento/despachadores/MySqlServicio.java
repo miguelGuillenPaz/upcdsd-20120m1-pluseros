@@ -18,14 +18,17 @@ public class MySqlServicio extends SqlMapDaoTemplate implements IDespachadorServ
 	}
 
 	@Override
-	public int RegistrarServicio(ServicioDTO servicio) {
+	public int registrarServicio(ServicioDTO servicio) {
 		int resultado = 0;
     	
     	try {
-			getSqlMapExecutor().insert("sp_registrar_empleadoservicio", servicio);
+    		System.out.println("INICIO");
+    		System.out.println("id del servicio: "+servicio.getId());
+    		getSqlMapExecutor().insert("sp_registrar_servicio", servicio);
 			resultado = 1;
+			System.out.println("fin de la ejecucipon");
     	} catch (SQLException e) {
-			System.out.println("Error - " + this.getClass().getName() + ".registrarEmpleadoServicio(): " + e.getMessage());
+			System.out.println("Error - " + this.getClass().getName() + ".registrarServicio(): " + e.getMessage());
 			e.printStackTrace();
 			resultado = -1;
 		}
@@ -34,12 +37,15 @@ public class MySqlServicio extends SqlMapDaoTemplate implements IDespachadorServ
 	}
 
 	@Override
-	public int ModificarServicio(ServicioDTO servicio) {
+	public int modificarServicio(ServicioDTO servicio) {
 		int resultado = 0;
     	
     	try {
+    		System.out.println("INICIO");
+    		System.out.println("id del servicio: "+servicio.getId());
 			getSqlMapExecutor().update("sp_modificar_servicio", servicio);
 			resultado = 1;
+			System.out.println("fin de la ejecucipon");
     	} catch (SQLException e) {
 			System.out.println("Error - " + this.getClass().getName() + ".modificarServicio(): " + e.getMessage());
 			e.printStackTrace();
@@ -51,7 +57,7 @@ public class MySqlServicio extends SqlMapDaoTemplate implements IDespachadorServ
 	}
 
 	@Override
-	public int EliminarServicio(int codigo) {
+	public int eliminarServicio(int codigo) {
 		int resultado = 0;
     	
     	try {
@@ -75,10 +81,18 @@ public class MySqlServicio extends SqlMapDaoTemplate implements IDespachadorServ
 
 	@Override
 	public ArrayList<ServicioDTO> obtenerServicios() {
-		//ArrayList<ServicioDTO> servicio = new ArrayList<ServicioDTO>();
-        //servicio = (ArrayList<ServicioDTO>) queryForList("obtenerServicios","");
-        //return servicio;
-        return null;
+		
+        ArrayList<ServicioDTO> servicio = new ArrayList<ServicioDTO>();
+
+        try {
+            servicio = (ArrayList<ServicioDTO>) queryForList("sp_obtenerservicios_servicio","");
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".obtenerServicios(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+        }
+
+        return servicio;
 	}
+	
 
 }

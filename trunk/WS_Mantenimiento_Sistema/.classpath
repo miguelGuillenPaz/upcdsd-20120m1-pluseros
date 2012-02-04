@@ -14,19 +14,19 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/alt-rt.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/charsets.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/deploy.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/javaws.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/jce.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/jsse.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/management-agent.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/plugin.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/resources.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/jre7/lib/rt.jar"/>
-	<classpathentry kind="lib" path="C:/Users/carlos/workspace/WS_Mantenimiento_Sistema/WebContent/WEB-INF/lib/ibatis-common-2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/carlos/workspace/WS_Mantenimiento_Sistema/WebContent/WEB-INF/lib/ibatis-dao-2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/carlos/workspace/WS_Mantenimiento_Sistema/WebContent/WEB-INF/lib/ibatis-sqlmap-2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/alt-rt.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/charsets.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/deploy.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/javaws.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/jce.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/jsse.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/management-agent.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/plugin.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/resources.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/rt.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/ibatis-common-2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/ibatis-dao-2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre7/lib/ibatis-sqlmap-2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

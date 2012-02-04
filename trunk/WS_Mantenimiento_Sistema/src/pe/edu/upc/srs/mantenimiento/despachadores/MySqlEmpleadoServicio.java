@@ -18,7 +18,7 @@ public class MySqlEmpleadoServicio extends SqlMapDaoTemplate implements IDespach
 	}
 
 	@Override
-	public int RegistrarEmpleadoServicio(EmpleadoServicioDTO empserv) {
+	public int registrarEmpleadoServicio(EmpleadoServicioDTO empserv) {
 		int resultado = 0;
     	
     	try {
@@ -34,7 +34,7 @@ public class MySqlEmpleadoServicio extends SqlMapDaoTemplate implements IDespach
 	}
 
 	@Override
-	public int ModificarEmpleadoServicio(EmpleadoServicioDTO empserv) {
+	public int modificarEmpleadoServicio(EmpleadoServicioDTO empserv) {
 		int resultado = 0;
     	
     	try {
@@ -50,7 +50,7 @@ public class MySqlEmpleadoServicio extends SqlMapDaoTemplate implements IDespach
 	}
 
 	@Override
-	public int EliminarEmpleadoServicio(int emp, int serv) {
+	public int eliminarEmpleadoServicio(int emp, int serv) {
 		int resultado = 0;
     	
     	try {

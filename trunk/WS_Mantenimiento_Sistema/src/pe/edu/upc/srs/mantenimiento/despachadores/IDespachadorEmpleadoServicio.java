@@ -9,9 +9,9 @@ import pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO;
 
 public interface IDespachadorEmpleadoServicio {
 	
-	public int RegistrarEmpleadoServicio(EmpleadoServicioDTO empserv);
-	public int ModificarEmpleadoServicio(EmpleadoServicioDTO empserv);
-	public int EliminarEmpleadoServicio(int emp, int serv);
+	public int registrarEmpleadoServicio(EmpleadoServicioDTO empserv);
+	public int modificarEmpleadoServicio(EmpleadoServicioDTO empserv);
+	public int eliminarEmpleadoServicio(int emp, int serv);
 	public EmpleadoServicioDTO buscarEmpleadosxServicio(int servicio);
 	public EmpleadoServicioDTO buscarServiciosxEmpleados(int empleado);
 	public ArrayList<EmpleadoServicioDTO> obtenerEmpleadoServicios();
