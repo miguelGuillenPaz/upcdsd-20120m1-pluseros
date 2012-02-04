@@ -11,5 +11,5 @@ import pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO;
 
 public interface IServicioEmpleado {
 	public int registrarEmpleado(EmpleadoDTO empleado);
-	public int asociarServicio(ArrayList<EmpleadoServicioDTO> empserv);
+	public int asociarServicio(EmpleadoServicioDTO[] empserv);
 }

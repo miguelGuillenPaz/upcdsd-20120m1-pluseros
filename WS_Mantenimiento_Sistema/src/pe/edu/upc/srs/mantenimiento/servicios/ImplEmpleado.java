@@ -20,7 +20,7 @@ public class ImplEmpleado implements IServicioEmpleado {
 	}
 
 	@Override
-	public int asociarServicio(ArrayList<EmpleadoServicioDTO> empserv) {
+	public int asociarServicio(EmpleadoServicioDTO[] empserv) {
 		// TODO Auto-generated method stub
 		return despachadorEmpleado.asociarServicio(empserv);
 	}

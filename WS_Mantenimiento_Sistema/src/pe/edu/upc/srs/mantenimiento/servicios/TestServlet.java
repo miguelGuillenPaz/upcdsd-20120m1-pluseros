@@ -1,6 +1,8 @@
 package pe.edu.upc.srs.mantenimiento.servicios;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +48,8 @@ public class TestServlet extends HttpServlet {
 		for(ServicioDTO s : servicios){
 			System.out.println(s.getDescripcion());
 		}
+		
+		//ArrayList<Empl>
 		
 	}
 

@@ -37,7 +37,7 @@ public class MySqlEmpleado extends SqlMapDaoTemplate implements IDespachadorEmpl
 	}
 
 	@Override
-	public int asociarServicio(ArrayList<EmpleadoServicioDTO> empserv) {
+	public int asociarServicio(EmpleadoServicioDTO[] empserv) {
 		int resultado = 0;
 		
 		try {
