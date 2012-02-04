@@ -13,4 +13,5 @@ PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
 	</transactionManager>
 	<!-- registramos los sqlmaps -->
 	<sqlMap resource="pe/edu/upc/upc/srs/reserva/ibatis/Cliente.xml"/>
+	<sqlMap resource="pe/edu/upc/upc/srs/reserva/ibatis/Empleado.xml"/>
 </sqlMapConfig>
