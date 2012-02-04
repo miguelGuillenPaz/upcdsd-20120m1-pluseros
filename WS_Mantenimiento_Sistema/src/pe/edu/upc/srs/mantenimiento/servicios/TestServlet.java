@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO;
 import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
 
 /**
@@ -29,6 +30,7 @@ public class TestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ImplServicio servicio = new ImplServicio();
+		ImplEmpleado empleado = new ImplEmpleado();
 		int rpta =0;
 		ServicioDTO serv = new ServicioDTO();
 		////serv.setId(1);
@@ -50,6 +52,13 @@ public class TestServlet extends HttpServlet {
 		}
 		
 		//ArrayList<Empl>
+		EmpleadoServicioDTO[] lista = new EmpleadoServicioDTO[1];
+		
+		EmpleadoServicioDTO es = new EmpleadoServicioDTO();
+		es.setId_servicio(2);
+		es.setId_empleado(1);
+		lista[0] = es;
+		empleado.asociarServicio(lista);
 		
 	}
 
