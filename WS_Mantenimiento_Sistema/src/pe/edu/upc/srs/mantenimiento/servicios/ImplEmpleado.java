@@ -12,7 +12,7 @@ public class ImplEmpleado implements IServicioEmpleado {
     IDespachadorEmpleado despachadorEmpleado = (IDespachadorEmpleado) fabrica.getDao(IDespachadorEmpleado.class);
     
 	@Override
-	public int registarEmpleado(EmpleadoDTO empleado) {
+	public int registrarEmpleado(EmpleadoDTO empleado) {
 		return despachadorEmpleado.registrarEmpleado(empleado);
 	}
 
