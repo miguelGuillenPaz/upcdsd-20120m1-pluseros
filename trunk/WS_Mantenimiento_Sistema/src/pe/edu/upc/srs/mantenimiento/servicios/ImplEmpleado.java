@@ -6,14 +6,14 @@ import pe.edu.upc.srs.mantenimiento.utilitarios.UtilDaoConfig;
 
 import com.ibatis.dao.client.DaoManager;
 
-public class ImplEmpleado {
+public class ImplEmpleado implements IServicioEmpleado {
 
 	DaoManager fabrica = UtilDaoConfig.obtenerDaoManager();
     IDespachadorEmpleado despachadorEmpleado = (IDespachadorEmpleado) fabrica.getDao(IDespachadorEmpleado.class);
     
-	public int registrarEmpleado(EmpleadoDTO empleado) {
+	@Override
+	public int registarEmpleado(EmpleadoDTO empleado) {
 		return despachadorEmpleado.registrarEmpleado(empleado);
-
 	}
 
 }
