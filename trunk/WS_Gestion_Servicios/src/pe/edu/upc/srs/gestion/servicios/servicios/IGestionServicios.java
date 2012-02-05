@@ -8,7 +8,7 @@ import pe.edu.upc.srs.gestion.servicios.beans.ServicioDTO;
 
 public interface IGestionServicios {
     /* Operaciones de Autenticación */
-    public ClienteDTO    autenticarCliente(String strUsuario,String strClave);
+    public ClienteDTO    autenticarCliente(String usuario,String clave);
     
     /* Operaciones de Reserva */
     public String        registrarReserva(ReservaDTO reserva);
