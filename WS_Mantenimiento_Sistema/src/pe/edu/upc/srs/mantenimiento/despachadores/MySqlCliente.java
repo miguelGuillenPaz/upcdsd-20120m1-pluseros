@@ -32,7 +32,7 @@ public class MySqlCliente extends SqlMapDaoTemplate implements IDespachadorClien
 		}catch (SQLException e) {
 			System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + e.getMessage() );
 			e.printStackTrace();
-			resultado =1;
+			resultado =-1;
 		}
 	
 		return resultado;
