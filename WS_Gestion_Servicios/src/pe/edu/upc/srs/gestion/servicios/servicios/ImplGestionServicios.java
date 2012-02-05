@@ -5,6 +5,7 @@ package pe.edu.upc.srs.gestion.servicios.servicios;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,50 +19,68 @@ import org.apache.axis.encoding.ser.BeanSerializerFactory;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIUtils;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+
+import com.google.gson.Gson;
 
 import pe.edu.upc.srs.gestion.servicios.beans.ClienteDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.EmpleadoDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.PersonalDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.ReservaDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.ServicioDTO;
+import pe.edu.upc.srs.gestion.servicios.beans.UsuarioDTO;
 import pe.edu.upc.srs.gestion.servicios.utilitarios.UtilWebService;
 
 public class ImplGestionServicios implements IGestionServicios {
 
-
 	@Override
-	public ClienteDTO autenticarCliente(String usuario, String clave) {
+	public UsuarioDTO autenticarUsuario(String usuario, String clave) {
 
-		ClienteDTO cliente = null;
+		UsuarioDTO usuarioEncontrado = null;
+		HttpClient clienteHttp = new DefaultHttpClient();
 
-		HttpClient clienteHttp= new DefaultHttpClient();
-		HttpPost post = new HttpPost(UtilWebService.WS_AUTENTICACION_SRS);
-		
 		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			nameValuePairs.add(new BasicNameValuePair("usuario", usuario));
-			nameValuePairs.add(new BasicNameValuePair("clave", clave));
+			List<NameValuePair> parametros = new ArrayList<NameValuePair>();
+			parametros.add(new BasicNameValuePair("usuario", usuario));
+			parametros.add(new BasicNameValuePair("clave", clave));
 
-			post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			URI uri = URIUtils.createURI("http",
+                                         UtilWebService.WS_AUTENTICACION_SRS_HOST,
+                                         UtilWebService.WS_AUTENTICACION_SRS_PUERTO,
+                                         UtilWebService.WS_AUTENTICACION_SRS_PATH,
+                                         URLEncodedUtils.format(parametros, "UTF-8"), null);
+
+			HttpGet operacion = new HttpGet(uri);
+			HttpResponse response = clienteHttp.execute(operacion);
 			
-			HttpResponse response = clienteHttp.execute(post);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-			
-			String linea = "";
-			while((linea = reader.readLine()) != null){
-				System.out.println(linea);
+			/* Si la operación fue exitosa */
+			if( response.getStatusLine().getStatusCode() == 200) {
+			    if(response.getEntity() != null){
+			    	BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+					String linea = "";
+					String jsonUsuario = "";
+
+					while((linea = reader.readLine()) != null){
+						jsonUsuario += linea;
+					}
+
+					/* Deserialización del Json obtenido */
+					Gson gson = new Gson();
+					usuarioEncontrado = gson.fromJson(jsonUsuario, UsuarioDTO.class);
+			    }
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return cliente;
+		}finally{
+			clienteHttp.getConnectionManager().shutdown();
 		}
-		return cliente;
 		
+		return usuarioEncontrado;
 	}
 
 	@Override
