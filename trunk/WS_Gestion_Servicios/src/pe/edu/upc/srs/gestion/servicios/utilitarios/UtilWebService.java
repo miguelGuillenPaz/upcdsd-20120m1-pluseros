@@ -35,5 +35,19 @@ public class UtilWebService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public String callRestService (String request){
+		
+		String respuesta = "";
+		
+		System.out.println("se instancia el nuevo servicio");
+		try {
+			
+		} catch (Exception e) {
+			
+		}
+		
+		return respuesta;
 	}	
 }
