@@ -3,6 +3,11 @@
  */
 package pe.edu.upc.srs.gestion.servicios.servicios;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.namespace.QName;
 import javax.xml.rpc.ParameterMode;
 import javax.xml.rpc.encoding.XMLType;
@@ -10,6 +15,13 @@ import javax.xml.rpc.encoding.XMLType;
 import org.apache.axis.client.Call;
 import org.apache.axis.encoding.ser.BeanDeserializerFactory;
 import org.apache.axis.encoding.ser.BeanSerializerFactory;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import pe.edu.upc.srs.gestion.servicios.beans.ClienteDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.EmpleadoDTO;
@@ -22,8 +34,34 @@ public class ImplGestionServicios implements IGestionServicios {
 
 
 	@Override
-	public ClienteDTO autenticarCliente(String strUsuario, String strClave) {
-		return null;
+	public ClienteDTO autenticarCliente(String usuario, String clave) {
+
+		ClienteDTO cliente = null;
+
+		HttpClient clienteHttp= new DefaultHttpClient();
+		HttpPost post = new HttpPost(UtilWebService.WS_AUTENTICACION_SRS);
+		
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			nameValuePairs.add(new BasicNameValuePair("usuario", usuario));
+			nameValuePairs.add(new BasicNameValuePair("clave", clave));
+
+			post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			
+			HttpResponse response = clienteHttp.execute(post);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+			
+			String linea = "";
+			while((linea = reader.readLine()) != null){
+				System.out.println(linea);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return cliente;
+		}
+		return cliente;
+		
 	}
 
 	@Override

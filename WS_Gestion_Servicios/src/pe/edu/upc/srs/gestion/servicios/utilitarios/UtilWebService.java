@@ -3,7 +3,8 @@
  */
 package pe.edu.upc.srs.gestion.servicios.utilitarios;
 
-import org.apache.axis.client.*;
+import org.apache.axis.client.Call;
+import org.apache.axis.client.Service;
 
 
 public class UtilWebService {
@@ -36,18 +37,4 @@ public class UtilWebService {
 			return null;
 		}
 	}
-	
-	public String callRestService (String request){
-		
-		String respuesta = "";
-		
-		System.out.println("se instancia el nuevo servicio");
-		try {
-			
-		} catch (Exception e) {
-			
-		}
-		
-		return respuesta;
-	}	
 }
