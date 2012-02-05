@@ -5,10 +5,11 @@ import pe.edu.upc.srs.gestion.servicios.beans.EmpleadoDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.PersonalDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.ReservaDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.ServicioDTO;
+import pe.edu.upc.srs.gestion.servicios.beans.UsuarioDTO;
 
 public interface IGestionServicios {
     /* Operaciones de Autenticación */
-    public ClienteDTO    autenticarCliente(String usuario,String clave);
+    public UsuarioDTO    autenticarUsuario(String usuario,String clave);
     
     /* Operaciones de Reserva */
     public String        registrarReserva(ReservaDTO reserva);
