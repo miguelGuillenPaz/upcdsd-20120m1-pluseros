@@ -7,7 +7,22 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
 	<typeAlias alias="cliente"
 				type="pe.edu.upc.srs.mantenimiento.beans.ClienteDTO"/>
 
-	<procedure id="sp_registrar_clientes" parameterClass="cliente">
+    <parameterMap id="clienteParam" class="cliente">
+        <parameter property="apellidoPaterno" mode="IN"/>
+        <parameter property="apellidoMaterno" mode="IN"/>
+        <parameter property="nombres" mode="IN"/>
+        <parameter property="direccion" mode="IN"/>
+        <parameter property="telefono" mode="IN"/>
+        <parameter property="email" mode="IN"/>
+        <parameter property="tipoDocumentoIdentidad" mode="IN"/>
+        <parameter property="nroDocumentoIdentidad" mode="IN"/>
+        <parameter property="distrito.id" mode="IN"/>
+        <parameter property="usuario" mode="IN"/>
+        <parameter property="clave" mode="IN"/>
+    </parameterMap>
+
+	<procedure id="sp_registrar_cliente" parameterMap="clienteParam">
+        {call sp_registrar_cliente(?,?,?,?,?,?,?,?,?,?,?)}
 	</procedure>
 	
 </sqlMap>
