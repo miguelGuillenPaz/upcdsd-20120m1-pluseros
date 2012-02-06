@@ -8,13 +8,18 @@ ddaccordion.init(css_menu_options);
 		<a href="#" title="">Reservas</a></div>
 		<ul class="menucontents">
 			<li><s:a action="disponibilidad.action" >Disponibilidad de Horarios</s:a></li>
-			<li><s:a action="anularReserva.action">Anular Reserva</s:a></li>
+			
+			<s:if test="%{#session.objUsuarioDTO.tipoUsuario == 0 }">
+				<li><s:a action="anularReserva.action">Anular Reserva</s:a></li>
+			</s:if>
 		</ul>
-	<div class="menuheaders"><a href="#" title="JavaScript">Mantenimientos</a></div>
-		<ul class="menucontents">
-		<li><s:a action="mantenerCliente.action" >Clientes</s:a></li>
-		<li><s:a action="mantenerEmpleado.action" >Empleados</s:a></li>
-		<li><s:a action="mantenerServicio.action" >Servicios</s:a></li>
-		</ul>
-	<div><a href="#" title="Tools">Option Group 02</a></div>
+		<s:if test="%{#session.objUsuarioDTO.tipoUsuario == 0 }">
+			<div class="menuheaders"><a href="#" title="JavaScript">Mantenimientos</a></div>
+				<ul class="menucontents">
+				<li><s:a action="mantenerCliente.action" >Clientes</s:a></li>
+				<li><s:a action="mantenerEmpleado.action" >Empleados</s:a></li>
+				<li><s:a action="mantenerServicio.action" >Servicios</s:a></li>
+				</ul>
+			<div><a href="#" title="Tools">Option Group 02</a></div>
+		</s:if>
 </div>

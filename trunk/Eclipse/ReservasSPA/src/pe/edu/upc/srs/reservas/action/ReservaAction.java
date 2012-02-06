@@ -17,6 +17,7 @@ public class ReservaAction extends ActionSupport{
 	private String strMensaje;
 	private String strMensajeExito;
 	
+	@SuppressWarnings("unchecked")
 	public String anularReserva(){
 		strCodigoReserva = "";
 		strMensajeExito = "";
@@ -26,6 +27,7 @@ public class ReservaAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String buscarReserva(){
 		System.out.println("CODIGO: "+strCodigoReserva);
 		
@@ -45,6 +47,7 @@ public class ReservaAction extends ActionSupport{
 		return SUCCESS;
 	}
 
+	@SuppressWarnings("unchecked")
 	public String registrarAnulacionReserva(){
 		Map session = ActionContext.getContext().getSession();
 		objReservaDTO = (ReservaDTO) session.get("objReservaDTO");

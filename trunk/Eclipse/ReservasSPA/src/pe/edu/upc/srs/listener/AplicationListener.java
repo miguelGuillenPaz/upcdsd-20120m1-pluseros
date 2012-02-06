@@ -3,9 +3,6 @@
  */
 package pe.edu.upc.srs.listener;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -21,15 +18,8 @@ public class AplicationListener implements ServletContextListener{
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		
-		try {
-			Context ctx = new InitialContext();
-			//Context myCtx = (Context)ctx.lookup("java:comp/env"); 
-			UtilWebServiceSPA.cargarWebServices();
-			System.out.println("Valor del web service: "+UtilWebServiceSPA.WS_GESTION_SERVICIOS);
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+		UtilWebServiceSPA.cargarWebServices();
+		System.out.println("Valor del web service: "+UtilWebServiceSPA.WS_GESTION_SERVICIOS);
 	}
 		
 }
