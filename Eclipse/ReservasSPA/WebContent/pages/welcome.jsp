@@ -4,7 +4,7 @@
 			<td align="center">
 				<div id="div_welcome"><br><br><br><br><br><br><br>
 					<h2>
-			Bienvenido, alderfg<br>
+			Bienvenido, ${objUsuarioDTO.nombre}<br>
 			que deseas hacer hoy?</h2>
 				</div>
 			</td>

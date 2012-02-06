@@ -9,7 +9,8 @@
 			<td align="right" width="590" valign="top">
 				<div style="width: 570px;padding: 10px;">
 					<s:if test="%{#session.logged == 1 }">
-						Hola, <span class="titulo">alderfg</span>
+						Hola, <span class="titulo">${objUsuarioDTO.nombre}</span>
+						&nbsp; | <s:a href="logout">Cerrar Sesi&oacute;n</s:a>
 					</s:if>
 					<s:else>
 						<a rel="facebox" href="<%= request.getContextPath() %>/pages/manto_cliente.jsp?sus=ok">Reg&iacute;strate</a>

@@ -1,9 +1,9 @@
 package pe.edu.upc.srs.seguridad.servicios;
 
-import pe.edu.upc.srs.reservas.bean.ClienteDTO;
+import pe.edu.upc.srs.seguridad.bean.UsuarioDTO;
 
 public interface ISeguridadService {
 
-	public ClienteDTO autenticarCliente(String strUsuario,String strClave);
+	public UsuarioDTO autenticarCliente(String strUsuario,String strClave);
 	
 }

@@ -21,6 +21,7 @@
 	Elisa's SPA - <tiles:insertAttribute name="title" />
 </title>
 </head>
+<tiles:insertAttribute name="checkUser" />
 <body>
 <!-- -
 	<div id="dialog-confirm" title="Mensaje de Confirmaci&oacute;n">

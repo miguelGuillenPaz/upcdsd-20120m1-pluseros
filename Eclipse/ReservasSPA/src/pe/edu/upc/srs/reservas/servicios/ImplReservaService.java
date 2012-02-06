@@ -28,17 +28,12 @@ public class ImplReservaService implements IReservaService{
 		ArrayList<ServicioDTO> lstServicioDTO = null;
 		try {
 			Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
-			System.out.println("llego aca 1");
-			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			System.out.println("llego aca 2");
-			objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe","obtenerServicios"));
-			System.out.println("llego aca 3");
+			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+			objCall.setOperationName(new QName("http://servicios.servicios.gestion.srs.upc.edu.pe","obtenerServicios"));
 			objCall.setReturnClass(ServicioDTO.class);
-			System.out.println("llego aca 4");
 			
-			//lstServicioDTO = (ArrayList<ServicioDTO>) objCall.invoke(new Object[]{});
+			lstServicioDTO = (ArrayList<ServicioDTO>) objCall.invoke(new Object[]{});
 			
-			//ArrayList<ServicioDTO> lstServicioDTO =((IReservaService) objCall).obtenerServicios();
 			lstServicioDTO = new ArrayList<ServicioDTO>();
 			System.out.println("llego aca 5");
 			for(ServicioDTO serv:lstServicioDTO){
@@ -63,12 +58,12 @@ public class ImplReservaService implements IReservaService{
 		try {
 			Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
 			
-			objCall.registerTypeMapping(ReservaDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.registerTypeMapping(ClienteDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.registerTypeMapping(PersonalDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+			objCall.registerTypeMapping(ReservaDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+			objCall.registerTypeMapping(ClienteDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+			objCall.registerTypeMapping(PersonalDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			
-			objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe","buscarReserva"));
+			objCall.setOperationName(new QName("http://servicios.servicios.gestion.srs.upc.edu.pe","buscarReserva"));
 			objCall.setReturnClass(ReservaDTO.class);
 			objCall.addParameter("codigo", XMLType.XSD_STRING, ParameterMode.IN);
 			
@@ -88,7 +83,7 @@ public class ImplReservaService implements IReservaService{
 			
 			Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
 			
-			objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe","anularReserva"));
+			objCall.setOperationName(new QName("http://servicios.servicios.gestion.srs.upc.edu.pe","anularReserva"));
 			objCall.setReturnClass(Integer.class);
 			objCall.addParameter("codigo", XMLType.XSD_INT, ParameterMode.IN);
 			

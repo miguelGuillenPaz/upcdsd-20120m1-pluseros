@@ -5,9 +5,8 @@ package pe.edu.upc.srs.seguridad.action;
 
 import java.util.Map;
 
-import pe.edu.upc.srs.reservas.servicios.ImplReservaService;
+import pe.edu.upc.srs.seguridad.bean.UsuarioDTO;
 import pe.edu.upc.srs.seguridad.servicios.ImplSeguridadService;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,15 +16,12 @@ public class LoginAction extends ActionSupport{
 	private String usuario;
 	private String clave;
 	private String strMensaje;
+	private UsuarioDTO objUsuarioDTO;
 	
 	@SuppressWarnings("unchecked")
 	public String login(){
 		ImplSeguridadService objImplSeguridadService = new ImplSeguridadService();
 		Map session = ActionContext.getContext().getSession();
-		System.out.println("LOGIN INGRESADO: "+usuario);
-		System.out.println("CLAVE INGRESADO: "+clave);
-		
-		//objImplSeguridadService.autenticarCliente(usuario, clave);
 		
 		if(session.get("logged") != null &&
 			session.get("logged").equals(true)){
@@ -33,16 +29,20 @@ public class LoginAction extends ActionSupport{
 		}else{
 			if(!usuario.equals("")){
 				if(!clave.equals("")){
-					if(usuario.equals("alderfg") &&
-						clave.equals("clave")){
-						
-						session.put("logged","1");
-						
-						return SUCCESS;
+					objUsuarioDTO = objImplSeguridadService.autenticarCliente(usuario, clave);
+					if(objUsuarioDTO != null){
+						if(objUsuarioDTO.getEstado() == 1){
+							session.put("logged","1");
+							session.put("objUsuarioDTO",objUsuarioDTO);
+							return SUCCESS;							
+						}else{
+							strMensaje = "El usuario no se encuentra habilitado.";
+							return ERROR;
+						}
 					}else{
 						strMensaje = "Verifique usuario y clave.";
 						return ERROR;
-					}		
+					}	
 				}else{
 					strMensaje = "Ingrese la clave.";
 					return ERROR;
@@ -55,6 +55,15 @@ public class LoginAction extends ActionSupport{
 
 	}
 
+	@SuppressWarnings("unchecked")
+	public String logout(){
+		Map session = ActionContext.getContext().getSession();
+		session.remove("logged");
+		session.put("logged",0);
+		session.remove("objUsuarioDTO");
+		return SUCCESS;
+	}
+	
 	public String getUsuario() {
 		return usuario;
 	}
@@ -81,6 +90,14 @@ public class LoginAction extends ActionSupport{
 
 	public String getStrMensaje() {
 		return strMensaje;
+	}
+
+	public void setObjUsuarioDTO(UsuarioDTO objUsuarioDTO) {
+		this.objUsuarioDTO = objUsuarioDTO;
+	}
+
+	public UsuarioDTO getObjUsuarioDTO() {
+		return objUsuarioDTO;
 	}
 	
 }
