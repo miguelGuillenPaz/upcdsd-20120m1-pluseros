@@ -12,11 +12,11 @@ public class ReservaDTO {
     private String mes;
     private String anio;
     private String estado;
+    private String horaInicio;
+    private String horaFin;
     private ServicioDTO servicio;
     private ClienteDTO cliente;
     private PersonalDTO empleado;
-    private String horaInicio;
-    private String horaFin;
 
     /* Métodos de acceso */
 	public int getId() {
