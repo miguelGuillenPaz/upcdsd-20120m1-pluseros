@@ -90,7 +90,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
              AND CAST(p.valor AS UNSIGNED) >= IF((CAST(NOW() AS CHAR(10))) = CONCAT('2012','-','01','-','22'),HOUR(CURTIME()) + 2,p.valor)
     </select>-->
 
-    <procedure id="sp_registrar_reserva" parameterClass="pe.edu.upc.srs.reserva.beans.ReservaDTO">
+    <procedure id="sp_registrar_reserva" parameterMap="reservaParam">
         {call sp_registrar_reserva(?,?,?,?,?,?,?,?,?)}
     </procedure>
     
