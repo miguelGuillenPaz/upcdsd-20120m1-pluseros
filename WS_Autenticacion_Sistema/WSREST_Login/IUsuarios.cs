@@ -14,6 +14,7 @@ namespace WSREST_Login
     [ServiceContract]
     public interface IUsuarios
     {
+
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Login?usuario={usuario}&clave={clave}", ResponseFormat = WebMessageFormat.Json)]
         Usuario AutenticarUsuario(string usuario, string clave);
