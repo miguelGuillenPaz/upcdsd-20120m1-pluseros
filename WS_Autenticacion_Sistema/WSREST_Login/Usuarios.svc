@@ -1,5 +1,4 @@
-﻿<%@ ServiceHost 
-Language="C#" 
+﻿<%@ ServiceHost Language="C#" 
 Debug="true" 
 Service="WSREST_Login.Usuarios" 
 CodeBehind="Usuarios.svc.cs" 
