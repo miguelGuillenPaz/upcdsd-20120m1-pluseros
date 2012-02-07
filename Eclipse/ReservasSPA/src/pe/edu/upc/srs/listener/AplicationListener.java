@@ -18,8 +18,9 @@ public class AplicationListener implements ServletContextListener{
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
+		System.out.println("-- Inicio Aplicación ReservasSPA --");
 		UtilWebServiceSPA.cargarWebServices();
-		System.out.println("Valor del web service: "+UtilWebServiceSPA.WS_GESTION_SERVICIOS);
+		System.out.println("-- Fin Aplicación ReservasSPA --");
 	}
 		
 }
