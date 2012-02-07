@@ -17,9 +17,9 @@ public class AplicationListener implements ServletContextListener{
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		System.out.println("-- Inicio carga de los servicios web --");
+		System.out.println("-- Inicio Servicio Web WS_Gestion_Servicios --");
 		UtilWebService.cargarWebServices();
-		System.out.println("-- Fin carga de los servicios web --");
+		System.out.println("-- Fin Servicio Web WS_Gestion_Servicios --");
 	}
 		
 }
