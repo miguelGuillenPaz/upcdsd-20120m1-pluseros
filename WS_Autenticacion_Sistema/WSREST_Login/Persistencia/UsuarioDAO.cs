@@ -22,14 +22,14 @@ namespace WSREST_Login.Persistencia
 
             string sql = "(SELECT u.usuario, u.tipo_usuario, u.estado, c.email, " +
                          "        CONCAT(c.nombre, ' ' , c.ape_pat_cliente, ' ', c.ape_mat_cliente) as nombre " +
-                         "   FROM usuario u, cliente c " +
+                         "   FROM usuario u, cliente2 c " +
                          "  WHERE u.id_usuario = c.id_usuario " +
                          "    AND u.usuario = @user " +
                          "    AND u.clave = @clave) " +
                          "  UNION " +
                          "(SELECT u.usuario, u.tipo_usuario, u.estado, c.email, " +
                          "        CONCAT(c.nombre, ' ' , c.ape_pat_empleado, ' ', c.ape_mat_empleado) as nombre " +
-                         "   FROM usuario u, empleado c " +
+                         "   FROM usuario u, empleado2 c " +
                          "  WHERE u.id_usuario = c.id_usuario " +
                          "    AND u.usuario = @user " +
                          "    AND u.clave = @clave)";
