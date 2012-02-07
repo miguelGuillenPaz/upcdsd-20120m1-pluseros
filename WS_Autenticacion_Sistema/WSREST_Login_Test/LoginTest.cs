@@ -17,7 +17,7 @@ namespace WSREST_Login_Test
         {
 
             // Prueba de Obtencion Alumno via HTTP GET
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1838/Usuarios.svc/Usuario/Freddy/Casas");
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1838/Usuarios.svc/Login?usuario=Fred&clave=Casas");
             req.Method = "GET";
             HttpWebResponse res = (HttpWebResponse)req.GetResponse();
             StreamReader reader = new StreamReader(res.GetResponseStream());
