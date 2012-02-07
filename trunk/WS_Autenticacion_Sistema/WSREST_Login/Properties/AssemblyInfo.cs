@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("WSREST_Login")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Diebold, Incorporated")]
+[assembly: AssemblyCompany("Casas, Incorporated")]
 [assembly: AssemblyProduct("WSREST_Login")]
-[assembly: AssemblyCopyright("Copyright © Diebold, Incorporated 2012")]
+[assembly: AssemblyCopyright("Copyright © Casas, Incorporated 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
