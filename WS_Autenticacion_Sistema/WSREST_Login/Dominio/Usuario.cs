@@ -9,6 +9,7 @@ namespace WSREST_Login.Dominio
     [DataContract]
     public class Usuario
     {
+
         [DataMember]
         public string usuario { get; set; }
 
