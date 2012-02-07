@@ -7,6 +7,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Configuration;
 
 
 namespace WSREST_Login.Persistencia
@@ -20,6 +21,8 @@ namespace WSREST_Login.Persistencia
             string claveSHA1 = string.Empty;
             claveSHA1 = GetSHA1(clave);
 
+            string connectionString = WebConfigurationManager.ConnectionStrings["cnxMySql"].ConnectionString;
+ 
             string sql = "(SELECT u.usuario, u.tipo_usuario, u.estado, c.email, " +
                          "        CONCAT(c.nombre, ' ' , c.ape_pat_cliente, ' ', c.ape_mat_cliente) as nombre " +
                          "   FROM usuario u, cliente2 c " +
@@ -34,7 +37,8 @@ namespace WSREST_Login.Persistencia
                          "    AND u.usuario = @user " +
                          "    AND u.clave = @clave)";
 
-            using (MySqlConnection con = new MySqlConnection(ConexionUtil.cadena))
+            //using (MySqlConnection con = new MySqlConnection(ConexionUtil.cadena))
+            using (MySqlConnection con = new MySqlConnection(connectionString))
 
             {
                 con.Open();
