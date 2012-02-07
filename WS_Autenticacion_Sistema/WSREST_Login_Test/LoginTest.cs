@@ -25,11 +25,11 @@ namespace WSREST_Login_Test
             JavaScriptSerializer js = new JavaScriptSerializer();
             Usuario UsuarioObtenido = js.Deserialize<Usuario>(UsuarioJson);
 
-            Assert.AreEqual("Freddy", UsuarioObtenido.usuario);
+            Assert.AreEqual("Fred", UsuarioObtenido.usuario);
             Assert.AreEqual(1, UsuarioObtenido.tipo_usuario);
             Assert.AreEqual(1, UsuarioObtenido.estado);
-            Assert.AreEqual("Freddy Cesar", UsuarioObtenido.nombre);
-            Assert.AreEqual("freddy@gmail.com", UsuarioObtenido.email);
+            Assert.AreEqual("Freddy Casas Herrera", UsuarioObtenido.nombre);
+            Assert.AreEqual("freddycasas@gmail.com", UsuarioObtenido.email);
         }
     }
 }
