@@ -10,7 +10,8 @@ using System.Web.Script.Serialization;
 
 namespace WSREST_Login_Test
 {
-    class LoginTest
+    [TestClass]
+    public class LoginTest
     {
         [TestMethod]
         public void CRUDTest()
