@@ -11,7 +11,7 @@ namespace WSREST_Login.Persistencia
         {
             get
             {
-                return "Server=localhost;Database=srs;Uid=root;Pwd=cibertec;";
+                   return "Server=localhost;Database=srs;Uid=root;Pwd=mysql;";
             }
         }
     }
