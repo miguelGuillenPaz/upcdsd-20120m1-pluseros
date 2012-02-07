@@ -21,7 +21,7 @@ namespace WSREST_Login.Persistencia
             string claveSHA1 = string.Empty;
             claveSHA1 = GetSHA1(clave);
 
-            string connectionString = WebConfigurationManager.ConnectionStrings["cnxMySql"].ConnectionString;
+            string cadenadeconexion = WebConfigurationManager.ConnectionStrings["cnxMySql"].ConnectionString;
  
             string sql = "(SELECT u.usuario, u.tipo_usuario, u.estado, c.email, " +
                          "        CONCAT(c.nombre, ' ' , c.ape_pat_cliente, ' ', c.ape_mat_cliente) as nombre " +
@@ -38,7 +38,7 @@ namespace WSREST_Login.Persistencia
                          "    AND u.clave = @clave)";
 
             //using (MySqlConnection con = new MySqlConnection(ConexionUtil.cadena))
-            using (MySqlConnection con = new MySqlConnection(connectionString))
+            using (MySqlConnection con = new MySqlConnection(cadenadeconexion))
 
             {
                 con.Open();
