@@ -35,6 +35,7 @@ namespace WSREST_Login.Persistencia
                          "    AND u.clave = @clave)";
 
             using (MySqlConnection con = new MySqlConnection(ConexionUtil.cadena))
+
             {
                 con.Open();
                 using (MySqlCommand com = new MySqlCommand(sql, con))
