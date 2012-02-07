@@ -14,9 +14,6 @@ namespace WSREST_Login.Dominio
         public string usuario { get; set; }
 
         [DataMember]
-        public string clave { get; set; }
-
-        [DataMember]
         public int tipoUsuario { get; set; }
 
         [DataMember]
