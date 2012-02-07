@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		WSREST_Login.vsmdi = WSREST_Login.vsmdi
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSREST_Login_Test", "WSREST_Login_Test\WSREST_Login_Test.csproj", "{970A09F5-9DF7-449C-9081-3CFD960850F4}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -27,6 +29,10 @@ Global
 		{59B8EC32-F760-47FA-B89D-CCB5627D42FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59B8EC32-F760-47FA-B89D-CCB5627D42FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59B8EC32-F760-47FA-B89D-CCB5627D42FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970A09F5-9DF7-449C-9081-3CFD960850F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970A09F5-9DF7-449C-9081-3CFD960850F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970A09F5-9DF7-449C-9081-3CFD960850F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970A09F5-9DF7-449C-9081-3CFD960850F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
