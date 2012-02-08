@@ -52,4 +52,10 @@ public class MySqlEmpleado extends SqlMapDaoTemplate implements IDespachadorEmpl
 		return resultado;
 	}
 
+	@Override
+	public EmpleadoDTO obtenerEmpleado(int codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

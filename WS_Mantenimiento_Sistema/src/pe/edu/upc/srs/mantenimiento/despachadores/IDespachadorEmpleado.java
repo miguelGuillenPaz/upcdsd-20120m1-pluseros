@@ -13,5 +13,6 @@ public interface IDespachadorEmpleado {
 
 	public int registrarEmpleado(EmpleadoDTO empleado);
 	public int asociarServicio(EmpleadoServicioDTO[] empserv);
+	public EmpleadoDTO obtenerEmpleado(int codigo);
 	
 }
