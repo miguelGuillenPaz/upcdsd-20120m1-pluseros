@@ -17,12 +17,14 @@ public class ClienteDTO implements Serializable {
     private String direccion;
     private String telefono;
     private String email;
+    private int tipoDocumentoIdentidad;
+    private String nroDocumentoIdentidad;
     private String usuario;
     private String clave;
     private String rutaFoto;
     private DistritoDTO distrito;
 
-    /* Métodos de acceso */
+    /* MÃ©todos de acceso */
     public int getId() {
 		return id;
 	}
@@ -70,6 +72,18 @@ public class ClienteDTO implements Serializable {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public int getTipoDocumentoIdentidad() {
+		return tipoDocumentoIdentidad;
+	}
+	public void setTipoDocumentoIdentidad(int tipoDocumentoIdentidad) {
+		this.tipoDocumentoIdentidad = tipoDocumentoIdentidad;
+	}
+	public String getNroDocumentoIdentidad() {
+		return nroDocumentoIdentidad;
+	}
+	public void setNroDocumentoIdentidad(String nroDocumentoIdentidad) {
+		this.nroDocumentoIdentidad = nroDocumentoIdentidad;
 	}
 	public String getUsuario() {
 		return usuario;
