@@ -1,27 +1,31 @@
 /**
- *  @author Miguel Guillén 
-*/
-
+ * @author Victor Roncalla
+ */
 package pe.edu.upc.srs.mantenimiento.beans;
 
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class ClienteDTO implements Serializable {
-	private int id;
-	private String codigo;
-	private String apellidoPaterno;
-	private String apellidoMaterno;
-	private String nombres;
-	private String direccion;
-	private String telefono;
-	private String email;
-	private String usuario;
-	private String clave;
-	private String rutaFoto;
-	private int id_distrito;
-	
-	public int getId() {
+
+    /* Atributos */
+    private int id;
+    private String codigo;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private String nombres;
+    private String direccion;
+    private String telefono;
+    private String email;
+    private int tipoDocumentoIdentidad;
+    private String nroDocumentoIdentidad;
+    private String usuario;
+    private String clave;
+    private String rutaFoto;
+    private DistritoDTO distrito;
+
+    /* MÃ©todos de acceso */
+    public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -69,6 +73,18 @@ public class ClienteDTO implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public int getTipoDocumentoIdentidad() {
+		return tipoDocumentoIdentidad;
+	}
+	public void setTipoDocumentoIdentidad(int tipoDocumentoIdentidad) {
+		this.tipoDocumentoIdentidad = tipoDocumentoIdentidad;
+	}
+	public String getNroDocumentoIdentidad() {
+		return nroDocumentoIdentidad;
+	}
+	public void setNroDocumentoIdentidad(String nroDocumentoIdentidad) {
+		this.nroDocumentoIdentidad = nroDocumentoIdentidad;
+	}
 	public String getUsuario() {
 		return usuario;
 	}
@@ -87,13 +103,10 @@ public class ClienteDTO implements Serializable {
 	public void setRutaFoto(String rutaFoto) {
 		this.rutaFoto = rutaFoto;
 	}
-	public int getId_distrito() {
-		return id_distrito;
+	public DistritoDTO getDistrito() {
+		return distrito;
 	}
-	public void setId_distrito(int id_distrito) {
-		this.id_distrito = id_distrito;
+	public void setDistrito(DistritoDTO distrito) {
+		this.distrito = distrito;
 	}
-	
-	
-
 }
