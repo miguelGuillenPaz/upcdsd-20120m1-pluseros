@@ -1,5 +1,5 @@
 /**
- *@autor : Lizbeth Díaz 
+ *@autor : Lizbeth DÃ­az 
  **/
 
 package pe.edu.upc.srs.mantenimientos;
@@ -46,8 +46,8 @@ public class MantenimientoTest {
 		
 		int rpta =0;
 		ServicioDTO serv = new ServicioDTO();
-		serv.setId(1);
-		serv.setDescripcion("prueba");
+		//serv.setId(1);
+		serv.setDescripcion("prueba nro");
 		rpta= servicio.registrarServicio(serv);
 		assertTrue(rpta==1);
 	}
