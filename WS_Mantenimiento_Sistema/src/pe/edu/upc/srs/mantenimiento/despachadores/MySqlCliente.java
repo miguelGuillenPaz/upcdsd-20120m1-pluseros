@@ -27,10 +27,10 @@ public class MySqlCliente extends SqlMapDaoTemplate implements IDespachadorClien
 		int resultado=0;
 		
 		try{
-			getSqlMapExecutor().insert("sp_registrar_cliente", cliente);
+			getSqlMapExecutor().insert("sp_registrar_clientes", cliente);
 			resultado = 1;
 		}catch (SQLException e) {
-			System.out.println("Error - " + this.getClass().getName() + ".registrarCliente(): " + e.getMessage() );
+			System.out.println("Error - " + this.getClass().getName() + ".registrarClientes(): " + e.getMessage() );
 			e.printStackTrace();
 			resultado =-1;
 		}
