@@ -90,7 +90,7 @@ public class ImplGestionServicios implements IGestionServicios {
         try {
             Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
             objCall.registerTypeMapping(ReservaDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-            objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarReserva"));
+            objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe", "registrarReserva"));
             objCall.addParameter("reserva", new QName("http://beans.reserva.srs.upc.edu.pe", "ReservaDTO"), ParameterMode.IN);
             objCall.setReturnType(XMLType.XSD_STRING);
 
@@ -149,18 +149,6 @@ public class ImplGestionServicios implements IGestionServicios {
 
 	@Override
 	public PersonalDTO[] obtenerEmpleadosPorServicio(int servicio) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ReservaDTO[] obtenerHorariosPorServicio(ReservaDTO reserva) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ReservaDTO[] obtenerHorariosPorPersonal(int personal) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -278,5 +266,27 @@ public class ImplGestionServicios implements IGestionServicios {
 		return 0;
 	}
 
+    @Override
+    public ReservaDTO[] obtenerHorariosDisponibles(int idServicio, String dia, String mes, String anio) {
+        ReservaDTO[] horariosDisponibles = null;
 
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
+            objCall.registerTypeMapping(ReservaDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe", "obtenerHorariosDisponibles"));
+            objCall.addParameter("idServicio", XMLType.XSD_INT, ParameterMode.IN);
+            objCall.addParameter("dia", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.addParameter("mes", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.addParameter("anio", XMLType.XSD_STRING, ParameterMode.IN);
+			
+            objCall.setReturnClass(ReservaDTO.class);
+
+            horariosDisponibles =  (ReservaDTO[]) objCall.invoke(new Object[]{idServicio, dia, mes, anio});
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+        }
+
+		return horariosDisponibles;
+	}
 }
