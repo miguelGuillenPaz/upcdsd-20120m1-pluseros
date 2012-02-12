@@ -5,6 +5,8 @@ package pe.edu.upc.srs.reserva.despachadores;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import pe.edu.upc.srs.reserva.beans.ReservaDTO;
 import com.ibatis.dao.client.DaoManager;
@@ -21,7 +23,7 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
         ReservaDTO reserva = null;
 
         try {
-            reserva = (ReservaDTO) queryForObject("buscarReserva", codigo);
+            reserva = (ReservaDTO) queryForObject("sp_buscar_reserva", codigo);
         } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".buscarReserva(): " + excepcion.getMessage());
             excepcion.printStackTrace();
@@ -64,28 +66,18 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
 
     @SuppressWarnings("unchecked")
     @Override
-    public ArrayList<ReservaDTO> obtenerHorariosPorServicio(ReservaDTO reserva) {
+    public ArrayList<ReservaDTO>  obtenerHorariosDisponibles(int idServicio, String dia, String mes, String anio) {
         ArrayList<ReservaDTO> horarios = new ArrayList<ReservaDTO>();
-
+        Map<String, Object> datosConsulta = new HashMap<String, Object>();
+        datosConsulta.put("idServicio", new Integer(idServicio));
+        datosConsulta.put("dia", new String(dia));
+        datosConsulta.put("mes", new String(mes));
+        datosConsulta.put("anio", new String(anio));
+        
         try {
-            horarios = (ArrayList<ReservaDTO>) queryForList("obtenerEmpleadosPorServicio", reserva);
+            horarios = (ArrayList<ReservaDTO>) queryForList("sp_obtener_horarios_disponibles", datosConsulta);
         } catch (Exception excepcion) {
-            System.out.println("Error - " + this.getClass().getName() + ".obtenerEmpleadosPorServicio(): " + excepcion.getMessage());
-            excepcion.printStackTrace();
-        }
-
-        return horarios;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public ArrayList<ReservaDTO> obtenerHorariosPorPersonal(int personal) {
-        ArrayList<ReservaDTO> horarios = new ArrayList<ReservaDTO>();
-
-        try {
-            horarios = (ArrayList<ReservaDTO>) queryForList("obtenerHorariosPorPersonal", personal);
-        } catch (Exception excepcion) {
-            System.out.println("Error - " + this.getClass().getName() + ".obtenerHorariosPorPersonal(): " + excepcion.getMessage());
+            System.out.println("Error - " + this.getClass().getName() + ".obtenerHorariosDisponibles(): " + excepcion.getMessage());
             excepcion.printStackTrace();
         }
 
