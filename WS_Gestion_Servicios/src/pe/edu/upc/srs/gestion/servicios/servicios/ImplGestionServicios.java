@@ -148,12 +148,6 @@ public class ImplGestionServicios implements IGestionServicios {
 	}
 
 	@Override
-	public PersonalDTO[] obtenerEmpleadosPorServicio(int servicio) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int registrarServicio(ServicioDTO servicio) {
 		int resultado = 0;
 
@@ -262,8 +256,23 @@ public class ImplGestionServicios implements IGestionServicios {
 
 	@Override
 	public int registrarCliente(ClienteDTO cliente) {
-		// TODO Auto-generated method stub
-		return 0;
+		int resultado = 0;
+
+		try {
+			Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
+			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarServicio"));
+			objCall.addParameter("servicio", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ServicioDTO"), ParameterMode.IN);
+			objCall.setReturnType(XMLType.XSD_INT);
+
+			resultado =  (Integer)objCall.invoke(new Object[]{cliente});
+		} catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".registrarServicio(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+            resultado = -1;
+		}
+
+		return resultado;
 	}
 
     @Override
@@ -278,7 +287,7 @@ public class ImplGestionServicios implements IGestionServicios {
             objCall.addParameter("dia", XMLType.XSD_STRING, ParameterMode.IN);
             objCall.addParameter("mes", XMLType.XSD_STRING, ParameterMode.IN);
             objCall.addParameter("anio", XMLType.XSD_STRING, ParameterMode.IN);
-			
+
             objCall.setReturnClass(ReservaDTO.class);
 
             horariosDisponibles =  (ReservaDTO[]) objCall.invoke(new Object[]{idServicio, dia, mes, anio});
@@ -288,5 +297,11 @@ public class ImplGestionServicios implements IGestionServicios {
         }
 
 		return horariosDisponibles;
+	}
+
+	@Override
+	public PersonalDTO[] obtenerEmpleadosPorServicio(int servicio) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
