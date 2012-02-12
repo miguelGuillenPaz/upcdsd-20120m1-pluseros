@@ -26,6 +26,10 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <result property="empleado.apellidoMaterno" column="ape_mat_empleado"/>
     </resultMap>
 
+    <resultMap id="horarioReservaMap" class="reserva">
+        <result property="horaInicio" column="hora_inicio"/>
+    </resultMap>
+
     <parameterMap id="reservaParam" class="reserva">
         <parameter property="dia" mode="IN"/>
         <parameter property="mes" mode="IN"/>
@@ -38,62 +42,18 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <parameter property="codigo" mode="OUT"/>
     </parameterMap>
 
-    <select id="buscarReserva" parameterClass="java.lang.String" resultMap="reservaMap">
-        SELECT r.id_reserva,
-               r.cod_reserva,
-               r.dia_reserva,
-               r.mes_reserva,
-               r.anio_reserva,
-               r.estado,
-               r.hora_inicio,
-               r.hora_fin,
-               s.descripcion,
-               c.nombre nom_cliente,
-               c.ape_pat_cliente,
-               c.ape_mat_cliente,
-               e.nombre nom_empleado,
-               e.ape_pat_empleado,
-               e.ape_mat_empleado
-          FROM srs.reserva r,
-               srs.cliente c,
-               srs.empleado e,
-               srs.servicio s
-         WHERE r.cod_reserva = #value#
-           AND r.id_cliente = c.id_cliente
-           AND r.id_empleado = e.id_empleado
-           AND r.id_servicio = s.id_servicio
-    </select>
+    <procedure id="sp_buscar_reserva" parameterClass="java.lang.String" resultMap="reservaMap">
+        {call sp_buscar_reserva(#VALUE#)}
+    </procedure>
 
-    <!--  
-    <select id="obtenerHorariosPorServicio" parameterClass="java.lang.Integer" resultMap="reservaMap">
-       SELECT p.valor,
-              IFNULL((SELECT 0 FROM srs.reserva r
-                       WHERE (r.id_servicio = 1
-                         AND r.dia_reserva = '10'
-                         AND r.mes_reserva = '02'
-                         AND r.anio_reserva = '2012'
-                         AND r.estado != 'A'
-                         AND ((p.valor + (SELECT s.duracion_horas
-                                            FROM srs.servicio s
-                                           WHERE s.id_servicio = 1))
-                     BETWEEN r.hora_inicio AND r.hora_fin - 1))
-                       LIMIT 1),1) habilitado
-         FROM srs.parametros p
-        WHERE p.tipo = 'HORA'
-          AND (p.valor + (SELECT duracion_horas
-                            FROM srs.servicio s
-                           WHERE s.id_servicio = 1))
-         <=
-         (SELECT MAX(CAST(pp.valor AS UNSIGNED))
-            FROM srs.parametros pp
-           WHERE pp.tipo = 'HORA')
-             AND CAST(p.valor AS UNSIGNED) >= IF((CAST(NOW() AS CHAR(10))) = CONCAT('2012','-','01','-','22'),HOUR(CURTIME()) + 2,p.valor)
-    </select>-->
+    <procedure id="sp_obtener_horarios_disponibles" parameterClass="java.util.HashMap" resultMap="horarioReservaMap">
+        {call sp_obtener_horarios_disponibles(#idServicio#,#dia#,#mes#,#anio#)}
+    </procedure>
 
     <procedure id="sp_registrar_reserva" parameterMap="reservaParam">
         {call sp_registrar_reserva(?,?,?,?,?,?,?,?,?)}
     </procedure>
-    
+
     <procedure id="sp_anular_reserva" parameterClass="java.lang.Integer">
         {call sp_anular_reserva(#VALUE#)}
     </procedure>
