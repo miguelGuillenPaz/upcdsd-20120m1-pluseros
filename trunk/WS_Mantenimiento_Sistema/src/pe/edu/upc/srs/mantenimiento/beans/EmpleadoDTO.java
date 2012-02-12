@@ -12,18 +12,19 @@ public class EmpleadoDTO implements Serializable{
 	private static final long serialVersionUID = 6246826969585329348L;
 
 	private int id;
-	private String codigo;
 	private String nombres;
 	private String apePatEmp;
 	private String apeMatEmp;
+	private String direccion;
 	private String tipo_doc_identidad;
 	private String nro_doc_identidad;
 	private String distrito;
-	private String direccion;
+	private String codigo;
 	private String cargo;
+	private String foto;
+	private String email;
 	private String usuario;
 	private String clave;
-	private String foto;
 	private ServicioDTO[] servicios;
 	
 	public int getId() {
@@ -31,12 +32,6 @@ public class EmpleadoDTO implements Serializable{
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
 	}
 	public String getNombres() {
 		return nombres;
@@ -56,6 +51,12 @@ public class EmpleadoDTO implements Serializable{
 	public void setApeMatEmp(String apeMatEmp) {
 		this.apeMatEmp = apeMatEmp;
 	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 	public String getTipo_doc_identidad() {
 		return tipo_doc_identidad;
 	}
@@ -74,17 +75,29 @@ public class EmpleadoDTO implements Serializable{
 	public void setDistrito(String distrito) {
 		this.distrito = distrito;
 	}
-	public String getDireccion() {
-		return direccion;
+	public String getCodigo() {
+		return codigo;
 	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	public String getCargo() {
 		return cargo;
 	}
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getUsuario() {
 		return usuario;
@@ -97,12 +110,6 @@ public class EmpleadoDTO implements Serializable{
 	}
 	public void setClave(String clave) {
 		this.clave = clave;
-	}
-	public String getFoto() {
-		return foto;
-	}
-	public void setFoto(String foto) {
-		this.foto = foto;
 	}
 	public ServicioDTO[] getServicios() {
 		return servicios;
