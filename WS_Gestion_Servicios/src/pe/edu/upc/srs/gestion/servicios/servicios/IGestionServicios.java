@@ -10,23 +10,21 @@ import pe.edu.upc.srs.gestion.servicios.beans.UsuarioDTO;
 public interface IGestionServicios {
     /* Operaciones de Autenticación */
     public UsuarioDTO    autenticarUsuario(String usuario,String clave);
-    
+
     /* Operaciones de Reserva */
     public String        registrarReserva(ReservaDTO reserva);
     public int           anularReserva(int codigo);
     public ReservaDTO    buscarReserva(String codigo);
     public PersonalDTO[] obtenerEmpleadosPorServicio(int servicio);
-    public ReservaDTO[]  obtenerHorariosPorServicio(ReservaDTO reserva);
-    public ReservaDTO[]  obtenerHorariosPorPersonal(int personal);
-    
+    public ReservaDTO[]  obtenerHorariosDisponibles(int idServicio, String dia, String mes, String anio);
+
     /* Operaciones de Mantenimiento */
-    //
-	public int           registrarServicio(ServicioDTO servicio);
-	public int           modificarServicio(ServicioDTO servicio);
-	public int           eliminarServicio(int codigo);
-	public ServicioDTO   buscarServicio(int codigo);
-	public ServicioDTO[] obtenerServicios();
-	public int           registrarEmpleado(EmpleadoDTO empleado);
-	public int           registrarCliente(ClienteDTO cliente);
+    public int           registrarServicio(ServicioDTO servicio);
+    public int           modificarServicio(ServicioDTO servicio);
+    public int           eliminarServicio(int codigo);
+    public ServicioDTO   buscarServicio(int codigo);
+    public ServicioDTO[] obtenerServicios();
+    public int           registrarEmpleado(EmpleadoDTO empleado);
+    public int           registrarCliente(ClienteDTO cliente);
     /* Operaciones de Mensajería */
 }
