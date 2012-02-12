@@ -42,12 +42,19 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <parameter property="codigo" mode="OUT"/>
     </parameterMap>
 
+    <parameterMap id="reservaDisponibleParam" class="java.util.HashMap">
+        <parameter property="idServicio" javaType="java.lang.Integer" mode="IN"/>
+        <parameter property="dia"       javaType="java.lang.String"  mode="IN"/>
+        <parameter property="mes"       javaType="java.lang.String"  mode="IN"/>
+        <parameter property="anio"      javaType="java.lang.String"  mode="IN"/>
+    </parameterMap>
+
     <procedure id="sp_buscar_reserva" parameterClass="java.lang.String" resultMap="reservaMap">
         {call sp_buscar_reserva(#VALUE#)}
     </procedure>
 
-    <procedure id="sp_obtener_horarios_disponibles" parameterClass="java.util.HashMap" resultMap="horarioReservaMap">
-        {call sp_obtener_horarios_disponibles(#idServicio#,#dia#,#mes#,#anio#)}
+    <procedure id="sp_obtener_horarios_disponibles" parameterMap="reservaDisponibleParam" resultMap="horarioReservaMap">
+        {call sp_obtener_horarios_disponibles(?,?,?,?)}
     </procedure>
 
     <procedure id="sp_registrar_reserva" parameterMap="reservaParam">
