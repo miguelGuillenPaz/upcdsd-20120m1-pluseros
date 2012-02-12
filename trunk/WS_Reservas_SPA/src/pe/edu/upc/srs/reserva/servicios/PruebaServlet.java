@@ -58,6 +58,12 @@ public class PruebaServlet extends HttpServlet {
 		ReservaDTO reserva = servicio.buscarReserva("R0000001");
 		System.out.println(reserva);
 		
+		ReservaDTO[] horarios = servicio.obtenerHorariosDisponibles(1, "12", "02", "2012");
+		for(int i = 0 ; i < horarios.length ; i++){
+			
+			System.out.println("Horarios: " + horarios[i].getHoraInicio());
+		}
+		
 	}
 	
 }
