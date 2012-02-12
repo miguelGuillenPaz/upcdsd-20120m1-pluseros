@@ -85,13 +85,22 @@ public class ImplGestionServicios implements IGestionServicios {
 
 	@Override
 	public String registrarReserva(ReservaDTO reserva) {
-		String resultado = "";
-		try {
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+        String resultado = "";
+
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
+            objCall.registerTypeMapping(ReservaDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarReserva"));
+            objCall.addParameter("reserva", new QName("http://beans.reserva.srs.upc.edu.pe", "ReservaDTO"), ParameterMode.IN);
+            objCall.setReturnType(XMLType.XSD_STRING);
+
+            resultado =  (String) objCall.invoke(new Object[]{reserva});
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+            resultado = "-1";
+        }
+
 		return resultado;
 	}
 
