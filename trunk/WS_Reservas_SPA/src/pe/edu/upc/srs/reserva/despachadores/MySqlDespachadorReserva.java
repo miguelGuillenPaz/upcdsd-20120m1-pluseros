@@ -67,7 +67,7 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
     @SuppressWarnings("unchecked")
     @Override
     public ArrayList<ReservaDTO>  obtenerHorariosDisponibles(int idServicio, String dia, String mes, String anio) {
-        ArrayList<ReservaDTO> horarios = new ArrayList<ReservaDTO>();
+        ArrayList<ReservaDTO> horariosDisponibles = new ArrayList<ReservaDTO>();
         Map<String, Object> datosConsulta = new HashMap<String, Object>();
         datosConsulta.put("idServicio", new Integer(idServicio));
         datosConsulta.put("dia", new String(dia));
@@ -75,12 +75,12 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
         datosConsulta.put("anio", new String(anio));
         
         try {
-            horarios = (ArrayList<ReservaDTO>) queryForList("sp_obtener_horarios_disponibles", datosConsulta);
+        	horariosDisponibles = (ArrayList<ReservaDTO>) queryForList("sp_obtener_horarios_disponibles", datosConsulta);
         } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".obtenerHorariosDisponibles(): " + excepcion.getMessage());
             excepcion.printStackTrace();
         }
 
-        return horarios;
+        return horariosDisponibles;
     }
 }
