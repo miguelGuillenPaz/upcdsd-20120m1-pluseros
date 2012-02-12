@@ -11,6 +11,6 @@ public interface IDespachadorReserva {
     public String registrarReserva(ReservaDTO reserva);
     public int anularReserva(int codigo);
     public ReservaDTO buscarReserva(String codigo);
-    public ArrayList<ReservaDTO> obtenerHorariosPorServicio(ReservaDTO reserva);
-    public ArrayList<ReservaDTO> obtenerHorariosPorPersonal(int codigo);
+    public ArrayList<ReservaDTO> obtenerHorariosDisponibles(int idServicio, String dia, String mes, String anio);
+
 }
