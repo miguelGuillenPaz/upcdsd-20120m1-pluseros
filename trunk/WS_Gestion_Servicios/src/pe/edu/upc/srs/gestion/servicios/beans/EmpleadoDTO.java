@@ -25,7 +25,7 @@ public class EmpleadoDTO implements Serializable{
     private String usuario;
     private String clave;
     private ServicioDTO[] servicios;
-    
+
     public int getId() {
         return id;
     }
