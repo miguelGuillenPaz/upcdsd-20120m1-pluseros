@@ -28,6 +28,7 @@ import org.apache.http.message.BasicNameValuePair;
 import com.google.gson.Gson;
 
 import pe.edu.upc.srs.gestion.servicios.beans.ClienteDTO;
+import pe.edu.upc.srs.gestion.servicios.beans.DistritoDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.EmpleadoDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.PersonalDTO;
 import pe.edu.upc.srs.gestion.servicios.beans.ReservaDTO;
@@ -234,10 +235,10 @@ public class ImplGestionServicios implements IGestionServicios {
 		ServicioDTO[] servicios = null;
 		
 		try {
-			Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
+			Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
 			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "obtenerServicios"));
-			objCall.setReturnClass(ServicioDTO.class);
+			objCall.setReturnClass(ServicioDTO[].class);
 			
 			servicios =  (ServicioDTO[]) objCall.invoke(new Object[]{});
 		} catch (Exception excepcion) {
@@ -260,9 +261,10 @@ public class ImplGestionServicios implements IGestionServicios {
 
 		try {
 			Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
-			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarServicio"));
-			objCall.addParameter("servicio", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ServicioDTO"), ParameterMode.IN);
+			objCall.registerTypeMapping(ClienteDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+			objCall.registerTypeMapping(DistritoDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarCliente"));
+			objCall.addParameter("cliente", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ClienteDTO"), ParameterMode.IN);
 			objCall.setReturnType(XMLType.XSD_INT);
 
 			resultado =  (Integer)objCall.invoke(new Object[]{cliente});
