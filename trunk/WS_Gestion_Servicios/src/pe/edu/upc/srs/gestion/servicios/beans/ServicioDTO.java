@@ -8,13 +8,11 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class ServicioDTO implements Serializable{
 
-	/* Atributos */
 	private int id;
     private String descripcion;
     private double duracion;
     private String rutaImagen;
 
-    /* Métodos de acceso */
     public int getId() {
 		return id;
 	}
@@ -39,4 +37,5 @@ public class ServicioDTO implements Serializable{
 	public void setRutaImagen(String rutaImagen) {
 		this.rutaImagen = rutaImagen;
 	}
+
 }
