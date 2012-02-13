@@ -3,6 +3,7 @@
  */
 package pe.edu.upc.srs.reserva.servicios;
 
+import pe.edu.upc.srs.reserva.beans.EmpleadoDTO;
 import pe.edu.upc.srs.reserva.beans.ReservaDTO;
 
 public interface IServicioReserva {
@@ -10,4 +11,5 @@ public interface IServicioReserva {
     public int anularReserva(int codigo);
     public ReservaDTO buscarReserva(String codigo);
     public ReservaDTO[] obtenerHorariosDisponibles(int idServicio, String dia, String mes, String anio);
+    public EmpleadoDTO[] obtenerEmpleadosDisponibles(int idServicio, String dia, String mes, String anio, String horaInicio, String horaFin);
 }
