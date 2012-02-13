@@ -13,7 +13,18 @@ public class ImplCliente implements IServicioCliente {
 
 	@Override
 	public int registrarCliente(ClienteDTO cliente) {
-		return despachadorCliente.registrarCliente(cliente);
+		int existeUsuario = 0;
+		
+		if(!"".equals(cliente.getUsuario()) && !"".equals(cliente.getClave())){
+			existeUsuario = despachadorCliente.validarUsuario(cliente.getUsuario());
+		}
+		
+		if(existeUsuario == 0){
+			return despachadorCliente.registrarCliente(cliente);
+		}else{
+			return -2;//El usuario ya existe
+		}
+
 		
 	}
 
