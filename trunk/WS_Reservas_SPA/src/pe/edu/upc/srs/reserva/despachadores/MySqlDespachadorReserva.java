@@ -73,7 +73,7 @@ public class MySqlDespachadorReserva extends SqlMapDaoTemplate implements IDespa
         datosConsulta.put("dia", new String(dia));
         datosConsulta.put("mes", new String(mes));
         datosConsulta.put("anio", new String(anio));
-        
+
         try {
         	horariosDisponibles = (ArrayList<ReservaDTO>) queryForList("sp_obtener_horarios_disponibles", datosConsulta);
         } catch (Exception excepcion) {
