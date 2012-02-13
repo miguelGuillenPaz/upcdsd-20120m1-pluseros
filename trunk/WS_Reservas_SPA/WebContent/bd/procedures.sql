@@ -153,3 +153,33 @@ VALUES(@autogenerado, dia, mes, anio, 'P', id_servicio, id_cliente, id_empleado,
 
 SET codigo = @autogenerado;
 END
+
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_obtener_empleados_disponibles`(
+    id_servicio  int(11),
+    dia_reserva  char(2),
+    mes_reserva  char(2),
+    anio_reserva char(4),
+    hora_inicio  char(2),
+    hora_fin     char(2)
+)
+BEGIN
+    SELECT e.id_empleado, e.cod_empleado, e.foto,
+           e.nombre, e.ape_pat_empleado, e.ape_mat_empleado
+      FROM srs.empleado e, srs.empleado_servicio es
+     WHERE e.id_empleado = es.id_empleado
+       AND es.id_servicio = id_servicio
+       AND NOT EXISTS(SELECT 1 FROM srs.reserva r
+                       WHERE r.estado = 'G'
+                         AND r.dia_reserva = dia_reserva
+                         AND r.mes_reserva = mes_reserva
+                         AND r.anio_reserva = anio_reserva
+                         AND r.hora_inicio  BETWEEN hora_inicio AND hora_fin);
+                  
+
+END
