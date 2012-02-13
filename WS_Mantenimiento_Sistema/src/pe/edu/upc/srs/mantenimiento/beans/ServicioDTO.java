@@ -5,9 +5,8 @@ package pe.edu.upc.srs.mantenimiento.beans;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class ServicioDTO implements Serializable{
-	
-	private static final long serialVersionUID = 6246826969585329348L;
 
 	private int id;
     private String descripcion;
@@ -38,7 +37,5 @@ public class ServicioDTO implements Serializable{
 	public void setRutaImagen(String rutaImagen) {
 		this.rutaImagen = rutaImagen;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
 }

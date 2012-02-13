@@ -8,9 +8,9 @@ import pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO;
 import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
 
 public class ImplServicioMantenimiento implements IServicioMantenimiento {
-	IServicioCliente interfazCliente;
-	IServicioEmpleado interfazEmpleado;
-	IServicioServicio interfazServicio;	
+	ImplCliente interfazCliente = new ImplCliente(); 
+	ImplEmpleado interfazEmpleado = new ImplEmpleado(); 
+	ImplServicio interfazServicio = new ImplServicio();
 
 	@Override
 	public int registrarServicio(ServicioDTO servicio) {
