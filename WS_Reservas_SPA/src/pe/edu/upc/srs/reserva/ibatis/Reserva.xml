@@ -28,6 +28,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
 
     <resultMap id="horarioReservaMap" class="reserva">
         <result property="horaInicio" column="hora_inicio"/>
+        <result property="horaFin" column="hora_fin"/>
     </resultMap>
 
     <parameterMap id="reservaParam" class="reserva">
