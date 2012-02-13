@@ -21,8 +21,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <parameter property="clave" mode="IN"/>
     </parameterMap>
 
-	<procedure id="sp_registrar_cliente" parameterMap="clienteParam" resultClass="java.lang.Integer">
+    <procedure id="sp_registrar_cliente" parameterMap="clienteParam">
         {call sp_registrar_cliente(?,?,?,?,?,?,?,?,?,?,?)}
-	</procedure>
-	
+    </procedure>
 </sqlMap>
