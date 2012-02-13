@@ -13,7 +13,7 @@
 	</transactionManager>
 		
 	<!-- registramos los DAOs -->
-		<dao implementation="pe.edu.upc.srs.mantenimiento.despachadores.MySqlCliente" 
+	<dao implementation="pe.edu.upc.srs.mantenimiento.despachadores.MySqlCliente" 
 		interface="pe.edu.upc.srs.mantenimiento.despachadores.IDespachadorCliente"/>
 			
 	<dao implementation="pe.edu.upc.srs.mantenimiento.despachadores.MySqlEmpleado" 
@@ -21,7 +21,9 @@
 		
 	<dao implementation="pe.edu.upc.srs.mantenimiento.despachadores.MySqlServicio" 
 		interface="pe.edu.upc.srs.mantenimiento.despachadores.IDespachadorServicio"/>
-		
+
+    <dao implementation="pe.edu.upc.srs.mantenimiento.despachadores.MySqlUbigeo" 
+        interface="pe.edu.upc.srs.mantenimiento.despachadores.IDespachadorUbigeo"/>		
 	</context>
 	
 </daoConfig>
