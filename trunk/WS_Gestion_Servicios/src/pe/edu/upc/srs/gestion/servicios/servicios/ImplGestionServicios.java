@@ -239,7 +239,7 @@ public class ImplGestionServicios implements IGestionServicios {
             Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
             objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
             objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "obtenerServicios"));
-            objCall.setReturnClass(ServicioDTO.class);
+            objCall.setReturnClass(ServicioDTO[].class);
 
             servicios =  (ServicioDTO[]) objCall.invoke(new Object[]{});
         } catch (Exception excepcion) {
