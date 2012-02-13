@@ -8,6 +8,44 @@ $(document).ready(function(){
 	$( "#dialog:ui-dialog" ).dialog( "destroy" );
 });
 
+function trim(string) {
+	return string.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+}
+
+function validar_requerido(field) {
+	with (field) {
+		if (trim(value) == null || trim(value) == "" || trim(value) == 0) {						
+			alert('Datos Incompletos, favor de verificar.');
+			if( !(field.type == 'hidden')){
+				field.focus();
+			}
+			return false;
+		} else {
+			return true;
+		}
+	}
+}
+
+function validar_mail(field){
+	if (field != undefined && field.value != "" ){
+		re=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;					
+		if(!re.exec(field.value)){
+			alert('Debe ingresar una Dirección de Correo Electrónico válida para continuar.');
+			field.focus();
+			return false;
+		}else{return true;}		
+	}else {return false;}
+}
+
+function validarSoloNumeros(e) {
+	opc = false;
+	tecla = (document.all) ? event.keyCode : e.which;
+	if (tecla == 8) {opc = true;} // tecla backspace
+	if (tecla >= 48 && tecla <= 57) {opc = true;} // sólo numeros
+	return opc;
+
+}
+
 function mostrarMensaje(str,link){
 	if(str != ""){
 		alert(str);
@@ -32,6 +70,24 @@ function anularReserva(){
 	if(confirm("¿Esta seguro anular la reserva?")){
 		$("#frm_anularReserva").attr("action","registrarAnulacionReserva");
 		$("#frm_anularReserva").submit();
+	}
+}
+
+function registrarCliente(){
+	if(validar_requerido(document.getElementById("objClienteDTO.nombres")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.apellidoPaterno")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.apellidoMaterno")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.direccion")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.nroDocumentoIdentidad")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.telefono")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.email")) &&
+	   validar_mail(document.getElementById("objClienteDTO.email")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.usuario")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.clave")) ){
+		if(confirm("¿Esta seguro registrarse?")){
+			$("#frm_cliente").attr("action","suscribirCliente");
+			$("#frm_cliente").submit();
+		}
 	}
 }
 

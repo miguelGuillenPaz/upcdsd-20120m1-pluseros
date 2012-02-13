@@ -29,16 +29,25 @@ public class ReservaAction extends ActionSupport{
 	
 	@SuppressWarnings("unchecked")
 	public String buscarReserva(){
-		System.out.println("CODIGO: "+strCodigoReserva);
-		
 		if(strCodigoReserva.equals("")){
-			System.out.println("ENTRO ACA!");
 			strMensaje = "* Debe de ingresar un código de reserva";
 		}else{
 			ImplReservaService objImplReservaService = new ImplReservaService();
 			objReservaDTO = objImplReservaService.buscarReserva(strCodigoReserva);
-			objReservaDTO.setHoraInicio(UtilMethod.formateaHora24(objReservaDTO.getHoraInicio()));
-			objReservaDTO.setHoraFin(UtilMethod.formateaHora24(objReservaDTO.getHoraFin()));
+			if(objReservaDTO != null){
+				objReservaDTO.setHoraInicio(UtilMethod.formateaHora24(objReservaDTO.getHoraInicio()));
+				objReservaDTO.setHoraFin(UtilMethod.formateaHora24(objReservaDTO.getHoraFin()));
+				
+				if(objReservaDTO.getEstado().equals("A")){
+					strMensaje = "* La Reserva ya ha sido anulada";
+				}else if(objReservaDTO.getEstado().equals("R")){
+					strMensaje = "* La Reserva ya ha sido realizada";
+				}
+				
+			}else{
+				strMensaje = "* No Existe una reserva asociada con ese código";
+			}
+			
 		}
 		
 		Map session = ActionContext.getContext().getSession();
@@ -51,13 +60,9 @@ public class ReservaAction extends ActionSupport{
 	public String registrarAnulacionReserva(){
 		Map session = ActionContext.getContext().getSession();
 		objReservaDTO = (ReservaDTO) session.get("objReservaDTO");
-		
-		System.out.println("CODIGO: "+objReservaDTO.getId());
 
 		ImplReservaService objImplReservaService = new ImplReservaService();
 		int intResultado = objImplReservaService.anularReserva(objReservaDTO.getId());
-		
-		System.out.println("RESULTADO: "+intResultado);
 		
 		switch (intResultado) {
 		case 0:

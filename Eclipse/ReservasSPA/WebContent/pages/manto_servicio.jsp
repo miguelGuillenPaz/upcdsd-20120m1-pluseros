@@ -86,43 +86,28 @@
 										<td align="center" > <img src="<%= request.getContextPath() %>/images/btns/btn_edit.png"> </td>
 									</tr>
 									 -->
+									<s:if test="lstServicioDTO.size == 0">
 									<tr>
 										<td colspan="5" align="center" height="25">
 											<span class="msj_error">No existen registros.</span>
 										</td>
 									</tr>
-									
-									<s:iterator var="usuario" value="lstE_Usuario">
-										<tr class="tbl_Manto_cuerpo" >
-											<td height="20">&nbsp;<s:property value="strNombre_Usu" /></td>
-											<td >&nbsp;<s:property value="strApellido_Usu" /></td>
-											<td >&nbsp;<s:property value="strLogin_Usu" /></td>
-											<td >&nbsp;<s:property value="strMail_Usu" /></td>
-											<td align="center">
-												<s:if test="%{#usuario.intCodigo_Avatar != -1}">
-													<a href="<%= request.getContextPath() %>/pages/getAvatar.jsp?intCodigo_Avatar=<s:property value='intCodigo_Avatar'/>" id="single_image" > <img src="<%= request.getContextPath() %>/images/btns/btn_image.png"> </a>
-												</s:if>
-												<s:else>
-													-
-												</s:else>
-											</td>
-											<td >&nbsp;<s:property value="objE_Rol.strDescripcion_Rol" /> </td>
-											<td align="center">
-												<s:if test="%{#usuario.intEstado_Usu == 1}">
-													<img src="<%= request.getContextPath() %>/images/btns/btn_check_enabled.png">
-												</s:if>
-												<s:else>
-													<img src="<%= request.getContextPath() %>/images/btns/btn_check_disabled.png">
-												</s:else>
-											</td>
-											<td align="center" >
-												<s:a href="#">  
-													<img src="<%= request.getContextPath() %>/images/btns/btn_edit.png">
-												</s:a> 
-											</td>
-										</tr>
-									
-									</s:iterator>
+									</s:if>
+									<s:else>
+										<s:iterator var="servicio" value="lstServicioDTO">
+											<tr class="tbl_Manto_cuerpo" >
+												<td height="20"><s:property value="descripcion"/></td>
+												<td><s:property value="duracion"/></td>
+												<td>
+													<a href="<%= request.getContextPath() %>/images/servicios/<s:property value='rutaImagen'/>" rel="facebox">
+														<img src="<%= request.getContextPath() %>/images/btns/btn_image.png">
+													</a>
+												</td>
+												<td><img src="<%= request.getContextPath() %>/images/btns/btn_check_enabled.png"></td>
+												<td><img src="<%= request.getContextPath() %>/images/btns/btn_edit.png"></td>
+											</tr>
+										</s:iterator>
+									</s:else>
 									<tr><td colspan="5" height="20"></td></tr>
 								</table>
 															
