@@ -16,4 +16,6 @@ PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
 	<sqlMap resource="pe/edu/upc/srs/mantenimiento/ibatis/Servicio.xml"/>
 	<sqlMap resource="pe/edu/upc/srs/mantenimiento/ibatis/EmpleadoServicio.xml"/>
 	<sqlMap resource="pe/edu/upc/srs/mantenimiento/ibatis/Ubigeo.xml"/>
+	<sqlMap resource="pe/edu/upc/srs/mantenimiento/ibatis/Empleado.xml"/>
+	<sqlMap resource="pe/edu/upc/srs/mantenimiento/ibatis/Usuario.xml"/>
 </sqlMapConfig>
