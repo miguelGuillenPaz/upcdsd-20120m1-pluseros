@@ -15,7 +15,7 @@ public class NavigationAction extends ActionSupport{
 	private static final long serialVersionUID = 3013386262446827287L;
 	
 	public String initLogin(){
-		
+		/*
 		MailDTO objMailDTO = new MailDTO();
 		
 		objMailDTO.setStrAsunto("Registro de Reserva prueba nº1");
@@ -30,7 +30,7 @@ public class NavigationAction extends ActionSupport{
 										UtilWebServiceSPA.JMS_URL, 
 										UtilWebServiceSPA.JMS_QUEUE_NAME, 
 										objMailDTO);
-		
+		*/
 		return SUCCESS;
 	}
 	

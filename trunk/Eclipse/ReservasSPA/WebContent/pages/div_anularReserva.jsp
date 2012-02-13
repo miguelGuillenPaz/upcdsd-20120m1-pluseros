@@ -1,8 +1,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 
-<script>
-// strMensajeExito
+
+<%@page import="pe.edu.upc.srs.reservas.bean.ReservaDTO"%><script>
 $(document).ready(function(){
 	mostrarMensaje($("#strMensajeE").attr("value"),"anularReserva.action");
 });
@@ -83,10 +83,14 @@ $(document).ready(function(){
 														</tr>
 													</table>
 													<br>
-													<sx:a onclick="anularReserva()" targets="div_process_anulacion" href="#" >
-														<img  align="middle"width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_cancel.png"/>
-														Anular Reserva 
-													</sx:a>
+													<% if(request.getSession().getAttribute("objReservaDTO") != null){
+														if(((ReservaDTO)request.getSession().getAttribute("objReservaDTO")).getEstado().equals("G")){ %>
+														<sx:a onclick="anularReserva()" targets="div_process_anulacion" href="#" >
+															<img  align="middle"width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_cancel.png"/>
+															Anular Reserva 
+														</sx:a>
+													<%	} 
+													  }%>
 												</div>
 											</td>
 										</tr>
