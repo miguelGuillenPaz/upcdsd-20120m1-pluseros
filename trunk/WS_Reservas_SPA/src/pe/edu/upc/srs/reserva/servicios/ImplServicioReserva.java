@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.ibatis.dao.client.DaoManager;
 
+import pe.edu.upc.srs.reserva.beans.EmpleadoDTO;
 import pe.edu.upc.srs.reserva.beans.ReservaDTO;
 import pe.edu.upc.srs.reserva.despachadores.IDespachadorEmpleado;
 import pe.edu.upc.srs.reserva.despachadores.IDespachadorReserva;
@@ -37,4 +38,12 @@ public class ImplServicioReserva implements IServicioReserva{
 
         return (ReservaDTO[]) horarios.toArray(new ReservaDTO[horarios.size()]);
     }
+
+    @Override
+    public EmpleadoDTO[] obtenerEmpleadosDisponibles(int idServicio, String dia, String mes, String anio, String horaInicio, String horaFin) {
+        ArrayList<EmpleadoDTO> empleados = new ArrayList<EmpleadoDTO>();
+        empleados = despachadorEmpleado.obtenerEmpleadosDisponibles(idServicio, dia, mes, anio, horaInicio, horaFin);
+
+        return (EmpleadoDTO[]) empleados.toArray(new EmpleadoDTO[empleados.size()]);
+	}
 }
