@@ -38,54 +38,55 @@ import pe.edu.upc.srs.gestion.servicios.utilitarios.UtilWebService;
 
 public class ImplGestionServicios implements IGestionServicios {
 
-	@Override
-	public UsuarioDTO autenticarUsuario(String usuario, String clave) {
+    @Override
+    public UsuarioDTO autenticarUsuario(String usuario, String clave) {
 
-		UsuarioDTO usuarioEncontrado = null;
-		HttpClient clienteHttp = new DefaultHttpClient();
+        UsuarioDTO usuarioEncontrado = null;
+        HttpClient clienteHttp = new DefaultHttpClient();
 
-		try {
-			List<NameValuePair> parametros = new ArrayList<NameValuePair>();
-			parametros.add(new BasicNameValuePair("usuario", usuario));
-			parametros.add(new BasicNameValuePair("clave", clave));
+        try {
+            List<NameValuePair> parametros = new ArrayList<NameValuePair>();
+            parametros.add(new BasicNameValuePair("usuario", usuario));
+            parametros.add(new BasicNameValuePair("clave", clave));
 
-			URI uri = URIUtils.createURI("http",
+            URI uri = URIUtils.createURI("http",
                                          UtilWebService.WS_AUTENTICACION_SRS_HOST,
                                          UtilWebService.WS_AUTENTICACION_SRS_PUERTO,
                                          UtilWebService.WS_AUTENTICACION_SRS_PATH,
                                          URLEncodedUtils.format(parametros, "UTF-8"), null);
 
-			HttpGet operacion = new HttpGet(uri);
-			HttpResponse response = clienteHttp.execute(operacion);
-			
-			/* Si la operación fue exitosa */
-			if( response.getStatusLine().getStatusCode() == 200) {
-			    if(response.getEntity() != null){
-			    	BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-					String linea = "";
-					String jsonUsuario = "";
+            HttpGet operacion = new HttpGet(uri);
+            HttpResponse response = clienteHttp.execute(operacion);
 
-					while((linea = reader.readLine()) != null){
-						jsonUsuario += linea;
-					}
+            /* Si la operación fue exitosa */
+            if( response.getStatusLine().getStatusCode() == 200) {
+                if(response.getEntity() != null){
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+                    String linea = "";
+                    String jsonUsuario = "";
 
-					/* Deserialización del Json obtenido */
-					Gson gson = new Gson();
-					usuarioEncontrado = gson.fromJson(jsonUsuario, UsuarioDTO.class);
-			    }
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally{
-			clienteHttp.getConnectionManager().shutdown();
-		}
-		
-		return usuarioEncontrado;
-	}
+                    while((linea = reader.readLine()) != null){
+                        jsonUsuario += linea;
+                    }
 
-	@Override
-	public String registrarReserva(ReservaDTO reserva) {
+                    /* Deserialización del Json obtenido */
+                    Gson gson = new Gson();
+                    usuarioEncontrado = gson.fromJson(jsonUsuario, UsuarioDTO.class);
+                }
+            }
+            
+        } catch (Exception excepcion) {
+        	excepcion.printStackTrace();
+            System.out.println("Error - " + this.getClass().getName() + ".autenticarUsuario(): " + excepcion.getMessage());
+        }finally{
+            clienteHttp.getConnectionManager().shutdown();
+        }
+        
+        return usuarioEncontrado;
+    }
+
+    @Override
+    public String registrarReserva(ReservaDTO reserva) {
         String resultado = "";
 
         try {
@@ -102,164 +103,179 @@ public class ImplGestionServicios implements IGestionServicios {
             resultado = "-1";
         }
 
-		return resultado;
-	}
+        return resultado;
+    }
 
-	@Override
-	public int anularReserva(int codigo) {
-		int resultado = 0;
+    @Override
+    public int anularReserva(int codigo) {
+        int resultado = 0;
 
-		try {
-			Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
-			objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe","anularReserva"));
-			objCall.addParameter("codigo", XMLType.XSD_INT, ParameterMode.IN);
-			objCall.setReturnType(XMLType.XSD_INT);
-			
-			resultado =  (Integer)objCall.invoke(new Object[]{codigo});
-		} catch (Exception excepcion) {
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
+            objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe","anularReserva"));
+            objCall.addParameter("codigo", XMLType.XSD_INT, ParameterMode.IN);
+            objCall.setReturnType(XMLType.XSD_INT);
+            
+            resultado =  (Integer)objCall.invoke(new Object[]{codigo});
+        } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".anularReserva(): " + excepcion.getMessage());
             excepcion.printStackTrace();
             resultado = -1;
-		}
+        }
 
-		return resultado;
-	}
+        return resultado;
+    }
 
-	@Override
-	public ReservaDTO buscarReserva(String codigo) {
-		ReservaDTO reserva = null;
-		
-		try {
-			Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
-			objCall.registerTypeMapping(ReservaDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.registerTypeMapping(ClienteDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.registerTypeMapping(PersonalDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe","buscarReserva"));
-			objCall.addParameter("codigo", XMLType.XSD_STRING, ParameterMode.IN);
-			objCall.setReturnClass(ReservaDTO.class);
-			
-			reserva =  (ReservaDTO) objCall.invoke(new Object[]{codigo});
-		} catch (Exception excepcion) {
+    @Override
+    public ReservaDTO buscarReserva(String codigo) {
+        ReservaDTO reserva = null;
+        
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
+            objCall.registerTypeMapping(ReservaDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.registerTypeMapping(ClienteDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.registerTypeMapping(PersonalDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe","buscarReserva"));
+            objCall.addParameter("codigo", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.setReturnClass(ReservaDTO.class);
+            
+            reserva =  (ReservaDTO) objCall.invoke(new Object[]{codigo});
+        } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".buscarReserva(): " + excepcion.getMessage());
             excepcion.printStackTrace();
-		}
+        }
 
-		return reserva;
-	}
+        return reserva;
+    }
 
-	@Override
-	public int registrarServicio(ServicioDTO servicio) {
-		int resultado = 0;
+    @Override
+    public int registrarServicio(ServicioDTO servicio) {
+        int resultado = 0;
 
-		try {
-			Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
-			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarServicio"));
-			objCall.addParameter("servicio", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ServicioDTO"), ParameterMode.IN);
-			objCall.setReturnType(XMLType.XSD_INT);
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
+            objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarServicio"));
+            objCall.addParameter("servicio", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ServicioDTO"), ParameterMode.IN);
+            objCall.setReturnType(XMLType.XSD_INT);
 
-			resultado =  (Integer)objCall.invoke(new Object[]{servicio});
-		} catch (Exception excepcion) {
+            resultado =  (Integer)objCall.invoke(new Object[]{servicio});
+        } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".registrarServicio(): " + excepcion.getMessage());
             excepcion.printStackTrace();
             resultado = -1;
-		}
+        }
 
-		return resultado;
-	}
+        return resultado;
+    }
 
-	@Override
-	public int modificarServicio(ServicioDTO servicio) {
-		int resultado = 0;
+    @Override
+    public int modificarServicio(ServicioDTO servicio) {
+        int resultado = 0;
 
-		try {
-			Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
-			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "modificarServicio"));
-			objCall.addParameter("servicio", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ServicioDTO"), ParameterMode.IN);
-			objCall.setReturnType(XMLType.XSD_INT);
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
+            objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "modificarServicio"));
+            objCall.addParameter("servicio", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ServicioDTO"), ParameterMode.IN);
+            objCall.setReturnType(XMLType.XSD_INT);
 
-			resultado =  (Integer)objCall.invoke(new Object[]{servicio});
-		} catch (Exception excepcion) {
-            System.out.println("Error - " + this.getClass().getName() + ".registrarServicio(): " + excepcion.getMessage());
+            resultado =  (Integer)objCall.invoke(new Object[]{servicio});
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".modificarServicio(): " + excepcion.getMessage());
             excepcion.printStackTrace();
             resultado = -1;
-		}
+        }
 
-		return resultado;
-	}
+        return resultado;
+    }
 
-	@Override
-	public int eliminarServicio(int codigo) {
-		int resultado = 0;
+    @Override
+    public int eliminarServicio(int codigo) {
+        int resultado = 0;
 
-		try {
-			Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
-			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe","eliminarServicio"));
-			objCall.addParameter("codigo", XMLType.XSD_INT, ParameterMode.IN);
-			objCall.setReturnType(XMLType.XSD_INT);
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
+            objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe","eliminarServicio"));
+            objCall.addParameter("codigo", XMLType.XSD_INT, ParameterMode.IN);
+            objCall.setReturnType(XMLType.XSD_INT);
 
-			resultado =  (Integer)objCall.invoke(new Object[]{codigo});
-		} catch (Exception excepcion) {
+            resultado =  (Integer)objCall.invoke(new Object[]{codigo});
+        } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".eliminarServicio(): " + excepcion.getMessage());
             excepcion.printStackTrace();
             resultado = -1;
-		}
+        }
 
-		return resultado;
-	}
+        return resultado;
+    }
 
-	@Override
-	public ServicioDTO buscarServicio(int codigo) {
-		ServicioDTO servicio = null;
-		
-		try {
-			Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
-			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "buscarServicio"));
-			objCall.addParameter("codigo", XMLType.XSD_STRING, ParameterMode.IN);
-			objCall.setReturnClass(ServicioDTO.class);
-			
-			servicio =  (ServicioDTO) objCall.invoke(new Object[]{codigo});
-		} catch (Exception excepcion) {
+    @Override
+    public ServicioDTO buscarServicio(int codigo) {
+        ServicioDTO servicio = null;
+        
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
+            objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "buscarServicio"));
+            objCall.addParameter("codigo", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.setReturnClass(ServicioDTO.class);
+
+            servicio =  (ServicioDTO) objCall.invoke(new Object[]{codigo});
+        } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".buscarServicio(): " + excepcion.getMessage());
             excepcion.printStackTrace();
-		}
+        }
 
-		return servicio;
-	}
+        return servicio;
+    }
 
-	@Override
-	public ServicioDTO[] obtenerServicios() {
-		ServicioDTO[] servicios = null;
-		
-		try {
-			Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
-			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "obtenerServicios"));
-			objCall.setReturnClass(ServicioDTO[].class);
-			
-			servicios =  (ServicioDTO[]) objCall.invoke(new Object[]{});
-		} catch (Exception excepcion) {
+    @Override
+    public ServicioDTO[] obtenerServicios() {
+        ServicioDTO[] servicios = null;
+
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
+            objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "obtenerServicios"));
+            objCall.setReturnClass(ServicioDTO.class);
+
+            servicios =  (ServicioDTO[]) objCall.invoke(new Object[]{});
+        } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".obtenerServicios(): " + excepcion.getMessage());
             excepcion.printStackTrace();
-		}
+        }
 
-		return servicios;
-	}
+        return servicios;
+    }
 
-	@Override
-	public int registrarEmpleado(EmpleadoDTO empleado) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int registrarEmpleado(EmpleadoDTO empleado) {
+        int resultado = 0;
 
-	@Override
-	public int registrarCliente(ClienteDTO cliente) {
-		int resultado = 0;
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
+            objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarEmpleado"));
+            objCall.addParameter("empleado", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "EmpleadoDTO"), ParameterMode.IN);
+            objCall.setReturnType(XMLType.XSD_INT);
 
-		try {
+            resultado =  (Integer)objCall.invoke(new Object[]{empleado});
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".registrarEmpleado(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+            resultado = -1;
+        }
+
+        return resultado;
+    }
+
+    @Override
+    public int registrarCliente(ClienteDTO cliente) {
+        int resultado = 0;
+
+        try {
 			Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
 			objCall.registerTypeMapping(ClienteDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			objCall.registerTypeMapping(DistritoDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
@@ -267,15 +283,15 @@ public class ImplGestionServicios implements IGestionServicios {
 			objCall.addParameter("cliente", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ClienteDTO"), ParameterMode.IN);
 			objCall.setReturnType(XMLType.XSD_INT);
 
-			resultado =  (Integer)objCall.invoke(new Object[]{cliente});
-		} catch (Exception excepcion) {
+            resultado =  (Integer)objCall.invoke(new Object[]{cliente});
+        } catch (Exception excepcion) {
             System.out.println("Error - " + this.getClass().getName() + ".registrarServicio(): " + excepcion.getMessage());
             excepcion.printStackTrace();
             resultado = -1;
-		}
+        }
 
-		return resultado;
-	}
+        return resultado;
+    }
 
     @Override
     public ReservaDTO[] obtenerHorariosDisponibles(int idServicio, String dia, String mes, String anio) {
@@ -289,21 +305,45 @@ public class ImplGestionServicios implements IGestionServicios {
             objCall.addParameter("dia", XMLType.XSD_STRING, ParameterMode.IN);
             objCall.addParameter("mes", XMLType.XSD_STRING, ParameterMode.IN);
             objCall.addParameter("anio", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.addParameter("anio", XMLType.XSD_STRING, ParameterMode.IN);
 
             objCall.setReturnClass(ReservaDTO.class);
 
             horariosDisponibles =  (ReservaDTO[]) objCall.invoke(new Object[]{idServicio, dia, mes, anio});
         } catch (Exception excepcion) {
-            System.out.println("Error - " + this.getClass().getName() + ".registrarReserva(): " + excepcion.getMessage());
+            System.out.println("Error - " + this.getClass().getName() + ".obtenerHorariosDisponibles(): " + excepcion.getMessage());
+            System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
             excepcion.printStackTrace();
         }
 
-		return horariosDisponibles;
-	}
+        return horariosDisponibles;
+    }
 
-	@Override
-	public PersonalDTO[] obtenerEmpleadosPorServicio(int servicio) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public EmpleadoDTO[] obtenerEmpleadosDisponibles(int idServicio, String dia, String mes, String anio, String horaInicio, String horaFin) {
+    	EmpleadoDTO[] empleadosDisponibles = null;
+
+        try {
+            Call objCall = UtilWebService.getCallService(UtilWebService.WS_RESERVA_SRS);
+            objCall.registerTypeMapping(ReservaDTO.class, new QName("http://beans.reserva.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.reserva.srs.upc.edu.pe", "obtenerEmpleadosDisponibles"));
+            objCall.addParameter("idServicio", XMLType.XSD_INT, ParameterMode.IN);
+            objCall.addParameter("dia", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.addParameter("mes", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.addParameter("anio", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.addParameter("horaInicio", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.addParameter("horaFin", XMLType.XSD_STRING, ParameterMode.IN);
+
+            objCall.setReturnClass(EmpleadoDTO.class);
+
+            empleadosDisponibles =  (EmpleadoDTO[]) objCall.invoke(new Object[]{idServicio, dia, mes, anio, horaInicio, horaFin});
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".obtenerEmpleadosDisponibles(): " + excepcion.getMessage());
+            System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
+            excepcion.printStackTrace();
+        }
+
+        return empleadosDisponibles;
+    }
+
 }
