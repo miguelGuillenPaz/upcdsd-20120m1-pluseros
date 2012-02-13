@@ -95,46 +95,6 @@ END
 -- --------------------------------------------------------------------------------
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrar_cliente`(
-_ape_pat_cliente varchar(50),
-_ape_mat_cliente varchar(50),
-_nombre varchar(50),
-_direccion varchar(100),
-_telefono varchar(15),
-_email varchar(50),
-_tipo_documento_identidad int,
-_nro_documento_identidad varchar(30),
-_id_distrito varchar(30),
-_usuario varchar(15),
-_clave char(40)
-)
-BEGIN
-
-INSERT INTO srs.usuario(usuario, clave, tipo_usuario, estado)
-VALUES(_usuario, _clave, 1, 1);
-    
--- Id de usuario
-SET @id_usuario = LAST_INSERT_ID();
-
--- Código de cliente autogenerado
-SET @autogenerado = (SELECT CONCAT('C', RIGHT(CONCAT('0000000',cast((cast(RIGHT(max(case c.cod_cliente when null then '0' else c.cod_cliente end),7) AS UNSIGNED INTEGER) + 1)as char)),7)) FROM srs.cliente c);
-
-INSERT INTO cliente
-(cod_cliente, ape_pat_cliente, ape_mat_cliente, nombre,
- direccion, tipo_documento_identidad, nro_documento_identidad,
- telefono, email, id_distrito, id_usuario)
-VALUES
-(@autogenerado, _ape_pat_cliente, _ape_mat_cliente, _nombre,
- _direccion, _tipo_documento_identidad, _nro_documento_identidad,
- _telefono, _email, _id_distrito, @id_usuario);
-END
-
--- --------------------------------------------------------------------------------
--- Routine DDL
--- Note: comments before and after the routine body will not be stored by the server
--- --------------------------------------------------------------------------------
-DELIMITER $$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrar_reserva`(
     dia         char(2),
     mes         char(2),
@@ -149,7 +109,7 @@ BEGIN
 SET @autogenerado = (SELECT CONCAT('R', RIGHT(CONCAT('0000000',cast((cast(RIGHT(max(case r.cod_reserva when null then '0' else r.cod_reserva end),7) AS UNSIGNED INTEGER) + 1)as char)),7)) FROM srs.reserva r);
 
 INSERT INTO srs.reserva(cod_reserva, dia_reserva, mes_reserva, anio_reserva, estado, id_servicio, id_cliente, id_empleado, hora_inicio, hora_fin)
-VALUES(@autogenerado, dia, mes, anio, 'P', id_servicio, id_cliente, id_empleado, hora_inicio, hora_fin);
+VALUES(@autogenerado, dia, mes, anio, 'G', id_servicio, id_cliente, id_empleado, hora_inicio, hora_fin);
 
 SET codigo = @autogenerado;
 END
