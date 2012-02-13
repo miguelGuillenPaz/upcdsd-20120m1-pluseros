@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Ubigeo">
+
+    <typeAlias alias="departamento" 
+               type="pe.edu.upc.srs.mantenimiento.beans.DepartamentoDTO"/>
+    <typeAlias alias="provincia" 
+               type="pe.edu.upc.srs.mantenimiento.beans.ProvinciaDTO"/>
+    <typeAlias alias="distrito" 
+               type="pe.edu.upc.srs.mantenimiento.beans.DistritoDTO"/>
+
+    <resultMap id="departamentoMap" class="departamento">
+        <result property="id" column="id_departamento"/>
+        <result property="nombre" column="nombre"/>
+    </resultMap>
+
+    <resultMap id="provinciaMap" class="provincia">
+        <result property="id" column="id_provincia"/>
+        <result property="nombre" column="nombre"/>
+    </resultMap>
+
+    <resultMap id="distritoMap" class="distrito">
+        <result property="id" column="id_distrito"/>
+        <result property="nombre" column="nombre"/>
+    </resultMap>
+
+    <procedure id="sp_listar_departamentos" resultMap="departamentoMap">
+        {call sp_listar_departamentos()}
+    </procedure>
+
+    <procedure id="sp_listar_provincias" resultMap="provinciaMap" parameterClass="java.lang.String">
+        {call sp_listar_provincias(#value#)}
+    </procedure>
+
+    <procedure id="sp_listar_distritos" resultMap="distritoMap" parameterClass="java.lang.String">
+        {call sp_listar_distritos(#value#)}
+    </procedure>
+
+</sqlMap>
+ 
