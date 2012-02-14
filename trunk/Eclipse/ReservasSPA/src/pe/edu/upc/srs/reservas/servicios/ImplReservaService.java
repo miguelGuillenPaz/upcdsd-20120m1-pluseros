@@ -12,10 +12,11 @@ import javax.xml.rpc.encoding.XMLType;
 import org.apache.axis.client.Call;
 import org.apache.axis.encoding.ser.BeanDeserializerFactory;
 import org.apache.axis.encoding.ser.BeanSerializerFactory;
-
 import pe.edu.upc.srs.reservas.bean.ClienteDTO;
+import pe.edu.upc.srs.reservas.bean.DepartamentoDTO;
 import pe.edu.upc.srs.reservas.bean.DistritoDTO;
-import pe.edu.upc.srs.reservas.bean.PersonalDTO;
+import pe.edu.upc.srs.reservas.bean.EmpleadoDTO;
+import pe.edu.upc.srs.reservas.bean.ProvinciaDTO;
 import pe.edu.upc.srs.reservas.bean.ReservaDTO;
 import pe.edu.upc.srs.reservas.bean.ServicioDTO;
 import pe.edu.upc.srs.util.UtilWebServiceSPA;
@@ -58,7 +59,7 @@ public class ImplReservaService implements IReservaService{
 			
 			objCall.registerTypeMapping(ReservaDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			objCall.registerTypeMapping(ClienteDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			objCall.registerTypeMapping(PersonalDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+			objCall.registerTypeMapping(EmpleadoDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			
 			objCall.setOperationName(new QName("http://servicios.servicios.gestion.srs.upc.edu.pe","buscarReserva"));
@@ -122,6 +123,89 @@ public class ImplReservaService implements IReservaService{
 			e.printStackTrace();
 		}
 		return intResultado;
+	}
+
+	@Override
+	public ArrayList<DepartamentoDTO> listarDepartamentos() {
+		DepartamentoDTO[] departamentos = null;
+		ArrayList<DepartamentoDTO> lstDepartamentoDTO = null;
+        try {
+            Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
+            objCall.registerTypeMapping(DepartamentoDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://servicios.servicios.gestion.srs.upc.edu.pe", "listarDepartamentos"));
+            objCall.setReturnClass(DepartamentoDTO[].class);
+
+            departamentos =  (DepartamentoDTO[]) objCall.invoke(new Object[]{});
+            lstDepartamentoDTO = new ArrayList<DepartamentoDTO>();
+            for(DepartamentoDTO dep : departamentos){
+            	lstDepartamentoDTO.add(dep);
+            }
+            
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".listarDepartamentos(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+        }
+		return lstDepartamentoDTO;
+	}
+
+	@Override
+	public ArrayList<DistritoDTO> listarDistritos(String idProvincia) {
+		ArrayList<DistritoDTO> lstDistritoDTO = null;
+		DistritoDTO[] distritos = null;
+
+        try {
+            Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
+            objCall.registerTypeMapping(ProvinciaDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.registerTypeMapping(DistritoDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://beans.servicios.gestion.srs.upc.edu.pe", "listarDistritos"));
+            objCall.addParameter("idProvincia", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.setReturnClass(DistritoDTO[].class);
+
+            distritos =  (DistritoDTO[]) objCall.invoke(new Object[]{idProvincia});
+            lstDistritoDTO = new ArrayList<DistritoDTO>();
+            
+            for(DistritoDTO dis : distritos){
+            	lstDistritoDTO.add(dis);
+            }
+            
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".listarDistritos(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+        }
+
+        return lstDistritoDTO;
+	}
+
+	@Override
+	public ArrayList<ProvinciaDTO> listarProvincias(String idDepartamento) {
+		ArrayList<ProvinciaDTO> lstProvinciaDTO = null;
+		ProvinciaDTO[] provincias = null;
+
+        try {
+            Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
+            objCall.registerTypeMapping(DepartamentoDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.registerTypeMapping(ProvinciaDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://beans.servicios.gestion.srs.upc.edu.pe", "listarProvincias"));
+            objCall.addParameter("idDepartamento", XMLType.XSD_STRING, ParameterMode.IN);
+            objCall.setReturnClass(ProvinciaDTO[].class);
+
+            provincias =  (ProvinciaDTO[]) objCall.invoke(new Object[]{idDepartamento});
+            lstProvinciaDTO = new ArrayList<ProvinciaDTO>();
+            for(ProvinciaDTO prov : provincias){
+            	lstProvinciaDTO.add(prov);
+            }
+            
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".listarProvincias(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+        }
+        return lstProvinciaDTO;
+	}
+
+	@Override
+	public int registrarEmpleado(EmpleadoDTO empleado) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

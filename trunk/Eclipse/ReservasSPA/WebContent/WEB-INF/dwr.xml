@@ -1,0 +1,17 @@
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
+    "http://getahead.org/dwr/dwr30.dtd">
+
+
+<dwr>
+  <allow>
+    <create creator="new" javascript="ImplReservaService">
+      <param name="class" value="pe.edu.upc.srs.reservas.servicios.ImplReservaService"/>
+    </create>
+    
+    <convert match="pe.edu.upc.srs.reservas.bean.DepartamentoDTO" converter="bean"/>
+    <convert match="pe.edu.upc.srs.reservas.bean.DistritoDTO" converter="bean"/>
+    <convert match="pe.edu.upc.srs.reservas.bean.ProvinciaDTO" converter="bean"/>
+     
+  </allow>
+</dwr>

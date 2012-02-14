@@ -3,9 +3,13 @@
  */
 package pe.edu.upc.srs.listener;
 
+import java.util.ArrayList;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import pe.edu.upc.srs.reservas.bean.DepartamentoDTO;
+import pe.edu.upc.srs.reservas.servicios.ImplReservaService;
 import pe.edu.upc.srs.util.UtilWebServiceSPA;
 
 public class AplicationListener implements ServletContextListener{

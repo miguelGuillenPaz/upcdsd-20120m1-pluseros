@@ -51,8 +51,12 @@
 			<result name="success" type="tiles">d_manto_cliente</result>
 		</action>
 		
-		<action name="registrarCliente" method="registrarCliente" class="pe.edu.upc.srs.reservas.action.ClienteAction">
+		<action name="suscribirCliente" method="registrarCliente" class="pe.edu.upc.srs.reservas.action.ClienteAction">
 			<result name="success" type="tiles">d_login</result>
+		</action>
+		
+		<action name="registrarCliente" method="registrarCliente" class="pe.edu.upc.srs.reservas.action.ClienteAction">
+			<result name="success" type="redirect">mantenerCliente</result>
 		</action>
 		
 		<action name="suscribirCliente" method="registrarCliente" class="pe.edu.upc.srs.reservas.action.ClienteAction">

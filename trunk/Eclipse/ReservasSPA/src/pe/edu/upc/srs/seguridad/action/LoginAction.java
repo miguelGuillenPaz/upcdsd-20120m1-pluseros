@@ -3,8 +3,11 @@
  */
 package pe.edu.upc.srs.seguridad.action;
 
+import java.util.ArrayList;
 import java.util.Map;
 
+import pe.edu.upc.srs.reservas.bean.DepartamentoDTO;
+import pe.edu.upc.srs.reservas.servicios.ImplReservaService;
 import pe.edu.upc.srs.seguridad.bean.UsuarioDTO;
 import pe.edu.upc.srs.seguridad.servicios.ImplSeguridadService;
 import com.opensymphony.xwork2.ActionContext;
@@ -21,6 +24,7 @@ public class LoginAction extends ActionSupport{
 	@SuppressWarnings("unchecked")
 	public String login(){
 		ImplSeguridadService objImplSeguridadService = new ImplSeguridadService();
+		
 		Map session = ActionContext.getContext().getSession();
 		
 		if(session.get("logged") != null &&
