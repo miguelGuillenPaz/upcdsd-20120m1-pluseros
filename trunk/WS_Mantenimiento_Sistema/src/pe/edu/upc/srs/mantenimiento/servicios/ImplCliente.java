@@ -24,8 +24,6 @@ public class ImplCliente implements IServicioCliente {
 		}else{
 			return -2;//El usuario ya existe
 		}
-
-		
 	}
 
 }
