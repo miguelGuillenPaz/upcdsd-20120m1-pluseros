@@ -73,7 +73,7 @@ function anularReserva(){
 	}
 }
 
-function registrarCliente(){
+function suscribirCliente(){
 	if(validar_requerido(document.getElementById("objClienteDTO.nombres")) &&
 	   validar_requerido(document.getElementById("objClienteDTO.apellidoPaterno")) &&
 	   validar_requerido(document.getElementById("objClienteDTO.apellidoMaterno")) &&
@@ -86,6 +86,24 @@ function registrarCliente(){
 	   validar_requerido(document.getElementById("objClienteDTO.clave")) ){
 		if(confirm("¿Esta seguro registrarse?")){
 			$("#frm_cliente").attr("action","suscribirCliente");
+			$("#frm_cliente").submit();
+		}
+	}
+}
+
+function registrarCliente(){
+	if(validar_requerido(document.getElementById("objClienteDTO.nombres")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.apellidoPaterno")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.apellidoMaterno")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.direccion")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.nroDocumentoIdentidad")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.telefono")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.email")) &&
+	   validar_mail(document.getElementById("objClienteDTO.email")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.usuario")) &&
+	   validar_requerido(document.getElementById("objClienteDTO.clave")) ){
+		if(confirm("¿Esta seguro registrar el cliente?")){
+			$("#frm_cliente").attr("action","registrarCliente");
 			$("#frm_cliente").submit();
 		}
 	}
@@ -126,4 +144,21 @@ function reservarHorario(){
 		}
 	});
 }
+var selec = ["Seleccione"];
+function seleccionarDepartamento(dpto) {
+	ImplReservaService.listarProvincias(dpto.value,function(data){
+		dwr.util.removeAllOptions("idProvincia");
+		dwr.util.removeAllOptions("objClienteDTO.distrito.id");
+		dwr.util.addOptions("objClienteDTO.distrito.id",selec);
+		dwr.util.addOptions("idProvincia",selec);
+		dwr.util.addOptions("idProvincia",data,"id","nombre");
+	});
+}
 
+function seleccionarProvincia(prov) {
+	ImplReservaService.listarDistritos(prov.value,function(data){
+		dwr.util.removeAllOptions("objClienteDTO.distrito.id");
+		dwr.util.addOptions("objClienteDTO.distrito.id",selec);
+		dwr.util.addOptions("objClienteDTO.distrito.id",data,"id","nombre");
+	});
+}

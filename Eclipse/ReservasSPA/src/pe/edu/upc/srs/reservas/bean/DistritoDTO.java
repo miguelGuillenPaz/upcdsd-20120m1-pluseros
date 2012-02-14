@@ -11,7 +11,7 @@ public class DistritoDTO implements Serializable{
 	/* Atributos */
 	private String id;
     private String nombre;
-    private Provincia provincia;
+    private ProvinciaDTO provincia;
 	
     /* Métodos de acceso */
     public String getId() {
@@ -26,10 +26,10 @@ public class DistritoDTO implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Provincia getProvincia() {
+	public ProvinciaDTO getProvincia() {
 		return provincia;
 	}
-	public void setProvincia(Provincia provincia) {
+	public void setProvincia(ProvinciaDTO provincia) {
 		this.provincia = provincia;
 	}
     

@@ -19,22 +19,6 @@ public class ClienteAction extends ActionSupport{
 	public String registrarCliente(){
 		
 		ImplReservaService objImplReservaService = new ImplReservaService();
-		System.out.println("NOMBRE: "+objClienteDTO.getNombres());
-		System.out.println("APELLIDO P: "+objClienteDTO.getApellidoPaterno());
-		System.out.println("APELLIDO M: "+objClienteDTO.getApellidoMaterno());
-		System.out.println("DIRECCION: "+objClienteDTO.getDireccion());
-		System.out.println("TIPO DOC: "+objClienteDTO.getTipoDocumentoIdentidad());
-		System.out.println("NUM DOC: "+objClienteDTO.getNroDocumentoIdentidad());
-		System.out.println("E-MAIL: "+objClienteDTO.getEmail());
-		System.out.println("TELEFONO "+objClienteDTO.getTelefono());
-		System.out.println("USUARIO: "+objClienteDTO.getUsuario());
-		System.out.println("CLAVE: "+objClienteDTO.getClave());
-		
-		DistritoDTO objDistritoDTO = new DistritoDTO();
-		objDistritoDTO.setId("150101");
-		
-		objClienteDTO.setDistrito(objDistritoDTO);
-		
 		int intResultado = objImplReservaService.registrarCliente(objClienteDTO);
 		
 		switch (intResultado) {

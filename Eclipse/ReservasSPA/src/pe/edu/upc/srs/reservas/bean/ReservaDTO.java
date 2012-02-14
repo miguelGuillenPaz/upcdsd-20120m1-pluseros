@@ -1,7 +1,8 @@
-package pe.edu.upc.srs.reservas.bean;
 /**
  * @author Victor Roncalla
  */
+package pe.edu.upc.srs.reservas.bean;
+
 public class ReservaDTO {
 
     /* Atributos */
@@ -11,11 +12,11 @@ public class ReservaDTO {
     private String mes;
     private String anio;
     private String estado;
-    private ServicioDTO servicio;
-    private ClienteDTO cliente;
-    private PersonalDTO empleado;
     private String horaInicio;
     private String horaFin;
+    private ServicioDTO servicio;
+    private ClienteDTO cliente;
+    private EmpleadoDTO empleado;
 
     /* Métodos de acceso */
 	public int getId() {
@@ -66,10 +67,10 @@ public class ReservaDTO {
 	public void setCliente(ClienteDTO cliente) {
 		this.cliente = cliente;
 	}
-	public PersonalDTO getEmpleado() {
+	public EmpleadoDTO getEmpleado() {
 		return empleado;
 	}
-	public void setEmpleado(PersonalDTO empleado) {
+	public void setEmpleado(EmpleadoDTO empleado) {
 		this.empleado = empleado;
 	}
 	public String getHoraInicio() {

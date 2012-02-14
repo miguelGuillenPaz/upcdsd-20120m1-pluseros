@@ -1,6 +1,10 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 
+<script type='text/javascript' src='${pageContext.request.contextPath}/dwr/engine.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/dwr/util.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/dwr/interface/ImplReservaService.js'></script>
+
 <s:form id="frm_cliente" action="suscribirCliente" namespace="/">
 <div id="dv_body">
 	<table style="margin: 0px 0px 0px 10px;border-left: 1px solid #CCCCCC;" width="715px" border="0" cellpadding="0" cellspacing="0">
@@ -27,10 +31,18 @@
 				<s:text name="M_Usuarios.nuevo"/> 
 				</sx:a>
 				| <%} %>
-				<s:a href="#" onclick="registrarCliente()">
-					<img align="middle" width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_accept.png" />
-					<s:text name="M_Usuarios.grabar"/>
-				</s:a>
+				
+				<% if(request.getParameter("sus").equals("ok")){ %>
+					<s:a href="#" onclick="suscribirCliente()">
+						<img align="middle" width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_accept.png" />
+						<s:text name="M_Usuarios.grabar"/>
+					</s:a>
+				<%}else{ %>
+					<s:a href="#" onclick="registrarCliente()">
+						<img align="middle" width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_accept.png" />
+						<s:text name="M_Usuarios.grabar"/>
+					</s:a>
+				<%}%>
 			</td>
 		</tr>
 		<tr>
@@ -83,17 +95,17 @@
 									<tr>
 										<td height="20" width="15%" class="label" > Departamento &nbsp; </td>
 										<td width="30%" >&nbsp; 
-											<select style="width:240px" ><option>Seleccione</option></select>
+											<s:select onchange="seleccionarDepartamento(this)" cssStyle="width:240px;text-transform: capitalize;" list="#session.lstDepartamentoDTO" listKey="id" listValue="nombre"></s:select>
 										 </td>
 										<td width="15%" class="label" > Provincia &nbsp; </td>
 										<td width="30%" >&nbsp; 
-											<select style="width:240px" ><option>Seleccione</option></select> 
+											<s:select onchange="seleccionarProvincia(this)" cssStyle="width:240px;" list="#{'0':'Seleccione'}" id="idProvincia"></s:select> 
 										</td>
 									</tr>
 									<tr>
 										<td height="20" width="15%" class="label" > Distrito &nbsp; </td>
 										<td width="30%" >&nbsp; 
-											<select style="width:240px" ><option>Seleccione</option></select>
+											<s:select cssStyle="width:240px;" list="#{'0':'Seleccione'}" id="objClienteDTO.distrito.id" name="objClienteDTO.distrito.id"></s:select>
 										 </td>
 										<td width="15%" class="label" >  </td>
 										<td width="30%" > </td>

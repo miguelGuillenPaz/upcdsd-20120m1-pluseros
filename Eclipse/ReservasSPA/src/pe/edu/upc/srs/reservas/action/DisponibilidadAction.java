@@ -4,7 +4,8 @@
 package pe.edu.upc.srs.reservas.action;
 
 import java.util.ArrayList;
-import pe.edu.upc.srs.reservas.bean.PersonalDTO;
+
+import pe.edu.upc.srs.reservas.bean.EmpleadoDTO;
 import pe.edu.upc.srs.reservas.bean.ServicioDTO;
 import pe.edu.upc.srs.reservas.servicios.ImplReservaService;
 
@@ -15,7 +16,7 @@ public class DisponibilidadAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private int id_servicio;
 	private int id_empleado;
-	private ArrayList<PersonalDTO> lstPersonalDTO;
+	private ArrayList<EmpleadoDTO> lstEmpleadoDTO;
 	private ArrayList<ServicioDTO> lstServicioDTO;
 	//private EmpleadoDTO objEmpleadoDTO;
 
@@ -31,10 +32,10 @@ public class DisponibilidadAction extends ActionSupport{
 	public String seleccionaServicio(){
 		
 		
-		
+		/*
 		System.out.println("el codigo seleccionado es: "+id_servicio);
 		lstPersonalDTO = new ArrayList<PersonalDTO>();
-		/* Se implementa la logica de consulta al web service */
+		/* Se implementa la logica de consulta al web service 
 		for (int i = 0; i < 6; i++) {
 			PersonalDTO objPersonalDTO = new PersonalDTO();
 			objPersonalDTO = new PersonalDTO();
@@ -43,7 +44,7 @@ public class DisponibilidadAction extends ActionSupport{
 			lstPersonalDTO.add(objPersonalDTO);
 		}
 		System.out.println("fin del action");
-		
+		*/
 		return SUCCESS;
 	}
 	
@@ -61,15 +62,6 @@ public class DisponibilidadAction extends ActionSupport{
 	public int getId_servicio() {
 		return id_servicio;
 	}
-
-	public void setLstPersonalDTO(ArrayList<PersonalDTO> lstPersonalDTO) {
-		this.lstPersonalDTO = lstPersonalDTO;
-	}
-
-	public ArrayList<PersonalDTO> getLstPersonalDTO() {
-		return lstPersonalDTO;
-	}
-
 	public void setId_empleado(int id_empleado) {
 		this.id_empleado = id_empleado;
 	}
@@ -83,6 +75,14 @@ public class DisponibilidadAction extends ActionSupport{
 
 	public ArrayList<ServicioDTO> getLstServicioDTO() {
 		return lstServicioDTO;
+	}
+
+	public void setLstEmpleadoDTO(ArrayList<EmpleadoDTO> lstEmpleadoDTO) {
+		this.lstEmpleadoDTO = lstEmpleadoDTO;
+	}
+
+	public ArrayList<EmpleadoDTO> getLstEmpleadoDTO() {
+		return lstEmpleadoDTO;
 	}
 	
 }
