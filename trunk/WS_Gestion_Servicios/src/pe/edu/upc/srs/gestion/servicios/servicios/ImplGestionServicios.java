@@ -395,7 +395,6 @@ public class ImplGestionServicios implements IGestionServicios {
         return provincias;
 	}
 
-
     @Override
     public DistritoDTO[] listarDistritos(String idProvincia) {
         DistritoDTO[] distritos = null;
