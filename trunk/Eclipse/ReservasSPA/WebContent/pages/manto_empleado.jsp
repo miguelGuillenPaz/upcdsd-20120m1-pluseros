@@ -1,6 +1,10 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
+<script type='text/javascript' src='${pageContext.request.contextPath}/dwr/engine.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/dwr/util.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/dwr/interface/ImplReservaService.js'></script>
 
+<s:form id="frm_empleado" action="registrarEmpleado" namespace="/" enctype="multipart/form-data" >
 <div id="dv_body">
 	<table style="margin: 0px 0px 0px 10px;border-left: 1px solid #CCCCCC;" width="715px" border="0" cellpadding="0" cellspacing="0">
 		<tr>
@@ -16,35 +20,16 @@
 					<img  align="middle"width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_add.png"/>
 				<s:text name="M_Usuarios.nuevo"/> 
 				</sx:a>
-				| <sx:a targets="process" >
+				| <s:a href="#" onclick="registrarEmpleado()">
 					<img align="middle" width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_accept.png" /> 
-					<s:text name="M_Usuarios.grabar"/> </sx:a>
+					<s:text name="M_Usuarios.grabar"/> 
+				</s:a>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
 				<s:div id="div_process" cssStyle="float: right;width:96%">
 					<table width="100%" border="0" cellpadding="1" cellspacing="0">
-					<%--
-						<tr valign="middle">
-							<td align="center" width="32px" >
-								<!-- 
-								<img align="middle" width="24" height="24" alt="" src="<%= request.getContextPath() %>/images/icons/icon_vineta.png" >
-								 -->
-							</td>
-							<td align="left" width=""><!-- <span class="titulo" >&nbsp; 
-								<s:text name="M_Usuarios.tituloRegistro"/> </span> 	 --></td>
-							<td align="right" width="" valign="middle" >&nbsp;
-								<!--<sx:a targets="process" href="listarUsuarios.action" notifyTopics="/listarUsuarios" >
-									<img  align="middle"width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_add.png"/>
-								<s:text name="M_Usuarios.nuevo"/> 
-								</sx:a>
-								| <sx:a targets="process" notifyTopics="/listarUsuarios" onclick="document.frm_Usuario.submit()" >
-									<img align="middle" width="24" height="24" src="<%= request.getContextPath() %>/images/btns/btn_accept.png" /> 
-									<s:text name="M_Usuarios.grabar"/> </sx:a>-->
-							</td>
-						</tr> 
-						<tr><td colspan="3" height="20" align="left" ></td></tr>--%>
 						<tr>
 							<td colspan="3" height="20" align="center" >
 								<span class="msg_error"><s:property value="%{#request.mensaje}" /></span>
@@ -53,58 +38,58 @@
 								<table width="100%" class="tbl_Manto_Registro" style="background-color: #B7B7B7;" cellpadding="1" cellspacing="1" border="0">
 									<tr>
 										<td height="20" width="15%" class="label" > Codigo &nbsp; </td>
-										<td width="30%" >&nbsp; <s:textfield disabled="true" cssStyle="width:120px" id="strNombre_Usu" name="strNombre_Usu" /> </td>
+										<td width="30%" >&nbsp; <s:textfield disabled="true" cssStyle="width:120px" id="objEmpleadoDTO.codigo" name="objEmpleadoDTO.codigo" /> </td>
 										<td width="15%" class="label" > Nombre &nbsp; </td>
-										<td width="30%" >&nbsp; <s:textfield required="true" cssStyle="width:230px" id="strApellido_Usu" name="strApellido_Usu" /> </td>
+										<td width="30%" >&nbsp; <s:textfield required="true" cssStyle="width:230px" id="objEmpleadoDTO.nombres" name="objEmpleadoDTO.nombres" /> </td>
 									</tr>
 									<tr>
 										<td height="20" width="15%" class="label" > Apellido Pat. &nbsp; </td>
-										<td width="30%" >&nbsp; <s:textfield cssStyle="width:230px" id="strLogin_Usu" name="strLogin_Usu" /> </td>
+										<td width="30%" >&nbsp; <s:textfield cssStyle="width:230px" id="objEmpleadoDTO.apellidoPaterno" name="objEmpleadoDTO.apellidoPaterno" /> </td>
 										<td width="15%" class="label" > Apellido Mat. &nbsp; </td>
-										<td width="30%" >&nbsp; <s:textfield  cssStyle="width:230px" id="strClave_Usu" name="strClave_Usu" /> </td>
+										<td width="30%" >&nbsp; <s:textfield  cssStyle="width:230px" id="objEmpleadoDTO.apellidoMaterno" name="objEmpleadoDTO.apellidoMaterno" /> </td>
 									</tr>
 									<tr>
 										<td height="20" width="15%" class="label" > Direcci&oacute;n&nbsp; </td>
-										<td width="30%" colspan="3">&nbsp; <s:textfield cssStyle="width:570px" id="strLogin_Usu" name="strLogin_Usu" /> </td>
+										<td width="30%" colspan="3">&nbsp; <s:textfield cssStyle="width:570px" id="objEmpleadoDTO.direccion" name="objEmpleadoDTO.direccion" /> </td>
 									</tr>
 									<tr>
 										<td height="20" width="15%" class="label" > Documento &nbsp; </td>
 										<td width="30%" >&nbsp; 
-											<%--<s:select cssStyle="width:240px" ></s:select>--%>
-											<select style="width:230px" ><option>Seleccione</option></select>
+											<s:select id="objEmpleadoDTO.tipoDocumentoIdentidad" name="objEmpleadoDTO.tipoDocumentoIdentidad" cssStyle="width:230px" list="#{'16':'DNI','17':'CARNET DE EXTRANJERIA','18':'PASAPORTE'}" >
+											</s:select>
 										 </td>
 										<td width="15%" class="label" > Nº Documento </td>
-										<td width="30%" >&nbsp; <s:textfield cssStyle="width:120px" id="strLogin_Usu" name="strLogin_Usu" /> </td>
+										<td width="30%" >&nbsp; <s:textfield cssStyle="width:120px" id="objEmpleadoDTO.nroDocumentoIdentidad" name="objEmpleadoDTO.nroDocumentoIdentidad" /> </td>
 									</tr>
 									<tr>
-										<td height="20" width="15%" class="label" > Tel&eacute;fono &nbsp; </td>
-										<td width="30%" >&nbsp; <s:textfield cssStyle="width:120px" id="strLogin_Usu" name="strLogin_Usu" /> </td>
-										<td width="15%" class="label" > <s:text name="M_Usuarios.mail"/> &nbsp; </td>
-										<td width="30%" >&nbsp; <s:textfield  cssStyle="width:230px" id="strClave_Usu" name="strClave_Usu" /> </td>
+										<td height="20" width="15%" class="label" > <s:text name="M_Usuarios.mail"/> &nbsp; </td>
+										<td width="30%" >&nbsp; <s:textfield  cssStyle="width:230px" id="objEmpleadoDTO.email" name="objEmpleadoDTO.email" /> </td>
+										<td width="15%" class="label" > </td>
+										<td width="30%" >&nbsp; </td>
 									</tr>
 									<tr>
 										<td height="20" width="15%" class="label" > Usuario &nbsp; </td>
-										<td width="30%" >&nbsp; <s:textfield cssStyle="width:120px" id="strCumpleanios_Usu" name="strCumpleanios_Usu" /> </td>
+										<td width="30%" >&nbsp; <s:textfield cssStyle="width:120px" id="objEmpleadoDTO.usuario" name="objEmpleadoDTO.usuario" /> </td>
 										<td width="15%" class="label" > Clave &nbsp; </td>
-										<td width="30%" >&nbsp; <s:password  cssStyle="width:120px" id="strMail_Usu" name="strMail_Usu" /> </td>
+										<td width="30%" >&nbsp; <s:password  cssStyle="width:120px" id="objEmpleadoDTO.clave" name="objEmpleadoDTO.clave" /> </td>
 									</tr>
 									<tr>
 										<td height="20" width="15%" class="label" > Departamento &nbsp; </td>
 										<td width="30%" >&nbsp; 
-											<select style="width:240px" ><option>Seleccione</option></select>
+											<s:select onchange="seleccionarDepartamento(this)" cssStyle="width:240px;text-transform: capitalize;" list="#session.lstDepartamentoDTO" listKey="id" listValue="nombre"></s:select>
 										 </td>
 										<td width="15%" class="label" > Provincia &nbsp; </td>
 										<td width="30%" >&nbsp; 
-											<select style="width:240px" ><option>Seleccione</option></select> 
+											<s:select onchange="seleccionarProvincia(this)" cssStyle="width:240px;" list="#{'0':'Seleccione'}" id="idProvincia"></s:select> 
 										</td>
 									</tr>
 									<tr>
 										<td height="20" width="15%" class="label" > Distrito &nbsp; </td>
 										<td width="30%" >&nbsp; 
-											<select style="width:240px" ><option>Seleccione</option></select>
+											<s:select cssStyle="width:240px;" list="#{'0':'Seleccione'}" id="objEmpleadoDTO.distrito" name="objEmpleadoDTO.distrito"></s:select>
 										 </td>
 										<td width="15%" class="label" > Foto &nbsp; </td>
-										<td width="30%" >&nbsp; <s:file cssStyle="width:230px"></s:file> </td>
+										<td width="30%" >&nbsp; <s:file id="foto" name="foto" cssStyle="width:230px"></s:file> </td>
 									</tr>
 								</table>
 							</td>
@@ -181,3 +166,4 @@
 		</tr>
 	</table>
 </div>
+</s:form>

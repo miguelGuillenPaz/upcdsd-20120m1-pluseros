@@ -12,6 +12,7 @@ import javax.xml.rpc.encoding.XMLType;
 import org.apache.axis.client.Call;
 import org.apache.axis.encoding.ser.BeanDeserializerFactory;
 import org.apache.axis.encoding.ser.BeanSerializerFactory;
+
 import pe.edu.upc.srs.reservas.bean.ClienteDTO;
 import pe.edu.upc.srs.reservas.bean.DepartamentoDTO;
 import pe.edu.upc.srs.reservas.bean.DistritoDTO;
@@ -204,8 +205,24 @@ public class ImplReservaService implements IReservaService{
 
 	@Override
 	public int registrarEmpleado(EmpleadoDTO empleado) {
-		// TODO Auto-generated method stub
-		return 0;
+		int resultado = 0;
+
+        try {
+            Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
+            objCall.registerTypeMapping(EmpleadoDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            objCall.setOperationName(new QName("http://beans.servicios.gestion.srs.upc.edu.pe", "registrarEmpleado"));
+            objCall.addParameter("empleado", new QName("http://beans.servicios.gestion.srs.upc.edu.pe", "EmpleadoDTO"), ParameterMode.IN);
+            objCall.setReturnType(XMLType.XSD_INT);
+
+            resultado =  (Integer)objCall.invoke(new Object[]{empleado});
+        } catch (Exception excepcion) {
+            System.out.println("Error - " + this.getClass().getName() + ".registrarEmpleado(): " + excepcion.getMessage());
+            excepcion.printStackTrace();
+            resultado = -1;
+        }
+
+        return resultado;
 	}
 
 }

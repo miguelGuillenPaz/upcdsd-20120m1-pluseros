@@ -67,6 +67,11 @@
 			<result name="success" type="tiles">d_manto_empleado</result>
 		</action>
 		
+		<action name="registrarEmpleado" method="registrarEmpleado" class="pe.edu.upc.srs.reservas.action.EmpleadoAction">
+			<result name="success" type="redirect">mantenerEmpleado</result>
+		</action>
+		
+		
 		<action name="anularReserva" method="anularReserva" class="pe.edu.upc.srs.reservas.action.ReservaAction">
 			<result name="success" type="tiles">d_anular_reserva</result>
 		</action>

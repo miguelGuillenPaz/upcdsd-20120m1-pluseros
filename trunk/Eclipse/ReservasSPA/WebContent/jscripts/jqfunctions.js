@@ -91,6 +91,23 @@ function suscribirCliente(){
 	}
 }
 
+function registrarEmpleado(){
+	if(validar_requerido(document.getElementById("objEmpleadoDTO.nombres")) &&
+	   validar_requerido(document.getElementById("objEmpleadoDTO.apellidoPaterno")) &&
+	   validar_requerido(document.getElementById("objEmpleadoDTO.apellidoMaterno")) &&
+	   validar_requerido(document.getElementById("objEmpleadoDTO.direccion")) &&
+	   validar_requerido(document.getElementById("objEmpleadoDTO.nroDocumentoIdentidad")) &&
+	   validar_requerido(document.getElementById("objEmpleadoDTO.email")) &&
+	   validar_mail(document.getElementById("objEmpleadoDTO.email")) &&
+	   validar_requerido(document.getElementById("objEmpleadoDTO.usuario")) &&
+	   validar_requerido(document.getElementById("objEmpleadoDTO.clave")) ){
+		if(confirm("¿Esta seguro registrar el empleado?")){
+			$("#frm_empleado").attr("action","registrarEmpleado");
+			$("#frm_empleado").submit();
+		}
+	}
+}
+
 function registrarCliente(){
 	if(validar_requerido(document.getElementById("objClienteDTO.nombres")) &&
 	   validar_requerido(document.getElementById("objClienteDTO.apellidoPaterno")) &&
@@ -158,7 +175,12 @@ function seleccionarDepartamento(dpto) {
 function seleccionarProvincia(prov) {
 	ImplReservaService.listarDistritos(prov.value,function(data){
 		dwr.util.removeAllOptions("objClienteDTO.distrito.id");
+		dwr.util.removeAllOptions("objEmpleadDTO.distrito");
+		
 		dwr.util.addOptions("objClienteDTO.distrito.id",selec);
 		dwr.util.addOptions("objClienteDTO.distrito.id",data,"id","nombre");
+		
+		dwr.util.addOptions("objEmpleadoDTO.distrito",selec);
+		dwr.util.addOptions("objEmpleadoDTO.distrito",data,"id","nombre");
 	});
 }
