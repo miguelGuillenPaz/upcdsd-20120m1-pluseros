@@ -23,7 +23,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
         <parameter property="clave" mode="IN"/>
     </parameterMap>
 	
-	<procedure id="sp_registrar_empleado" parameterClass="empleadoParam">
+	<procedure id="sp_registrar_empleado" parameterMap="empleadoParam">
 		{call sp_registrar_empleado(?,?,?,?,?,?,?,?,?,?,?,?)}
 	</procedure>
 	
