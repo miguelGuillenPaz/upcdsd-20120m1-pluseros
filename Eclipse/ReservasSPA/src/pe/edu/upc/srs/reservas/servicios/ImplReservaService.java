@@ -210,7 +210,7 @@ public class ImplReservaService implements IReservaService{
         try {
             Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
             objCall.registerTypeMapping(EmpleadoDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-            objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            //objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
             objCall.setOperationName(new QName("http://beans.servicios.gestion.srs.upc.edu.pe", "registrarEmpleado"));
             objCall.addParameter("empleado", new QName("http://beans.servicios.gestion.srs.upc.edu.pe", "EmpleadoDTO"), ParameterMode.IN);
             objCall.setReturnType(XMLType.XSD_INT);

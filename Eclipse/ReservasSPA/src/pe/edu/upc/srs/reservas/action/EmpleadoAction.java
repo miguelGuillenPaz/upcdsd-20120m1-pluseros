@@ -13,7 +13,7 @@ public class EmpleadoAction extends ActionSupport{
 
 	private EmpleadoDTO objEmpleadoDTO;
 	private String strMensaje;
-	private File foto;
+	//private File flfoto;
 	
 	public String mantenerEmpleado(){
 		return SUCCESS;
@@ -25,7 +25,7 @@ public class EmpleadoAction extends ActionSupport{
 		
 		int intResultado = objImplReservaService.registrarEmpleado(objEmpleadoDTO);
 		
-		System.out.println("la foto es: "+foto);
+		//System.out.println("la foto es: "+flfoto);
 		
 		switch (intResultado) {
 		case 0:
@@ -58,12 +58,5 @@ public class EmpleadoAction extends ActionSupport{
 		return strMensaje;
 	}
 
-	public void setFoto(File foto) {
-		this.foto = foto;
-	}
-
-	public File getFoto() {
-		return foto;
-	}
 	
 }
