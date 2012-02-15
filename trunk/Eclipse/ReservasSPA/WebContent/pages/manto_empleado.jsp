@@ -89,7 +89,7 @@
 											<s:select cssStyle="width:240px;" list="#{'0':'Seleccione'}" id="objEmpleadoDTO.distrito" name="objEmpleadoDTO.distrito"></s:select>
 										 </td>
 										<td width="15%" class="label" > Foto &nbsp; </td>
-										<td width="30%" >&nbsp; <s:file id="foto" name="foto" cssStyle="width:230px"></s:file> </td>
+										<td width="30%" >&nbsp; <s:file id="flfoto" name="flfoto" cssStyle="width:230px"></s:file> </td>
 									</tr>
 								</table>
 							</td>
