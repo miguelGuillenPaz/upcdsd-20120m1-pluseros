@@ -8,7 +8,7 @@ PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
 	<typeAlias alias="empleado"
 				type="pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO"/>
 
-    <parameterMap id="empleadoParam" class="cliente">
+    <parameterMap id="empleadoParam" class="empleado">
         <parameter property="nombres" mode="IN"/>
         <parameter property="apellidoPaterno" mode="IN"/>
         <parameter property="apellidoMaterno" mode="IN"/>
