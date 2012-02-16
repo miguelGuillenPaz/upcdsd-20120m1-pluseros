@@ -312,7 +312,6 @@ public class ImplGestionServicios implements IGestionServicios {
             objCall.addParameter("dia", XMLType.XSD_STRING, ParameterMode.IN);
             objCall.addParameter("mes", XMLType.XSD_STRING, ParameterMode.IN);
             objCall.addParameter("anio", XMLType.XSD_STRING, ParameterMode.IN);
-            objCall.addParameter("anio", XMLType.XSD_STRING, ParameterMode.IN);
 
             objCall.setReturnClass(ReservaDTO[].class);
 
