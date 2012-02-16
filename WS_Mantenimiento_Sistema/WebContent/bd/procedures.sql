@@ -80,7 +80,7 @@ BEGIN
 
     IF(vusuario <> '' AND vclave <> '') THEN
         INSERT INTO srs.usuario(usuario, clave, tipo_usuario, estado)
-        VALUES(_usuario, _clave, 2, 1);
+        VALUES(vusuario, vclave, 2, 1);
 
         SET vid_usuario = LAST_INSERT_ID();
     END IF;
