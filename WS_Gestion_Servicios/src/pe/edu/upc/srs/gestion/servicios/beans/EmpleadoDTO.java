@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class EmpleadoDTO implements Serializable{
+
     private int id;
     private String nombres;
     private String apellidoPaterno;
@@ -22,6 +23,7 @@ public class EmpleadoDTO implements Serializable{
     private String email;
     private String usuario;
     private String clave;
+    //private ServicioDTO[] servicios;
 
     public int getId() {
         return id;
@@ -107,4 +109,5 @@ public class EmpleadoDTO implements Serializable{
     public void setClave(String clave) {
         this.clave = clave;
     }
+
 }
