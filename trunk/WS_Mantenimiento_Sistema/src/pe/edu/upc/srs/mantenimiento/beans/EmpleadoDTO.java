@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class EmpleadoDTO implements Serializable{
+
     private int id;
     private String nombres;
     private String apellidoPaterno;
