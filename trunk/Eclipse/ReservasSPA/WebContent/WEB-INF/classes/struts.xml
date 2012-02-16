@@ -39,12 +39,20 @@
 			<result name="success">/pages/div_personal.jsp</result>
 		</action>
 		
+		<action name="buscarPorDia" method="buscarPorDia" class="pe.edu.upc.srs.reservas.action.DisponibilidadAction">
+			<result name="success">/pages/div_personal.jsp</result>
+		</action>
+		
 		<action name="seleccionaEmpleado" method="seleccionaEmpleado" class="pe.edu.upc.srs.reservas.action.DisponibilidadAction">
 			<result name="success">/pages/div_disponibilidad.jsp</result>
 		</action>
 		
 		<action name="mantenerServicio" method="mantenerServicio" class="pe.edu.upc.srs.reservas.action.ServicioAction">
 			<result name="success" type="tiles">d_manto_servicio</result>
+		</action>
+		
+		<action name="registrarServicio" method="registrarServicio" class="pe.edu.upc.srs.reservas.action.ServicioAction">
+			<result name="success" type="redirect">mantenerServicio</result>
 		</action>
 		
 		<action name="mantenerCliente" method="mantenerCliente" class="pe.edu.upc.srs.reservas.action.ClienteAction">
@@ -82,6 +90,10 @@
 		
 		<action name="registrarAnulacionReserva" method="registrarAnulacionReserva" class="pe.edu.upc.srs.reservas.action.ReservaAction">
 			<result name="success" type="tiles">d_anular_reserva</result>
+		</action>
+		
+		<action name="registrarReserva" method="registrarReserva" class="pe.edu.upc.srs.reservas.action.ReservaAction">
+			<result name="success" type="redirect">disponibilidad</result>
 		</action>
 		
 	</package>

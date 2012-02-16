@@ -24,5 +24,9 @@ public interface IReservaService {
     public ArrayList<DistritoDTO> listarDistritos(String idProvincia);
     
     public int registrarEmpleado(EmpleadoDTO empleado);
+    public int registrarServicio(ServicioDTO servicio);
 	
+    public ArrayList<ReservaDTO> obtenerHorariosDisponibles(int idServicio, String dia, String mes, String anio);
+    public ArrayList<EmpleadoDTO> obtenerEmpleadosDisponibles(int idServicio, String dia, String mes, String anio, String horaInicio, String horaFin);
+    public String registrarReserva(ReservaDTO reserva);
 }

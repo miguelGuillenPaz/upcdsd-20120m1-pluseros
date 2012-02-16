@@ -16,7 +16,7 @@
 		</tr>
 		<tr>
 			<td>
-				<s:div id="div_process" cssStyle="float: right;width:97%">
+				<s:div id="div_process" cssStyle="float: right;width:97%;">
 					<s:set name="lst_servicios" value="lstServicioDTO"/>
 				
 					<table style="padding: 3px;" width="100%" cellpadding="0" cellspacing="0" border="0">

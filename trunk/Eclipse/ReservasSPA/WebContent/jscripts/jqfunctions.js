@@ -126,6 +126,24 @@ function registrarCliente(){
 	}
 }
 
+function registrarServicio(){
+	if(validar_requerido(document.getElementById("objServicioDTO.descripcion")) &&
+	   validar_requerido(document.getElementById("objServicioDTO.duracion"))){
+			if(confirm("¿Esta seguro registrar el servicio?")){
+				$("#frm_servicio").attr("action","registrarServicio");
+				$("#frm_servicio").submit();
+			}
+		}
+}
+
+function copiaNombreArchivo(input){
+	var ruta = input.value;
+	var nombreArchivo = ruta.substring(ruta.lastIndexOf("\\")+1);
+		
+	$("#rutaImagen").attr("value",nombreArchivo);
+	
+}
+
 var css_menu_options = {headerclass: "menuheaders", 
                     	contentclass: "menucontents", 
                     	revealtype: "clickgo",
@@ -184,3 +202,24 @@ function seleccionarProvincia(prov) {
 		dwr.util.addOptions("objEmpleadoDTO.distrito",data,"id","nombre");
 	});
 }
+
+function buscaHorarios(){
+	var picker = document.getElementsByName("picker")[0].value; 
+	var id_servicio = $("#id_servicio").attr("value");
+	alert(picker);
+	alert(id_servicio);
+	alert($("valor_picker").attr("value"));
+	document.location.href="buscarPorDia.action?picker=16/02/2012&id_servicio=1";
+}
+
+function seleccionaPicker(pic){
+	alert(pic);
+	alert(pic.value);
+	$("valor_picker").attr("value",pic.value);
+}
+
+function reservar(idS,idE,HI,HF){
+	document.location.href="registrarReserva.action?id_servicio="+idS+"&id_empleado="+
+							$("#lst_"+idE).attr("value")+"&horaIni="+HI+"&horaFin="+HF;
+}
+
