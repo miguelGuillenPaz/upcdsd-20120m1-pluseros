@@ -13,7 +13,7 @@ import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
 public interface IServicioMantenimiento {
 
     public int registrarServicio(ServicioDTO servicio);
-    public int registarEmpleado(EmpleadoDTO empleado);
+    public int registrarEmpleado(EmpleadoDTO empleado);
     public int registrarCliente(ClienteDTO cliente);
     public int modificarServicio(ServicioDTO servicio);
     public int eliminarServicio(int codigo);
