@@ -42,7 +42,7 @@ public class ImplServicioMantenimiento implements IServicioMantenimiento {
 	}
 
 	@Override
-	public int registarEmpleado(EmpleadoDTO empleado) {
+	public int registrarEmpleado(EmpleadoDTO empleado) {
 		return interfazEmpleado.registrarEmpleado(empleado);
 	}
 
