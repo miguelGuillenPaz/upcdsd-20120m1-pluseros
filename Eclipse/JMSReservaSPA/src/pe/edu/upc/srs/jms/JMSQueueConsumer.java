@@ -50,10 +50,6 @@ public class JMSQueueConsumer implements MessageListener {
 			
             MailDTO objMailDTO = (MailDTO) objOMessage.getObject();
             
-            System.out.println("TO: "+objMailDTO.getStrPara());
-            System.out.println("TO: "+objMailDTO.getStrPara());
-            System.out.println("TO: "+objMailDTO.getStrPara());
-            
             JMail.enviarMensaje(objMailDTO);
             
         } catch (Exception ex) {
