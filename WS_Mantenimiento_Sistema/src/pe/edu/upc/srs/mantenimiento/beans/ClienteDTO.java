@@ -8,7 +8,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class ClienteDTO implements Serializable {
 
-    /* Atributos */
+    /*Attributes*/
     private int id;
     private String codigo;
     private String apellidoPaterno;
