@@ -13,7 +13,8 @@ public class EmpleadoAction extends ActionSupport{
 
 	private EmpleadoDTO objEmpleadoDTO;
 	private String strMensaje;
-	//private File flfoto;
+	private String strMensajeExito;
+	private File foto;
 	
 	public String mantenerEmpleado(){
 		return SUCCESS;
@@ -25,14 +26,14 @@ public class EmpleadoAction extends ActionSupport{
 		
 		int intResultado = objImplReservaService.registrarEmpleado(objEmpleadoDTO);
 		
-		//System.out.println("la foto es: "+flfoto);
+		System.out.println("la foto es: "+foto);
 		
 		switch (intResultado) {
 		case 0:
 			setStrMensaje("Ocurrio un problema al registrar al cliente.");
 			break;
 		case 1: 
-			setStrMensaje("Operacion Exitosa");
+			setStrMensajeExito("Empleado registrado satisfactoriamente");
 			break;
 		case -1:
 			setStrMensaje("ERROR-EXCEPTION: Ocurrio un registrar el cliente.");
@@ -58,5 +59,19 @@ public class EmpleadoAction extends ActionSupport{
 		return strMensaje;
 	}
 
+	public void setFoto(File foto) {
+		this.foto = foto;
+	}
+
+	public File getFoto() {
+		return foto;
+	}
+	public void setStrMensajeExito(String strMensajeExito) {
+		this.strMensajeExito = strMensajeExito;
+	}
+
+	public String getStrMensajeExito() {
+		return strMensajeExito;
+	}
 	
 }
