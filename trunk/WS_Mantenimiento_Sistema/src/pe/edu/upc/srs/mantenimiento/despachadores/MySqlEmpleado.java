@@ -5,14 +5,11 @@
 package pe.edu.upc.srs.mantenimiento.despachadores;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import com.ibatis.dao.client.DaoManager;
 import com.ibatis.dao.client.template.SqlMapDaoTemplate;
 
 import pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO;
 import pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO;
-import pe.edu.upc.srs.mantenimiento.beans.ServicioDTO;
 
 public class MySqlEmpleado extends SqlMapDaoTemplate implements IDespachadorEmpleado{
 	
