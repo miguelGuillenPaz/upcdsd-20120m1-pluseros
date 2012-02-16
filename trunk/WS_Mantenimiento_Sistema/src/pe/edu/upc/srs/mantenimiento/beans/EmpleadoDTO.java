@@ -6,10 +6,8 @@ package pe.edu.upc.srs.mantenimiento.beans;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class EmpleadoDTO implements Serializable{
-    
-    private static final long serialVersionUID = 6246826969585329348L;
-
     private int id;
     private String nombres;
     private String apellidoPaterno;
@@ -24,8 +22,7 @@ public class EmpleadoDTO implements Serializable{
     private String email;
     private String usuario;
     private String clave;
-    private ServicioDTO[] servicios;
-    
+
     public int getId() {
         return id;
     }
@@ -109,11 +106,5 @@ public class EmpleadoDTO implements Serializable{
     }
     public void setClave(String clave) {
         this.clave = clave;
-    }
-    public ServicioDTO[] getServicios() {
-        return servicios;
-    }
-    public void setServicios(ServicioDTO[] servicios) {
-        this.servicios = servicios;
     }
 }
