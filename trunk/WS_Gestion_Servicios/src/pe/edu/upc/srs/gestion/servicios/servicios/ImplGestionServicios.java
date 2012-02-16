@@ -261,10 +261,9 @@ public class ImplGestionServicios implements IGestionServicios {
         try {
             Call objCall = UtilWebService.getCallService(UtilWebService.WS_MANTENIMIENTO_SPA);
             objCall.registerTypeMapping(EmpleadoDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-            objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
             objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarEmpleado"));
             objCall.addParameter("empleado", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "EmpleadoDTO"), ParameterMode.IN);
-            objCall.setReturnType(XMLType.XSD_INT);
+            objCall.setReturnClass(Integer.class);
 
             resultado =  (Integer)objCall.invoke(new Object[]{empleado});
         } catch (Exception excepcion) {
@@ -285,8 +284,8 @@ public class ImplGestionServicios implements IGestionServicios {
 			objCall.registerTypeMapping(ClienteDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			objCall.registerTypeMapping(DistritoDTO.class, new QName("http://beans.mantenimiento.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			objCall.setOperationName(new QName("http://servicios.mantenimiento.srs.upc.edu.pe", "registrarCliente"));
+			objCall.setReturnClass(Integer.class);
 			objCall.addParameter("cliente", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ClienteDTO"), ParameterMode.IN);
-			objCall.setReturnType(XMLType.XSD_INT);
 
             resultado =  (Integer)objCall.invoke(new Object[]{cliente});
         } catch (Exception excepcion) {
