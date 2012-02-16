@@ -63,31 +63,35 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_obtener_horarios_disponibles`(
     anio_reserva char(4)
 )
 BEGIN
-
-       SELECT p.valor as hora_inicio
-         FROM srs.parametros p
-        WHERE p.tipo = 'HORA'
-          AND (p.valor + (SELECT duracion_horas
-                            FROM srs.servicio s
-                           WHERE s.id_servicio = id_servicio))
-              <=
-              (SELECT MAX(CAST(pp.valor AS UNSIGNED))
-                 FROM srs.parametros pp
-                WHERE pp.tipo = 'HORA')
-                  AND CAST(p.valor AS UNSIGNED) >= IF((CAST(NOW() AS CHAR(10))) = CONCAT(anio_reserva,'-',mes_reserva,'-',dia_reserva),HOUR(CURTIME()) + 2,p.valor)
-          AND NOT EXISTS((SELECT 1 FROM srs.reserva r
-                           WHERE r.id_servicio = id_servicio
-                             AND r.dia_reserva  = dia_reserva
-                             AND r.mes_reserva  = mes_reserva
-                             AND r.anio_reserva = anio_reserva
-                             AND r.estado <> 'P'
-                             AND ((p.valor + (SELECT s.duracion_horas
-                                                FROM srs.servicio s
-                                               WHERE s.id_servicio = r.id_servicio))
-                                 BETWEEN r.hora_inicio AND r.hora_fin - 1)));
-                  
+    SELECT p.descripcion as hora_inicio,
+           (SELECT pp.descripcion
+              FROM srs.parametros pp
+             WHERE pp.valor = (p.valor + (SELECT duracion_horas
+                                            FROM srs.servicio s
+                                           WHERE s.id_servicio = 1))) as hora_fin
+      FROM srs.parametros p
+     WHERE p.tipo = 'HORA'
+       AND (p.valor + (SELECT duracion_horas
+                         FROM srs.servicio s
+                        WHERE s.id_servicio = id_servicio))
+           <=
+           (SELECT MAX(CAST(pp.valor AS UNSIGNED))
+              FROM srs.parametros pp
+             WHERE pp.tipo = 'HORA')
+               AND CAST(p.valor AS UNSIGNED) >= IF((CAST(NOW() AS CHAR(10))) = CONCAT(anio_reserva,'-',mes_reserva,'-',dia_reserva),HOUR(CURTIME()) + 2,p.valor)
+       AND NOT EXISTS((SELECT 1 FROM srs.reserva r
+                        WHERE r.id_servicio = id_servicio
+                          AND r.dia_reserva  = dia_reserva
+                          AND r.mes_reserva  = mes_reserva
+                          AND r.anio_reserva = anio_reserva
+                          AND r.estado <> 'P'
+                          AND ((p.valor + (SELECT s.duracion_horas
+                                             FROM srs.servicio s
+                                            WHERE s.id_servicio = r.id_servicio))
+                              BETWEEN r.hora_inicio AND r.hora_fin - 1)));
 
 END
+
 
 -- --------------------------------------------------------------------------------
 -- Routine DDL
