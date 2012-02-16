@@ -4,8 +4,6 @@
 
 package pe.edu.upc.srs.mantenimiento.servicios;
 
-import java.util.ArrayList;
-
 import pe.edu.upc.srs.mantenimiento.beans.EmpleadoDTO;
 import pe.edu.upc.srs.mantenimiento.beans.EmpleadoServicioDTO;
 
