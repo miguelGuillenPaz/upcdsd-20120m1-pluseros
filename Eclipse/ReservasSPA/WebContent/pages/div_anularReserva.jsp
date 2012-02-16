@@ -1,8 +1,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
+<%@page import="pe.edu.upc.srs.reservas.bean.ReservaDTO"%>
 
-
-<%@page import="pe.edu.upc.srs.reservas.bean.ReservaDTO"%><script>
+<script>
 $(document).ready(function(){
 	mostrarMensaje($("#strMensajeE").attr("value"),"anularReserva.action");
 });
