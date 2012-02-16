@@ -113,7 +113,7 @@ public class ImplReservaService implements IReservaService{
 			objCall.registerTypeMapping(DistritoDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
 			objCall.setOperationName(new QName("http://servicios.servicios.gestion.srs.upc.edu.pe","registrarCliente"));
 			objCall.setReturnClass(Integer.class);
-			objCall.addParameter("cliente", new QName("http://beans.mantenimiento.srs.upc.edu.pe", "ClienteDTO"), ParameterMode.IN);
+			objCall.addParameter("cliente", new QName("http://beans.servicios.gestion.srs.upc.edu.pe", "ClienteDTO"), ParameterMode.IN);
 			
 			intResultado = Integer.parseInt(objCall.invoke(new Object[]{cliente}).toString());
 			
@@ -210,10 +210,9 @@ public class ImplReservaService implements IReservaService{
         try {
             Call objCall = UtilWebServiceSPA.getCallService(UtilWebServiceSPA.WS_GESTION_SERVICIOS);
             objCall.registerTypeMapping(EmpleadoDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-            //objCall.registerTypeMapping(ServicioDTO.class, new QName("http://beans.servicios.gestion.srs.upc.edu.pe"), BeanSerializerFactory.class, BeanDeserializerFactory.class);
-            objCall.setOperationName(new QName("http://beans.servicios.gestion.srs.upc.edu.pe", "registrarEmpleado"));
+            objCall.setOperationName(new QName("http://servicios.servicios.gestion.srs.upc.edu.pe", "registrarEmpleado"));
+            objCall.setReturnClass(Integer.class);
             objCall.addParameter("empleado", new QName("http://beans.servicios.gestion.srs.upc.edu.pe", "EmpleadoDTO"), ParameterMode.IN);
-            objCall.setReturnType(XMLType.XSD_INT);
 
             resultado =  (Integer)objCall.invoke(new Object[]{empleado});
         } catch (Exception excepcion) {
